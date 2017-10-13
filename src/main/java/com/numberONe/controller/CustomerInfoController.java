@@ -4,9 +4,11 @@ package com.numberONe.controller;
 
 import javax.inject.Inject;
 
+import com.numberONe.entity.CityFormMap;
 import com.numberONe.entity.CustomerInfoFormMap;
-import com.numberONe.entity.LogFormMap;
+import com.numberONe.mapper.CityMapper;
 import com.numberONe.mapper.CustomerInfoMapper;
+import com.numberONe.util.CodeMsg;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +26,12 @@ import com.numberONe.util.Common;
 @Controller
 @RequestMapping("/customer/customerInfo/")
 public class CustomerInfoController extends BaseController {
-	@Inject
-	private CustomerInfoMapper customerInfoMapper;
+
+    @Inject
+    private CustomerInfoMapper customerInfoMapper;
+
+    @Inject
+	private CityMapper cityMapper;
 
 	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/customer/customerInfo";
 	
@@ -52,5 +58,18 @@ public class CustomerInfoController extends BaseController {
         pageView.setRecords(customerInfoMapper.findByPage(customerInfoFormMap));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
 	}
+
+    @RequestMapping("addUI")
+    public String addUI(Model model) throws Exception {
+        return BUSINESS_PATH + "/add";
+    }
+
+    @ResponseBody
+    @RequestMapping("getCity")
+    public CodeMsg getCity(Integer parentId) throws Exception {
+        CityFormMap cityFormMap = new CityFormMap();
+        cityFormMap.put("where", " where pid = " + parentId);
+        return new CodeMsg(CodeMsg.SUCCESS_CODE, "SUCCESS", cityMapper.findByWhere(cityFormMap));
+    }
 
 }

@@ -48,7 +48,7 @@ $(function() {
 				return "测试渲染函数";
 			}
 		} ],
-		jsonUrl : rootPath + '/user/findByPage.shtml',
+		jsonUrl : rootPath + '/customer/customerInfo/findByPage.shtml',
 		checkbox : true,
 		serNumber : true
 	});
@@ -58,8 +58,8 @@ $(function() {
 			data : searchParams
 		});
 	});
-	$("#addAccount").click("click", function() {
-		addAccount();
+	$("#addCustomerInfo").click("click", function() {
+        addCustomerInfo();
 	});
 	$("#editAccount").click("click", function() {
 		editAccount();
@@ -84,12 +84,12 @@ function editAccount() {
 		content : rootPath + '/user/editUI.shtml?id=' + cbox
 	});
 }
-function addAccount() {
+function addCustomerInfo() {
 	pageii = layer.open({
 		title : "新增",
 		type : 2,
 		area : [ "600px", "80%" ],
-		content : rootPath + '/user/addUI.shtml'
+		content : rootPath + '/customer/customerInfo/addUI.shtml'
 	});
 }
 function delAccount() {

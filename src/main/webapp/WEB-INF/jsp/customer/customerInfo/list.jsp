@@ -17,9 +17,9 @@
 	</div>
 	<header class="panel-heading">
 	<div class="doc-buttons">
-		<c:forEach items="${res}" var="key">
-			${key.description}
-		</c:forEach>
+        <button type="button" id="addCustomerInfo" class="btn btn-primary marR10">新增</button>
+        <button type="button" id="editCustomerInfo" class="btn btn-info marR10">修改</button>
+        <button type="button" id="deleteCustomerInfo" class="btn btn-danger marR10">修改</button>
 	</div>
 	</header>
 	<div class="table-responsive">
