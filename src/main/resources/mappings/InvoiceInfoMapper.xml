@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.numberONe.mapper.InvoiceInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.InvoiceInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="taxpayer_code" property="taxpayerCode" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="open_account_bank" property="openAccountBank" jdbcType="VARCHAR" />
+    <result column="account_code" property="accountCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, update_time, company_id, type, taxpayer_code, title, address, tel, 
+    open_account_bank, account_code
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from invoice_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from invoice_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.InvoiceInfo" >
+    insert into invoice_info (id, create_time, update_time, 
+      company_id, type, taxpayer_code, 
+      title, address, tel, 
+      open_account_bank, account_code)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{companyId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{taxpayerCode,jdbcType=VARCHAR}, 
+      #{title,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{openAccountBank,jdbcType=VARCHAR}, #{accountCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.InvoiceInfo" >
+    insert into invoice_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="companyId != null" >
+        company_id,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="taxpayerCode != null" >
+        taxpayer_code,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="openAccountBank != null" >
+        open_account_bank,
+      </if>
+      <if test="accountCode != null" >
+        account_code,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null" >
+        #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="taxpayerCode != null" >
+        #{taxpayerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="openAccountBank != null" >
+        #{openAccountBank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCode != null" >
+        #{accountCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.InvoiceInfo" >
+    update invoice_info
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyId != null" >
+        company_id = #{companyId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="taxpayerCode != null" >
+        taxpayer_code = #{taxpayerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="openAccountBank != null" >
+        open_account_bank = #{openAccountBank,jdbcType=VARCHAR},
+      </if>
+      <if test="accountCode != null" >
+        account_code = #{accountCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.InvoiceInfo" >
+    update invoice_info
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      company_id = #{companyId,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      taxpayer_code = #{taxpayerCode,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      open_account_bank = #{openAccountBank,jdbcType=VARCHAR},
+      account_code = #{accountCode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

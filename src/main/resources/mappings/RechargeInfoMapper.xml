@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.numberONe.mapper.RechargeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.RechargeInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="generalize_id" property="generalizeId" jdbcType="INTEGER" />
+    <result column="app_id" property="appId" jdbcType="VARCHAR" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="provider_id" property="providerId" jdbcType="INTEGER" />
+    <result column="provider_name" property="providerName" jdbcType="VARCHAR" />
+    <result column="our_rebates" property="ourRebates" jdbcType="DECIMAL" />
+    <result column="customer_rebates" property="customerRebates" jdbcType="DECIMAL" />
+    <result column="account_recharge" property="accountRecharge" jdbcType="DECIMAL" />
+    <result column="rebates_recharge" property="rebatesRecharge" jdbcType="DECIMAL" />
+    <result column="recharge_cost" property="rechargeCost" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, update_time, generalize_id, app_id, customer_id, customer_name, 
+    provider_id, provider_name, our_rebates, customer_rebates, account_recharge, rebates_recharge, 
+    recharge_cost
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recharge_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recharge_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.RechargeInfo" >
+    insert into recharge_info (id, create_time, update_time, 
+      generalize_id, app_id, customer_id, 
+      customer_name, provider_id, provider_name, 
+      our_rebates, customer_rebates, account_recharge, 
+      rebates_recharge, recharge_cost)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{generalizeId,jdbcType=INTEGER}, #{appId,jdbcType=VARCHAR}, #{customerId,jdbcType=INTEGER}, 
+      #{customerName,jdbcType=VARCHAR}, #{providerId,jdbcType=INTEGER}, #{providerName,jdbcType=VARCHAR}, 
+      #{ourRebates,jdbcType=DECIMAL}, #{customerRebates,jdbcType=DECIMAL}, #{accountRecharge,jdbcType=DECIMAL}, 
+      #{rebatesRecharge,jdbcType=DECIMAL}, #{rechargeCost,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.RechargeInfo" >
+    insert into recharge_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="generalizeId != null" >
+        generalize_id,
+      </if>
+      <if test="appId != null" >
+        app_id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="providerId != null" >
+        provider_id,
+      </if>
+      <if test="providerName != null" >
+        provider_name,
+      </if>
+      <if test="ourRebates != null" >
+        our_rebates,
+      </if>
+      <if test="customerRebates != null" >
+        customer_rebates,
+      </if>
+      <if test="accountRecharge != null" >
+        account_recharge,
+      </if>
+      <if test="rebatesRecharge != null" >
+        rebates_recharge,
+      </if>
+      <if test="rechargeCost != null" >
+        recharge_cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="generalizeId != null" >
+        #{generalizeId,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null" >
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null" >
+        #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="providerName != null" >
+        #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ourRebates != null" >
+        #{ourRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="customerRebates != null" >
+        #{customerRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="accountRecharge != null" >
+        #{accountRecharge,jdbcType=DECIMAL},
+      </if>
+      <if test="rebatesRecharge != null" >
+        #{rebatesRecharge,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeCost != null" >
+        #{rechargeCost,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.RechargeInfo" >
+    update recharge_info
+    <set >
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="generalizeId != null" >
+        generalize_id = #{generalizeId,jdbcType=INTEGER},
+      </if>
+      <if test="appId != null" >
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerId != null" >
+        provider_id = #{providerId,jdbcType=INTEGER},
+      </if>
+      <if test="providerName != null" >
+        provider_name = #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="ourRebates != null" >
+        our_rebates = #{ourRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="customerRebates != null" >
+        customer_rebates = #{customerRebates,jdbcType=DECIMAL},
+      </if>
+      <if test="accountRecharge != null" >
+        account_recharge = #{accountRecharge,jdbcType=DECIMAL},
+      </if>
+      <if test="rebatesRecharge != null" >
+        rebates_recharge = #{rebatesRecharge,jdbcType=DECIMAL},
+      </if>
+      <if test="rechargeCost != null" >
+        recharge_cost = #{rechargeCost,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.RechargeInfo" >
+    update recharge_info
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      generalize_id = #{generalizeId,jdbcType=INTEGER},
+      app_id = #{appId,jdbcType=VARCHAR},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      customer_name = #{customerName,jdbcType=VARCHAR},
+      provider_id = #{providerId,jdbcType=INTEGER},
+      provider_name = #{providerName,jdbcType=VARCHAR},
+      our_rebates = #{ourRebates,jdbcType=DECIMAL},
+      customer_rebates = #{customerRebates,jdbcType=DECIMAL},
+      account_recharge = #{accountRecharge,jdbcType=DECIMAL},
+      rebates_recharge = #{rebatesRecharge,jdbcType=DECIMAL},
+      recharge_cost = #{rechargeCost,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
