@@ -10,6 +10,7 @@ import com.numberONe.entity.CustomerInfoFormMap;
 import com.numberONe.mapper.CityMapper;
 import com.numberONe.mapper.CustomerInfoMapper;
 import com.numberONe.util.CodeMsg;
+import com.numberONe.util.TimeUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -80,8 +81,8 @@ public class CustomerInfoController extends BaseController {
     @SystemLog(module="客户信息",methods="客户信息-新增客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
     public String addEntity() throws Exception {
         CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-        customerInfoFormMap.set("createTime", "now()");
-        customerInfoFormMap.set("updateTime", "now()");
+        customerInfoFormMap.set("createTime", TimeUtils.getDate());
+        customerInfoFormMap.set("updateTime", TimeUtils.getDate());
         customerInfoMapper.addEntity(customerInfoFormMap);
         return "success";
     }

@@ -13,8 +13,8 @@ CREATE TABLE `customer_info` (
   `address` varchar(100) NOT NULL COMMENT '地址',
   `linkmanName` varchar(50) NOT NULL COMMENT '联系人姓名',
   `linkmanTel` varchar(50) NOT NULL COMMENT '联系人电话',
-  `email` varchar(100) NOT NULL COMMENT '邮箱',
-  `remark` varchar(500) NOT NULL COMMENT '备注',
+  `email` varchar(100) COMMENT '邮箱',
+  `remark` varchar(500) COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户公司信息表';
 
@@ -31,8 +31,8 @@ CREATE TABLE `provider_info` (
   `address` varchar(100) NOT NULL COMMENT '地址',
   `linkmanName` varchar(50) NOT NULL COMMENT '联系人姓名',
   `linkmanTel` varchar(50) NOT NULL COMMENT '联系人电话',
-  `email` varchar(100) NOT NULL COMMENT '邮箱',
-  `remark` varchar(500) NOT NULL COMMENT '备注',
+  `email` varchar(100)  COMMENT '邮箱',
+  `remark` varchar(500) COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商公司信息表';
 

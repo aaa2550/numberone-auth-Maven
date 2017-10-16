@@ -35,7 +35,7 @@ label[class^="btn btn-default"] {
 				<label class="col-sm-3 control-label">公司全称</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control checkacc"
-						placeholder="公司全称" name="customerInfoFormMap.customerName" id="customerName">
+						placeholder="公司全称" name="customerInfoFormMap.companyName" id="customerName">
 				</div>
 			</div>
 			<div class="line line-dashed line-lg pull-in"></div>
