@@ -80,8 +80,8 @@ public class CustomerInfoController extends BaseController {
     @SystemLog(module="客户信息",methods="客户信息-新增客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
     public String addEntity() throws Exception {
         CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-        customerInfoFormMap.set("create_time", new Date());
-        customerInfoFormMap.set("updateTime", new Date());
+        customerInfoFormMap.set("createTime", "now()");
+        customerInfoFormMap.set("updateTime", "now()");
         customerInfoMapper.addEntity(customerInfoFormMap);
         return "success";
     }

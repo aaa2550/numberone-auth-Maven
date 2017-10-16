@@ -3,21 +3,21 @@
 <mapper namespace="com.numberONe.mapper.ProviderInfoMapper" >
   <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.ProviderInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="linkman_name" property="linkmanName" jdbcType="VARCHAR" />
-    <result column="linkman_tel" property="linkmanTel" jdbcType="VARCHAR" />
+    <result column="linkmanName" property="linkmanname" jdbcType="VARCHAR" />
+    <result column="linkmanTel" property="linkmantel" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, company_name, name, province, city, address, linkman_name, 
-    linkman_tel, email, remark
+    id, createTime, updateTime, companyName, name, province, city, address, linkmanName, 
+    linkmanTel, email, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -30,15 +30,15 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.ProviderInfo" >
-    insert into provider_info (id, create_time, update_time, 
-      company_name, name, province, 
-      city, address, linkman_name, 
-      linkman_tel, email, remark
+    insert into provider_info (id, createTime, updateTime, 
+      companyName, name, province, 
+      city, address, linkmanName, 
+      linkmanTel, email, remark
       )
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{companyName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkmanName,jdbcType=VARCHAR}, 
-      #{linkmanTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{companyname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkmanname,jdbcType=VARCHAR}, 
+      #{linkmantel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ProviderInfo" >
@@ -47,14 +47,14 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
-      <if test="companyName != null" >
-        company_name,
+      <if test="companyname != null" >
+        companyName,
       </if>
       <if test="name != null" >
         name,
@@ -68,11 +68,11 @@
       <if test="address != null" >
         address,
       </if>
-      <if test="linkmanName != null" >
-        linkman_name,
+      <if test="linkmanname != null" >
+        linkmanName,
       </if>
-      <if test="linkmanTel != null" >
-        linkman_tel,
+      <if test="linkmantel != null" >
+        linkmanTel,
       </if>
       <if test="email != null" >
         email,
@@ -85,14 +85,14 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="companyName != null" >
-        #{companyName,jdbcType=VARCHAR},
+      <if test="companyname != null" >
+        #{companyname,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -106,11 +106,11 @@
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="linkmanName != null" >
-        #{linkmanName,jdbcType=VARCHAR},
+      <if test="linkmanname != null" >
+        #{linkmanname,jdbcType=VARCHAR},
       </if>
-      <if test="linkmanTel != null" >
-        #{linkmanTel,jdbcType=VARCHAR},
+      <if test="linkmantel != null" >
+        #{linkmantel,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -123,14 +123,14 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ProviderInfo" >
     update provider_info
     <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="companyName != null" >
-        company_name = #{companyName,jdbcType=VARCHAR},
+      <if test="companyname != null" >
+        companyName = #{companyname,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -144,11 +144,11 @@
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="linkmanName != null" >
-        linkman_name = #{linkmanName,jdbcType=VARCHAR},
+      <if test="linkmanname != null" >
+        linkmanName = #{linkmanname,jdbcType=VARCHAR},
       </if>
-      <if test="linkmanTel != null" >
-        linkman_tel = #{linkmanTel,jdbcType=VARCHAR},
+      <if test="linkmantel != null" >
+        linkmanTel = #{linkmantel,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -161,15 +161,15 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.ProviderInfo" >
     update provider_info
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      company_name = #{companyName,jdbcType=VARCHAR},
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      companyName = #{companyname,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      linkman_name = #{linkmanName,jdbcType=VARCHAR},
-      linkman_tel = #{linkmanTel,jdbcType=VARCHAR},
+      linkmanName = #{linkmanname,jdbcType=VARCHAR},
+      linkmanTel = #{linkmantel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

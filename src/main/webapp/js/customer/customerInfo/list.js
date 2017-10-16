@@ -24,10 +24,10 @@ $(function() {
                 return rowdata.province + rowdata.city + rowdata.address;
             }
 		}, {
-			colkey : "linkman_name",
+			colkey : "linkmanName",
 			name : "联系人"
 		}, {
-            colkey : "linkman_tel",
+            colkey : "linkmanTel",
             name : "联系人电话"
         }, {
             colkey : "email",

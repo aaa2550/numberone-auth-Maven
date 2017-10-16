@@ -3,29 +3,29 @@
 <mapper namespace="com.numberONe.mapper.ReturnPayInfoMapper" >
   <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.ReturnPayInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
-    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
-    <result column="transact_time" property="transactTime" jdbcType="TIMESTAMP" />
-    <result column="pay_money" property="payMoney" jdbcType="DECIMAL" />
-    <result column="return_money" property="returnMoney" jdbcType="DECIMAL" />
-    <result column="surplus_money" property="surplusMoney" jdbcType="DECIMAL" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="customerId" property="customerid" jdbcType="INTEGER" />
+    <result column="customerName" property="customername" jdbcType="VARCHAR" />
+    <result column="transactTime" property="transacttime" jdbcType="TIMESTAMP" />
+    <result column="payMoney" property="paymoney" jdbcType="DECIMAL" />
+    <result column="returnMoney" property="returnmoney" jdbcType="DECIMAL" />
+    <result column="surplusMoney" property="surplusmoney" jdbcType="DECIMAL" />
     <result column="currency" property="currency" jdbcType="VARCHAR" />
-    <result column="account_name" property="accountName" jdbcType="VARCHAR" />
+    <result column="accountName" property="accountname" jdbcType="VARCHAR" />
     <result column="account" property="account" jdbcType="VARCHAR" />
-    <result column="open_account_institutions" property="openAccountInstitutions" jdbcType="VARCHAR" />
-    <result column="bank_record_time" property="bankRecordTime" jdbcType="TIMESTAMP" />
+    <result column="openAccountInstitutions" property="openaccountinstitutions" jdbcType="VARCHAR" />
+    <result column="bankRecordTime" property="bankrecordtime" jdbcType="TIMESTAMP" />
     <result column="abstracts" property="abstracts" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="serial_number" property="serialNumber" jdbcType="VARCHAR" />
-    <result column="voucher_species" property="voucherSpecies" jdbcType="VARCHAR" />
-    <result column="voucher_code" property="voucherCode" jdbcType="VARCHAR" />
+    <result column="serialNumber" property="serialnumber" jdbcType="VARCHAR" />
+    <result column="voucherSpecies" property="voucherspecies" jdbcType="VARCHAR" />
+    <result column="voucherCode" property="vouchercode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, customer_id, customer_name, transact_time, pay_money, 
-    return_money, surplus_money, currency, account_name, account, open_account_institutions, 
-    bank_record_time, abstracts, remark, serial_number, voucher_species, voucher_code
+    id, createTime, updateTime, customerId, customerName, transactTime, payMoney, returnMoney, 
+    surplusMoney, currency, accountName, account, openAccountInstitutions, bankRecordTime, 
+    abstracts, remark, serialNumber, voucherSpecies, voucherCode
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -38,20 +38,20 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.ReturnPayInfo" >
-    insert into return_pay_info (id, create_time, update_time, 
-      customer_id, customer_name, transact_time, 
-      pay_money, return_money, surplus_money, 
-      currency, account_name, account, 
-      open_account_institutions, bank_record_time, 
-      abstracts, remark, serial_number, 
-      voucher_species, voucher_code)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{transactTime,jdbcType=TIMESTAMP}, 
-      #{payMoney,jdbcType=DECIMAL}, #{returnMoney,jdbcType=DECIMAL}, #{surplusMoney,jdbcType=DECIMAL}, 
-      #{currency,jdbcType=VARCHAR}, #{accountName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
-      #{openAccountInstitutions,jdbcType=VARCHAR}, #{bankRecordTime,jdbcType=TIMESTAMP}, 
-      #{abstracts,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{serialNumber,jdbcType=VARCHAR}, 
-      #{voucherSpecies,jdbcType=VARCHAR}, #{voucherCode,jdbcType=VARCHAR})
+    insert into return_pay_info (id, createTime, updateTime, 
+      customerId, customerName, transactTime, 
+      payMoney, returnMoney, surplusMoney, 
+      currency, accountName, account, 
+      openAccountInstitutions, bankRecordTime, 
+      abstracts, remark, serialNumber, 
+      voucherSpecies, voucherCode)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{customerid,jdbcType=INTEGER}, #{customername,jdbcType=VARCHAR}, #{transacttime,jdbcType=TIMESTAMP}, 
+      #{paymoney,jdbcType=DECIMAL}, #{returnmoney,jdbcType=DECIMAL}, #{surplusmoney,jdbcType=DECIMAL}, 
+      #{currency,jdbcType=VARCHAR}, #{accountname,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{openaccountinstitutions,jdbcType=VARCHAR}, #{bankrecordtime,jdbcType=TIMESTAMP}, 
+      #{abstracts,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{serialnumber,jdbcType=VARCHAR}, 
+      #{voucherspecies,jdbcType=VARCHAR}, #{vouchercode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ReturnPayInfo" >
     insert into return_pay_info
@@ -59,44 +59,44 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
-      <if test="customerId != null" >
-        customer_id,
+      <if test="customerid != null" >
+        customerId,
       </if>
-      <if test="customerName != null" >
-        customer_name,
+      <if test="customername != null" >
+        customerName,
       </if>
-      <if test="transactTime != null" >
-        transact_time,
+      <if test="transacttime != null" >
+        transactTime,
       </if>
-      <if test="payMoney != null" >
-        pay_money,
+      <if test="paymoney != null" >
+        payMoney,
       </if>
-      <if test="returnMoney != null" >
-        return_money,
+      <if test="returnmoney != null" >
+        returnMoney,
       </if>
-      <if test="surplusMoney != null" >
-        surplus_money,
+      <if test="surplusmoney != null" >
+        surplusMoney,
       </if>
       <if test="currency != null" >
         currency,
       </if>
-      <if test="accountName != null" >
-        account_name,
+      <if test="accountname != null" >
+        accountName,
       </if>
       <if test="account != null" >
         account,
       </if>
-      <if test="openAccountInstitutions != null" >
-        open_account_institutions,
+      <if test="openaccountinstitutions != null" >
+        openAccountInstitutions,
       </if>
-      <if test="bankRecordTime != null" >
-        bank_record_time,
+      <if test="bankrecordtime != null" >
+        bankRecordTime,
       </if>
       <if test="abstracts != null" >
         abstracts,
@@ -104,58 +104,58 @@
       <if test="remark != null" >
         remark,
       </if>
-      <if test="serialNumber != null" >
-        serial_number,
+      <if test="serialnumber != null" >
+        serialNumber,
       </if>
-      <if test="voucherSpecies != null" >
-        voucher_species,
+      <if test="voucherspecies != null" >
+        voucherSpecies,
       </if>
-      <if test="voucherCode != null" >
-        voucher_code,
+      <if test="vouchercode != null" >
+        voucherCode,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="customerId != null" >
-        #{customerId,jdbcType=INTEGER},
+      <if test="customerid != null" >
+        #{customerid,jdbcType=INTEGER},
       </if>
-      <if test="customerName != null" >
-        #{customerName,jdbcType=VARCHAR},
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
       </if>
-      <if test="transactTime != null" >
-        #{transactTime,jdbcType=TIMESTAMP},
+      <if test="transacttime != null" >
+        #{transacttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="payMoney != null" >
-        #{payMoney,jdbcType=DECIMAL},
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=DECIMAL},
       </if>
-      <if test="returnMoney != null" >
-        #{returnMoney,jdbcType=DECIMAL},
+      <if test="returnmoney != null" >
+        #{returnmoney,jdbcType=DECIMAL},
       </if>
-      <if test="surplusMoney != null" >
-        #{surplusMoney,jdbcType=DECIMAL},
+      <if test="surplusmoney != null" >
+        #{surplusmoney,jdbcType=DECIMAL},
       </if>
       <if test="currency != null" >
         #{currency,jdbcType=VARCHAR},
       </if>
-      <if test="accountName != null" >
-        #{accountName,jdbcType=VARCHAR},
+      <if test="accountname != null" >
+        #{accountname,jdbcType=VARCHAR},
       </if>
       <if test="account != null" >
         #{account,jdbcType=VARCHAR},
       </if>
-      <if test="openAccountInstitutions != null" >
-        #{openAccountInstitutions,jdbcType=VARCHAR},
+      <if test="openaccountinstitutions != null" >
+        #{openaccountinstitutions,jdbcType=VARCHAR},
       </if>
-      <if test="bankRecordTime != null" >
-        #{bankRecordTime,jdbcType=TIMESTAMP},
+      <if test="bankrecordtime != null" >
+        #{bankrecordtime,jdbcType=TIMESTAMP},
       </if>
       <if test="abstracts != null" >
         #{abstracts,jdbcType=VARCHAR},
@@ -163,58 +163,58 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="serialNumber != null" >
-        #{serialNumber,jdbcType=VARCHAR},
+      <if test="serialnumber != null" >
+        #{serialnumber,jdbcType=VARCHAR},
       </if>
-      <if test="voucherSpecies != null" >
-        #{voucherSpecies,jdbcType=VARCHAR},
+      <if test="voucherspecies != null" >
+        #{voucherspecies,jdbcType=VARCHAR},
       </if>
-      <if test="voucherCode != null" >
-        #{voucherCode,jdbcType=VARCHAR},
+      <if test="vouchercode != null" >
+        #{vouchercode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ReturnPayInfo" >
     update return_pay_info
     <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="customerId != null" >
-        customer_id = #{customerId,jdbcType=INTEGER},
+      <if test="customerid != null" >
+        customerId = #{customerid,jdbcType=INTEGER},
       </if>
-      <if test="customerName != null" >
-        customer_name = #{customerName,jdbcType=VARCHAR},
+      <if test="customername != null" >
+        customerName = #{customername,jdbcType=VARCHAR},
       </if>
-      <if test="transactTime != null" >
-        transact_time = #{transactTime,jdbcType=TIMESTAMP},
+      <if test="transacttime != null" >
+        transactTime = #{transacttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="payMoney != null" >
-        pay_money = #{payMoney,jdbcType=DECIMAL},
+      <if test="paymoney != null" >
+        payMoney = #{paymoney,jdbcType=DECIMAL},
       </if>
-      <if test="returnMoney != null" >
-        return_money = #{returnMoney,jdbcType=DECIMAL},
+      <if test="returnmoney != null" >
+        returnMoney = #{returnmoney,jdbcType=DECIMAL},
       </if>
-      <if test="surplusMoney != null" >
-        surplus_money = #{surplusMoney,jdbcType=DECIMAL},
+      <if test="surplusmoney != null" >
+        surplusMoney = #{surplusmoney,jdbcType=DECIMAL},
       </if>
       <if test="currency != null" >
         currency = #{currency,jdbcType=VARCHAR},
       </if>
-      <if test="accountName != null" >
-        account_name = #{accountName,jdbcType=VARCHAR},
+      <if test="accountname != null" >
+        accountName = #{accountname,jdbcType=VARCHAR},
       </if>
       <if test="account != null" >
         account = #{account,jdbcType=VARCHAR},
       </if>
-      <if test="openAccountInstitutions != null" >
-        open_account_institutions = #{openAccountInstitutions,jdbcType=VARCHAR},
+      <if test="openaccountinstitutions != null" >
+        openAccountInstitutions = #{openaccountinstitutions,jdbcType=VARCHAR},
       </if>
-      <if test="bankRecordTime != null" >
-        bank_record_time = #{bankRecordTime,jdbcType=TIMESTAMP},
+      <if test="bankrecordtime != null" >
+        bankRecordTime = #{bankrecordtime,jdbcType=TIMESTAMP},
       </if>
       <if test="abstracts != null" >
         abstracts = #{abstracts,jdbcType=VARCHAR},
@@ -222,38 +222,38 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="serialNumber != null" >
-        serial_number = #{serialNumber,jdbcType=VARCHAR},
+      <if test="serialnumber != null" >
+        serialNumber = #{serialnumber,jdbcType=VARCHAR},
       </if>
-      <if test="voucherSpecies != null" >
-        voucher_species = #{voucherSpecies,jdbcType=VARCHAR},
+      <if test="voucherspecies != null" >
+        voucherSpecies = #{voucherspecies,jdbcType=VARCHAR},
       </if>
-      <if test="voucherCode != null" >
-        voucher_code = #{voucherCode,jdbcType=VARCHAR},
+      <if test="vouchercode != null" >
+        voucherCode = #{vouchercode,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.ReturnPayInfo" >
     update return_pay_info
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      customer_id = #{customerId,jdbcType=INTEGER},
-      customer_name = #{customerName,jdbcType=VARCHAR},
-      transact_time = #{transactTime,jdbcType=TIMESTAMP},
-      pay_money = #{payMoney,jdbcType=DECIMAL},
-      return_money = #{returnMoney,jdbcType=DECIMAL},
-      surplus_money = #{surplusMoney,jdbcType=DECIMAL},
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      customerId = #{customerid,jdbcType=INTEGER},
+      customerName = #{customername,jdbcType=VARCHAR},
+      transactTime = #{transacttime,jdbcType=TIMESTAMP},
+      payMoney = #{paymoney,jdbcType=DECIMAL},
+      returnMoney = #{returnmoney,jdbcType=DECIMAL},
+      surplusMoney = #{surplusmoney,jdbcType=DECIMAL},
       currency = #{currency,jdbcType=VARCHAR},
-      account_name = #{accountName,jdbcType=VARCHAR},
+      accountName = #{accountname,jdbcType=VARCHAR},
       account = #{account,jdbcType=VARCHAR},
-      open_account_institutions = #{openAccountInstitutions,jdbcType=VARCHAR},
-      bank_record_time = #{bankRecordTime,jdbcType=TIMESTAMP},
+      openAccountInstitutions = #{openaccountinstitutions,jdbcType=VARCHAR},
+      bankRecordTime = #{bankrecordtime,jdbcType=TIMESTAMP},
       abstracts = #{abstracts,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      serial_number = #{serialNumber,jdbcType=VARCHAR},
-      voucher_species = #{voucherSpecies,jdbcType=VARCHAR},
-      voucher_code = #{voucherCode,jdbcType=VARCHAR}
+      serialNumber = #{serialnumber,jdbcType=VARCHAR},
+      voucherSpecies = #{voucherspecies,jdbcType=VARCHAR},
+      voucherCode = #{vouchercode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,22 +3,22 @@
 <mapper namespace="com.numberONe.mapper.InvoiceRecordMapper" >
   <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.InvoiceRecord" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="invoice_info_id" property="invoiceInfoId" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="invoiceInfoId" property="invoiceinfoid" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="apply_name" property="applyName" jdbcType="VARCHAR" />
-    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
-    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="applyName" property="applyname" jdbcType="VARCHAR" />
+    <result column="customerId" property="customerid" jdbcType="INTEGER" />
+    <result column="customerName" property="customername" jdbcType="VARCHAR" />
     <result column="money" property="money" jdbcType="DECIMAL" />
     <result column="platform" property="platform" jdbcType="VARCHAR" />
-    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
-    <result column="invoice_code" property="invoiceCode" jdbcType="VARCHAR" />
-    <result column="open_time" property="openTime" jdbcType="TIMESTAMP" />
+    <result column="payTime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="invoiceCode" property="invoicecode" jdbcType="VARCHAR" />
+    <result column="openTime" property="opentime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, invoice_info_id, type, apply_name, customer_id, customer_name, 
-    money, platform, pay_time, invoice_code, open_time
+    id, createTime, updateTime, invoiceInfoId, type, applyName, customerId, customerName, 
+    money, platform, payTime, invoiceCode, openTime
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,16 +31,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.InvoiceRecord" >
-    insert into invoice_record (id, create_time, update_time, 
-      invoice_info_id, type, apply_name, 
-      customer_id, customer_name, money, 
-      platform, pay_time, invoice_code, 
-      open_time)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{invoiceInfoId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{applyName,jdbcType=VARCHAR}, 
-      #{customerId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
-      #{platform,jdbcType=VARCHAR}, #{payTime,jdbcType=TIMESTAMP}, #{invoiceCode,jdbcType=VARCHAR}, 
-      #{openTime,jdbcType=TIMESTAMP})
+    insert into invoice_record (id, createTime, updateTime, 
+      invoiceInfoId, type, applyName, 
+      customerId, customerName, money, 
+      platform, payTime, invoiceCode, 
+      openTime)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{invoiceinfoid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{applyname,jdbcType=VARCHAR}, 
+      #{customerid,jdbcType=INTEGER}, #{customername,jdbcType=VARCHAR}, #{money,jdbcType=DECIMAL}, 
+      #{platform,jdbcType=VARCHAR}, #{paytime,jdbcType=TIMESTAMP}, #{invoicecode,jdbcType=VARCHAR}, 
+      #{opentime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.InvoiceRecord" >
     insert into invoice_record
@@ -48,26 +48,26 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
-      <if test="invoiceInfoId != null" >
-        invoice_info_id,
+      <if test="invoiceinfoid != null" >
+        invoiceInfoId,
       </if>
       <if test="type != null" >
         type,
       </if>
-      <if test="applyName != null" >
-        apply_name,
+      <if test="applyname != null" >
+        applyName,
       </if>
-      <if test="customerId != null" >
-        customer_id,
+      <if test="customerid != null" >
+        customerId,
       </if>
-      <if test="customerName != null" >
-        customer_name,
+      <if test="customername != null" >
+        customerName,
       </if>
       <if test="money != null" >
         money,
@@ -75,40 +75,40 @@
       <if test="platform != null" >
         platform,
       </if>
-      <if test="payTime != null" >
-        pay_time,
+      <if test="paytime != null" >
+        payTime,
       </if>
-      <if test="invoiceCode != null" >
-        invoice_code,
+      <if test="invoicecode != null" >
+        invoiceCode,
       </if>
-      <if test="openTime != null" >
-        open_time,
+      <if test="opentime != null" >
+        openTime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="invoiceInfoId != null" >
-        #{invoiceInfoId,jdbcType=INTEGER},
+      <if test="invoiceinfoid != null" >
+        #{invoiceinfoid,jdbcType=INTEGER},
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="applyName != null" >
-        #{applyName,jdbcType=VARCHAR},
+      <if test="applyname != null" >
+        #{applyname,jdbcType=VARCHAR},
       </if>
-      <if test="customerId != null" >
-        #{customerId,jdbcType=INTEGER},
+      <if test="customerid != null" >
+        #{customerid,jdbcType=INTEGER},
       </if>
-      <if test="customerName != null" >
-        #{customerName,jdbcType=VARCHAR},
+      <if test="customername != null" >
+        #{customername,jdbcType=VARCHAR},
       </if>
       <if test="money != null" >
         #{money,jdbcType=DECIMAL},
@@ -116,40 +116,40 @@
       <if test="platform != null" >
         #{platform,jdbcType=VARCHAR},
       </if>
-      <if test="payTime != null" >
-        #{payTime,jdbcType=TIMESTAMP},
+      <if test="paytime != null" >
+        #{paytime,jdbcType=TIMESTAMP},
       </if>
-      <if test="invoiceCode != null" >
-        #{invoiceCode,jdbcType=VARCHAR},
+      <if test="invoicecode != null" >
+        #{invoicecode,jdbcType=VARCHAR},
       </if>
-      <if test="openTime != null" >
-        #{openTime,jdbcType=TIMESTAMP},
+      <if test="opentime != null" >
+        #{opentime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.InvoiceRecord" >
     update invoice_record
     <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="invoiceInfoId != null" >
-        invoice_info_id = #{invoiceInfoId,jdbcType=INTEGER},
+      <if test="invoiceinfoid != null" >
+        invoiceInfoId = #{invoiceinfoid,jdbcType=INTEGER},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="applyName != null" >
-        apply_name = #{applyName,jdbcType=VARCHAR},
+      <if test="applyname != null" >
+        applyName = #{applyname,jdbcType=VARCHAR},
       </if>
-      <if test="customerId != null" >
-        customer_id = #{customerId,jdbcType=INTEGER},
+      <if test="customerid != null" >
+        customerId = #{customerid,jdbcType=INTEGER},
       </if>
-      <if test="customerName != null" >
-        customer_name = #{customerName,jdbcType=VARCHAR},
+      <if test="customername != null" >
+        customerName = #{customername,jdbcType=VARCHAR},
       </if>
       <if test="money != null" >
         money = #{money,jdbcType=DECIMAL},
@@ -157,32 +157,32 @@
       <if test="platform != null" >
         platform = #{platform,jdbcType=VARCHAR},
       </if>
-      <if test="payTime != null" >
-        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      <if test="paytime != null" >
+        payTime = #{paytime,jdbcType=TIMESTAMP},
       </if>
-      <if test="invoiceCode != null" >
-        invoice_code = #{invoiceCode,jdbcType=VARCHAR},
+      <if test="invoicecode != null" >
+        invoiceCode = #{invoicecode,jdbcType=VARCHAR},
       </if>
-      <if test="openTime != null" >
-        open_time = #{openTime,jdbcType=TIMESTAMP},
+      <if test="opentime != null" >
+        openTime = #{opentime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.InvoiceRecord" >
     update invoice_record
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      invoice_info_id = #{invoiceInfoId,jdbcType=INTEGER},
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      invoiceInfoId = #{invoiceinfoid,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
-      apply_name = #{applyName,jdbcType=VARCHAR},
-      customer_id = #{customerId,jdbcType=INTEGER},
-      customer_name = #{customerName,jdbcType=VARCHAR},
+      applyName = #{applyname,jdbcType=VARCHAR},
+      customerId = #{customerid,jdbcType=INTEGER},
+      customerName = #{customername,jdbcType=VARCHAR},
       money = #{money,jdbcType=DECIMAL},
       platform = #{platform,jdbcType=VARCHAR},
-      pay_time = #{payTime,jdbcType=TIMESTAMP},
-      invoice_code = #{invoiceCode,jdbcType=VARCHAR},
-      open_time = #{openTime,jdbcType=TIMESTAMP}
+      payTime = #{paytime,jdbcType=TIMESTAMP},
+      invoiceCode = #{invoicecode,jdbcType=VARCHAR},
+      openTime = #{opentime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,21 +3,21 @@
 <mapper namespace="com.numberONe.mapper.CustomerContractInfoMapper" >
   <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="customer_type" property="customerType" jdbcType="INTEGER" />
-    <result column="business_type" property="businessType" jdbcType="VARCHAR" />
-    <result column="contract_code" property="contractCode" jdbcType="VARCHAR" />
-    <result column="statistics_short_name" property="statisticsShortName" jdbcType="VARCHAR" />
-    <result column="our_company_name" property="ourCompanyName" jdbcType="VARCHAR" />
-    <result column="contract_start_time" property="contractStartTime" jdbcType="TIMESTAMP" />
-    <result column="contract_end_time" property="contractEndTime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="customerType" property="customertype" jdbcType="INTEGER" />
+    <result column="businessType" property="businesstype" jdbcType="VARCHAR" />
+    <result column="contractCode" property="contractcode" jdbcType="VARCHAR" />
+    <result column="statisticsShortName" property="statisticsshortname" jdbcType="VARCHAR" />
+    <result column="ourCompanyName" property="ourcompanyname" jdbcType="VARCHAR" />
+    <result column="contractStartTime" property="contractstarttime" jdbcType="TIMESTAMP" />
+    <result column="contractEndTime" property="contractendtime" jdbcType="TIMESTAMP" />
     <result column="rebates" property="rebates" jdbcType="DECIMAL" />
     <result column="orderfrom" property="orderfrom" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, customer_type, business_type, contract_code, statistics_short_name, 
-    our_company_name, contract_start_time, contract_end_time, rebates, orderfrom
+    id, createTime, updateTime, customerType, businessType, contractCode, statisticsShortName, 
+    ourCompanyName, contractStartTime, contractEndTime, rebates, orderfrom
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -30,15 +30,15 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo" >
-    insert into customer_contract_info (id, create_time, update_time, 
-      customer_type, business_type, contract_code, 
-      statistics_short_name, our_company_name, contract_start_time, 
-      contract_end_time, rebates, orderfrom
+    insert into customer_contract_info (id, createTime, updateTime, 
+      customerType, businessType, contractCode, 
+      statisticsShortName, ourCompanyName, contractStartTime, 
+      contractEndTime, rebates, orderfrom
       )
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{customerType,jdbcType=INTEGER}, #{businessType,jdbcType=VARCHAR}, #{contractCode,jdbcType=VARCHAR}, 
-      #{statisticsShortName,jdbcType=VARCHAR}, #{ourCompanyName,jdbcType=VARCHAR}, #{contractStartTime,jdbcType=TIMESTAMP}, 
-      #{contractEndTime,jdbcType=TIMESTAMP}, #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{customertype,jdbcType=INTEGER}, #{businesstype,jdbcType=VARCHAR}, #{contractcode,jdbcType=VARCHAR}, 
+      #{statisticsshortname,jdbcType=VARCHAR}, #{ourcompanyname,jdbcType=VARCHAR}, #{contractstarttime,jdbcType=TIMESTAMP}, 
+      #{contractendtime,jdbcType=TIMESTAMP}, #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo" >
@@ -47,32 +47,32 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
-      <if test="customerType != null" >
-        customer_type,
+      <if test="customertype != null" >
+        customerType,
       </if>
-      <if test="businessType != null" >
-        business_type,
+      <if test="businesstype != null" >
+        businessType,
       </if>
-      <if test="contractCode != null" >
-        contract_code,
+      <if test="contractcode != null" >
+        contractCode,
       </if>
-      <if test="statisticsShortName != null" >
-        statistics_short_name,
+      <if test="statisticsshortname != null" >
+        statisticsShortName,
       </if>
-      <if test="ourCompanyName != null" >
-        our_company_name,
+      <if test="ourcompanyname != null" >
+        ourCompanyName,
       </if>
-      <if test="contractStartTime != null" >
-        contract_start_time,
+      <if test="contractstarttime != null" >
+        contractStartTime,
       </if>
-      <if test="contractEndTime != null" >
-        contract_end_time,
+      <if test="contractendtime != null" >
+        contractEndTime,
       </if>
       <if test="rebates != null" >
         rebates,
@@ -85,32 +85,32 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="customerType != null" >
-        #{customerType,jdbcType=INTEGER},
+      <if test="customertype != null" >
+        #{customertype,jdbcType=INTEGER},
       </if>
-      <if test="businessType != null" >
-        #{businessType,jdbcType=VARCHAR},
+      <if test="businesstype != null" >
+        #{businesstype,jdbcType=VARCHAR},
       </if>
-      <if test="contractCode != null" >
-        #{contractCode,jdbcType=VARCHAR},
+      <if test="contractcode != null" >
+        #{contractcode,jdbcType=VARCHAR},
       </if>
-      <if test="statisticsShortName != null" >
-        #{statisticsShortName,jdbcType=VARCHAR},
+      <if test="statisticsshortname != null" >
+        #{statisticsshortname,jdbcType=VARCHAR},
       </if>
-      <if test="ourCompanyName != null" >
-        #{ourCompanyName,jdbcType=VARCHAR},
+      <if test="ourcompanyname != null" >
+        #{ourcompanyname,jdbcType=VARCHAR},
       </if>
-      <if test="contractStartTime != null" >
-        #{contractStartTime,jdbcType=TIMESTAMP},
+      <if test="contractstarttime != null" >
+        #{contractstarttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="contractEndTime != null" >
-        #{contractEndTime,jdbcType=TIMESTAMP},
+      <if test="contractendtime != null" >
+        #{contractendtime,jdbcType=TIMESTAMP},
       </if>
       <if test="rebates != null" >
         #{rebates,jdbcType=DECIMAL},
@@ -123,32 +123,32 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo" >
     update customer_contract_info
     <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="customerType != null" >
-        customer_type = #{customerType,jdbcType=INTEGER},
+      <if test="customertype != null" >
+        customerType = #{customertype,jdbcType=INTEGER},
       </if>
-      <if test="businessType != null" >
-        business_type = #{businessType,jdbcType=VARCHAR},
+      <if test="businesstype != null" >
+        businessType = #{businesstype,jdbcType=VARCHAR},
       </if>
-      <if test="contractCode != null" >
-        contract_code = #{contractCode,jdbcType=VARCHAR},
+      <if test="contractcode != null" >
+        contractCode = #{contractcode,jdbcType=VARCHAR},
       </if>
-      <if test="statisticsShortName != null" >
-        statistics_short_name = #{statisticsShortName,jdbcType=VARCHAR},
+      <if test="statisticsshortname != null" >
+        statisticsShortName = #{statisticsshortname,jdbcType=VARCHAR},
       </if>
-      <if test="ourCompanyName != null" >
-        our_company_name = #{ourCompanyName,jdbcType=VARCHAR},
+      <if test="ourcompanyname != null" >
+        ourCompanyName = #{ourcompanyname,jdbcType=VARCHAR},
       </if>
-      <if test="contractStartTime != null" >
-        contract_start_time = #{contractStartTime,jdbcType=TIMESTAMP},
+      <if test="contractstarttime != null" >
+        contractStartTime = #{contractstarttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="contractEndTime != null" >
-        contract_end_time = #{contractEndTime,jdbcType=TIMESTAMP},
+      <if test="contractendtime != null" >
+        contractEndTime = #{contractendtime,jdbcType=TIMESTAMP},
       </if>
       <if test="rebates != null" >
         rebates = #{rebates,jdbcType=DECIMAL},
@@ -161,15 +161,15 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo" >
     update customer_contract_info
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      customer_type = #{customerType,jdbcType=INTEGER},
-      business_type = #{businessType,jdbcType=VARCHAR},
-      contract_code = #{contractCode,jdbcType=VARCHAR},
-      statistics_short_name = #{statisticsShortName,jdbcType=VARCHAR},
-      our_company_name = #{ourCompanyName,jdbcType=VARCHAR},
-      contract_start_time = #{contractStartTime,jdbcType=TIMESTAMP},
-      contract_end_time = #{contractEndTime,jdbcType=TIMESTAMP},
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      customerType = #{customertype,jdbcType=INTEGER},
+      businessType = #{businesstype,jdbcType=VARCHAR},
+      contractCode = #{contractcode,jdbcType=VARCHAR},
+      statisticsShortName = #{statisticsshortname,jdbcType=VARCHAR},
+      ourCompanyName = #{ourcompanyname,jdbcType=VARCHAR},
+      contractStartTime = #{contractstarttime,jdbcType=TIMESTAMP},
+      contractEndTime = #{contractendtime,jdbcType=TIMESTAMP},
       rebates = #{rebates,jdbcType=DECIMAL},
       orderfrom = #{orderfrom,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

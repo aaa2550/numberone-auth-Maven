@@ -3,19 +3,19 @@
 <mapper namespace="com.numberONe.mapper.RebatesInfoMapper" >
   <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.RebatesInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
-    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="startTime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
     <result column="rebates" property="rebates" jdbcType="DECIMAL" />
-    <result column="contract_id" property="contractId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="contractId" property="contractid" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, type, start_time, end_time, rebates, contract_id, user_id, 
-    user_name
+    id, createTime, updateTime, type, startTime, endTime, rebates, contractId, userId, 
+    userName
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,14 +28,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.RebatesInfo" >
-    insert into rebates_info (id, create_time, update_time, 
-      type, start_time, end_time, 
-      rebates, contract_id, user_id, 
-      user_name)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{type,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
-      #{rebates,jdbcType=DECIMAL}, #{contractId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{userName,jdbcType=VARCHAR})
+    insert into rebates_info (id, createTime, updateTime, 
+      type, startTime, endTime, 
+      rebates, contractId, userId, 
+      userName)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=INTEGER}, #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{rebates,jdbcType=DECIMAL}, #{contractid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.RebatesInfo" >
     insert into rebates_info
@@ -43,111 +43,111 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
       <if test="type != null" >
         type,
       </if>
-      <if test="startTime != null" >
-        start_time,
+      <if test="starttime != null" >
+        startTime,
       </if>
-      <if test="endTime != null" >
-        end_time,
+      <if test="endtime != null" >
+        endTime,
       </if>
       <if test="rebates != null" >
         rebates,
       </if>
-      <if test="contractId != null" >
-        contract_id,
+      <if test="contractid != null" >
+        contractId,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="userid != null" >
+        userId,
       </if>
-      <if test="userName != null" >
-        user_name,
+      <if test="username != null" >
+        userName,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="startTime != null" >
-        #{startTime,jdbcType=TIMESTAMP},
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null" >
-        #{endTime,jdbcType=TIMESTAMP},
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
       </if>
       <if test="rebates != null" >
         #{rebates,jdbcType=DECIMAL},
       </if>
-      <if test="contractId != null" >
-        #{contractId,jdbcType=INTEGER},
+      <if test="contractid != null" >
+        #{contractid,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
       </if>
-      <if test="userName != null" >
-        #{userName,jdbcType=VARCHAR},
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.RebatesInfo" >
     update rebates_info
     <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="startTime != null" >
-        start_time = #{startTime,jdbcType=TIMESTAMP},
+      <if test="starttime != null" >
+        startTime = #{starttime,jdbcType=TIMESTAMP},
       </if>
-      <if test="endTime != null" >
-        end_time = #{endTime,jdbcType=TIMESTAMP},
+      <if test="endtime != null" >
+        endTime = #{endtime,jdbcType=TIMESTAMP},
       </if>
       <if test="rebates != null" >
         rebates = #{rebates,jdbcType=DECIMAL},
       </if>
-      <if test="contractId != null" >
-        contract_id = #{contractId,jdbcType=INTEGER},
+      <if test="contractid != null" >
+        contractId = #{contractid,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
       </if>
-      <if test="userName != null" >
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.RebatesInfo" >
     update rebates_info
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
       type = #{type,jdbcType=INTEGER},
-      start_time = #{startTime,jdbcType=TIMESTAMP},
-      end_time = #{endTime,jdbcType=TIMESTAMP},
+      startTime = #{starttime,jdbcType=TIMESTAMP},
+      endTime = #{endtime,jdbcType=TIMESTAMP},
       rebates = #{rebates,jdbcType=DECIMAL},
-      contract_id = #{contractId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      user_name = #{userName,jdbcType=VARCHAR}
+      contractId = #{contractid,jdbcType=INTEGER},
+      userId = #{userid,jdbcType=INTEGER},
+      userName = #{username,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

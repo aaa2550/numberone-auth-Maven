@@ -3,16 +3,16 @@
 <mapper namespace="com.numberONe.mapper.BankAccountInfoMapper" >
   <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.BankAccountInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="company_id" property="companyId" jdbcType="INTEGER" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="companyId" property="companyid" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="account_name" property="accountName" jdbcType="VARCHAR" />
-    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
-    <result column="account_code" property="accountCode" jdbcType="VARCHAR" />
+    <result column="accountName" property="accountname" jdbcType="VARCHAR" />
+    <result column="bankName" property="bankname" jdbcType="VARCHAR" />
+    <result column="accountCode" property="accountcode" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, create_time, update_time, company_id, type, account_name, bank_name, account_code
+    id, createTime, updateTime, companyId, type, accountName, bankName, accountCode
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,12 +25,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.BankAccountInfo" >
-    insert into bank_account_info (id, create_time, update_time, 
-      company_id, type, account_name, 
-      bank_name, account_code)
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{companyId,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{accountName,jdbcType=VARCHAR}, 
-      #{bankName,jdbcType=VARCHAR}, #{accountCode,jdbcType=VARCHAR})
+    insert into bank_account_info (id, createTime, updateTime, 
+      companyId, type, accountName, 
+      bankName, accountCode)
+    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
+      #{companyid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{accountname,jdbcType=VARCHAR}, 
+      #{bankname,jdbcType=VARCHAR}, #{accountcode,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.BankAccountInfo" >
     insert into bank_account_info
@@ -38,91 +38,91 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="createtime != null" >
+        createTime,
       </if>
-      <if test="updateTime != null" >
-        update_time,
+      <if test="updatetime != null" >
+        updateTime,
       </if>
-      <if test="companyId != null" >
-        company_id,
+      <if test="companyid != null" >
+        companyId,
       </if>
       <if test="type != null" >
         type,
       </if>
-      <if test="accountName != null" >
-        account_name,
+      <if test="accountname != null" >
+        accountName,
       </if>
-      <if test="bankName != null" >
-        bank_name,
+      <if test="bankname != null" >
+        bankName,
       </if>
-      <if test="accountCode != null" >
-        account_code,
+      <if test="accountcode != null" >
+        accountCode,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="companyId != null" >
-        #{companyId,jdbcType=INTEGER},
+      <if test="companyid != null" >
+        #{companyid,jdbcType=INTEGER},
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="accountName != null" >
-        #{accountName,jdbcType=VARCHAR},
+      <if test="accountname != null" >
+        #{accountname,jdbcType=VARCHAR},
       </if>
-      <if test="bankName != null" >
-        #{bankName,jdbcType=VARCHAR},
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
       </if>
-      <if test="accountCode != null" >
-        #{accountCode,jdbcType=VARCHAR},
+      <if test="accountcode != null" >
+        #{accountcode,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.BankAccountInfo" >
     update bank_account_info
     <set >
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="createtime != null" >
+        createTime = #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=TIMESTAMP},
       </if>
-      <if test="companyId != null" >
-        company_id = #{companyId,jdbcType=INTEGER},
+      <if test="companyid != null" >
+        companyId = #{companyid,jdbcType=INTEGER},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="accountName != null" >
-        account_name = #{accountName,jdbcType=VARCHAR},
+      <if test="accountname != null" >
+        accountName = #{accountname,jdbcType=VARCHAR},
       </if>
-      <if test="bankName != null" >
-        bank_name = #{bankName,jdbcType=VARCHAR},
+      <if test="bankname != null" >
+        bankName = #{bankname,jdbcType=VARCHAR},
       </if>
-      <if test="accountCode != null" >
-        account_code = #{accountCode,jdbcType=VARCHAR},
+      <if test="accountcode != null" >
+        accountCode = #{accountcode,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.BankAccountInfo" >
     update bank_account_info
-    set create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      company_id = #{companyId,jdbcType=INTEGER},
+    set createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      companyId = #{companyid,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
-      account_name = #{accountName,jdbcType=VARCHAR},
-      bank_name = #{bankName,jdbcType=VARCHAR},
-      account_code = #{accountCode,jdbcType=VARCHAR}
+      accountName = #{accountname,jdbcType=VARCHAR},
+      bankName = #{bankname,jdbcType=VARCHAR},
+      accountCode = #{accountcode,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
