@@ -6,7 +6,7 @@ CREATE TABLE `customer_info` (
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
   `companyName` varchar(100) NOT NULL COMMENT '公司全称',
-  `type` varchar(10) NOT NULL COMMENT '类型',
+  `customerType` int(11) NOT NULL COMMENT '类型',
   `name` varchar(100) NOT NULL COMMENT '公司简称',
   `province` varchar(20) NOT NULL COMMENT '省份',
   `city` varchar(20) NOT NULL COMMENT '城市',

@@ -7,11 +7,15 @@ import javax.inject.Inject;
 import com.numberONe.annotation.SystemLog;
 import com.numberONe.entity.CityFormMap;
 import com.numberONe.entity.CustomerInfoFormMap;
+import com.numberONe.entity.ResFormMap;
+import com.numberONe.entity.UserFormMap;
 import com.numberONe.mapper.CityMapper;
 import com.numberONe.mapper.CustomerInfoMapper;
 import com.numberONe.util.CodeMsg;
 import com.numberONe.util.TimeUtils;
+import com.numberONe.util.TransformUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -61,13 +65,32 @@ public class CustomerInfoController extends BaseController {
 
         customerInfoFormMap.put("$orderby", order);
         customerInfoFormMap=toFormMap(customerInfoFormMap, pageNow, pageSize,customerInfoFormMap.getStr("orderby"));
-        pageView.setRecords(customerInfoMapper.findByPage(customerInfoFormMap));//不调用默认分页,调用自已的mapper中findUserPage
+        pageView.setRecords(TransformUtils.transformEnum(customerInfoMapper.findByPage(customerInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
 	}
 
     @RequestMapping("addUI")
     public String addUI(Model model) throws Exception {
         return BUSINESS_PATH + "/add";
+    }
+
+    @RequestMapping("editUI")
+    public String editUI(Model model) throws Exception {
+        String id = getPara("id");
+        if(Common.isNotEmpty(id)){
+            model.addAttribute("customerInfo", customerInfoMapper.findbyFrist("id", id, CustomerInfoFormMap.class));
+        }
+        return Common.BACKGROUND_PATH + "/customer/customerInfo/edit";
+    }
+
+    @ResponseBody
+    @RequestMapping("editEntity")
+    @SystemLog(module="客户信息",methods="客户信息-修改客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
+    public String editEntity(Model model) throws Exception {
+        CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
+        customerInfoFormMap.put("updateTime", TimeUtils.getDate());
+        customerInfoMapper.editEntity(customerInfoFormMap);
+        return "success";
     }
 
     /**

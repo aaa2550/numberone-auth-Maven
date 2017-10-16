@@ -28,14 +28,14 @@ label[class^="btn btn-default"] {
 <body>
 	<div class="l_err" style="width: 100%; margin-top: 2px;"></div>
 	<form id="form" name="form" class="form-horizontal" method="post"
-	action="${pageContext.request.contextPath}/customer/customerInfo/addEntity.shtml">
+	action="${pageContext.request.contextPath}/customer/customerInfo/editEntity.shtml">
 	<section class="panel panel-default">
 		<div class="panel-body">
 			<div class="form-group">
 				<label class="col-sm-3 control-label">公司全称</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control checkacc"
-						placeholder="公司全称" name="customerInfoFormMap.companyName" id="customerName">
+						placeholder="公司全称" value="${customerInfo.customerName}" name="customerInfoFormMap.companyName" id="customerName">
 				</div>
 			</div>
 			<div class="line line-dashed line-lg pull-in"></div>
@@ -43,7 +43,7 @@ label[class^="btn btn-default"] {
 				<label class="col-sm-3 control-label">公司简称</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control checkacc"
-						placeholder="公司简称" name="customerInfoFormMap.name" id="name">
+						placeholder="公司简称" value="${customerInfo.name}" name="customerInfoFormMap.name" id="name">
 				</div>
 			</div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -62,7 +62,7 @@ label[class^="btn btn-default"] {
                 <label class="col-sm-3 control-label">联系人姓名</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="联系人姓名" name="customerInfoFormMap.linkmanName" id="linkmanName">
+                           placeholder="联系人姓名" value="${customerInfo.linkmanName}" name="customerInfoFormMap.linkmanName" id="linkmanName">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -70,7 +70,7 @@ label[class^="btn btn-default"] {
                 <label class="col-sm-3 control-label">电话</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="电话" name="customerInfoFormMap.linkmanTel" id="linkmanTel">
+                           placeholder="电话" value="${customerInfo.linkmanTel}" name="customerInfoFormMap.linkmanTel" id="linkmanTel">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -78,14 +78,14 @@ label[class^="btn btn-default"] {
                 <label class="col-sm-3 control-label">邮箱</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="邮箱" name="customerInfoFormMap.email" id="email">
+                           placeholder="邮箱" value="${customerInfo.email}" name="customerInfoFormMap.email" id="email">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">省份</label>
                 <div class="col-sm-9">
-                    <select id="province" name="customerInfoFormMap.province" class="form-control m-b"
+                    <select id="province" value="${customerInfo.province}" name="customerInfoFormMap.province" class="form-control m-b"
                             tabindex="-1">
                     </select>
                 </div>
@@ -104,7 +104,7 @@ label[class^="btn btn-default"] {
                 <label class="col-sm-3 control-label">详细地址</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="详细地址" name="customerInfoFormMap.address" id="address">
+                           placeholder="详细地址" value="${customerInfo.address}" name="customerInfoFormMap.address" id="address">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -112,7 +112,7 @@ label[class^="btn btn-default"] {
                 <label class="col-sm-3 control-label">备注</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="备注" name="customerInfoFormMap.remark" id="remark">
+                           placeholder="备注" value="${customerInfo.remark}" name="customerInfoFormMap.remark" id="remark">
                 </div>
             </div>
 		</div>
@@ -121,5 +121,10 @@ label[class^="btn btn-default"] {
 		</footer> 
 	</section>
 </form>
+    <script type="text/javascript">
+        $("#customerType").val("${customerInfo.customerType}");
+        $("#province").val("${customerInfo.province}");
+        $("#city").val("${customerInfo.province}");
+    </script>
 </body>
 </html>

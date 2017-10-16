@@ -12,7 +12,7 @@ $(function() {
 			name : "公司全称",
 			isSort:true,
 		}, {
-			colkey : "type",
+			colkey : "customerType",
 			name : "类型",
 			isSort:true,
 		}, {

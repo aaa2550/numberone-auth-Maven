@@ -11,7 +11,7 @@ public class CustomerInfo {
 
     private String companyName;
 
-    private String type;
+    private String customerType;
 
     private String name;
 
@@ -61,12 +61,12 @@ public class CustomerInfo {
         this.companyName = companyName == null ? null : companyName.trim();
     }
 
-    public String getType() {
-        return type;
+    public String getCustomerType() {
+        return customerType;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType == null ? null : customerType.trim();
     }
 
     public String getName() {

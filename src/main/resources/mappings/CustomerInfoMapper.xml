@@ -6,7 +6,7 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="companyName" property="companyname" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="customerType" property="customerType" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
@@ -17,7 +17,7 @@
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, createTime, updateTime, companyName, type, name, province, city, address, linkmanName, 
+    id, createTime, updateTime, companyName, customerType, name, province, city, address, linkmanName, 
     linkmanTel, email, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -32,12 +32,12 @@
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerInfo" >
     insert into customer_info (id, createTime, updateTime, 
-      companyName, type, name, 
+      companyName, customerType, name, 
       province, city, address, 
       linkmanName, linkmanTel, email, 
       remark)
     values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{companyname,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{companyname,jdbcType=VARCHAR}, #{customerType,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
       #{linkmanname,jdbcType=VARCHAR}, #{linkmantel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR})
@@ -57,8 +57,8 @@
       <if test="companyname != null" >
         companyName,
       </if>
-      <if test="type != null" >
-        type,
+      <if test="customerType != null" >
+        customerType,
       </if>
       <if test="name != null" >
         name,
@@ -98,8 +98,8 @@
       <if test="companyname != null" >
         #{companyname,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        #{type,jdbcType=VARCHAR},
+      <if test="customerType != null" >
+        #{customerType,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -139,8 +139,8 @@
       <if test="companyname != null" >
         companyName = #{companyname,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=VARCHAR},
+      <if test="customerType != null" >
+        customerType = #{customerType,jdbcType=VARCHAR},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -174,7 +174,7 @@
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
       companyName = #{companyname,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
+      customerType = #{customerType,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
