@@ -61,8 +61,8 @@ $(function() {
 	$("#addCustomerInfo").click("click", function() {
         addCustomerInfo();
 	});
-	$("#editAccount").click("click", function() {
-		editAccount();
+	$("#editCustomerInfo").click("click", function() {
+        editCustomerInfo();
 	});
 	$("#delAccount").click("click", function() {
 		delAccount();
@@ -71,7 +71,7 @@ $(function() {
 		permissions();
 	});
 });
-function editAccount() {
+function editCustomerInfo() {
 	var cbox = grid.getSelectedCheckbox();
 	if (cbox.length > 1 || cbox == "") {
 		layer.msg("只能选中一个");
@@ -81,7 +81,7 @@ function editAccount() {
 		title : "编辑",
 		type : 2,
 		area : [ "600px", "80%" ],
-		content : rootPath + '/user/editUI.shtml?id=' + cbox
+		content : rootPath + '/customer/customerInfo/editUI.shtml?id=' + cbox
 	});
 }
 function addCustomerInfo() {
@@ -92,6 +92,7 @@ function addCustomerInfo() {
 		content : rootPath + '/customer/customerInfo/addUI.shtml'
 	});
 }
+
 function delAccount() {
 	var cbox = grid.getSelectedCheckbox();
 	if (cbox == "") {
