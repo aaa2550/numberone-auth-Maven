@@ -24,7 +24,7 @@ $(function() {
 				required : true,
 				remote : { // 异步验证是否存在
 					type : "POST",
-					url : rootPath + '/resources/isExist.shtml',
+					url : rootPath + '/customer/customerInfo/validate.shtml',
 					data : {
 						name : function() {
 							return $("#name").val();
@@ -36,7 +36,7 @@ $(function() {
 				required : true,
 				remote : { // 异步验证是否存在
 					type : "POST",
-					url : rootPath + '/resources/isExist.shtml',
+					url : rootPath + '/customer/customerInfo/validate.shtml',
 					data : {
 						resKey : function() {
 							return $("#resKey").val();
@@ -90,11 +90,10 @@ $(function() {
 	});
     $("#province").change(function(){
         var data = CommnUtil.ajax(rootPath + "/customer/customerInfo/getCity.shtml?parentId=" + $(this).val(), null,"json");
-        data = JSON.parse(data);
         if (data != null && data.obj != null) {
             var h = "<option>请选择</option>";
             for ( var i = 0; i < data.obj.length; i++) {
-                h+="<option value='" + data[i].id + "'>"+ data[i].name + "</option>";
+                h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
             }
             $("#city").html(h);
         } else {
@@ -104,12 +103,10 @@ $(function() {
 	var url = rootPath + '/customer/customerInfo/getCity.shtml?parentId=0';
 	var data = CommnUtil.ajax(url, null,"json");
     if (data && data.code === 0 && data.obj) {
-        alert(data.obj);
 		var h = "<option>请选择</option>";
 		for ( var i = 0; i < data.obj.length; i++) {
-			h+="<option value='" + data[i].id + "'>"+ data[i].name + "</option>";
+			h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
 		}
-        alert(h);
 		$("#province").html(h);
 	} else {
 		layer.msg("获取菜单信息错误，请联系管理员！");

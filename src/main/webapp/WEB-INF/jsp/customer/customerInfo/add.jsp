@@ -28,7 +28,7 @@ label[class^="btn btn-default"] {
 <body>
 	<div class="l_err" style="width: 100%; margin-top: 2px;"></div>
 	<form id="form" name="form" class="form-horizontal" method="post"
-	action="${pageContext.request.contextPath}/resources/addEntity.shtml">
+	action="${pageContext.request.contextPath}/customer/customerInfo/addEntity.shtml">
 	<section class="panel panel-default">
 		<div class="panel-body">
 			<div class="form-group">
@@ -115,15 +115,6 @@ label[class^="btn btn-default"] {
                            placeholder="备注" name="customerInfoFormMap.remark" id="remark">
                 </div>
             </div>
-			<div class="line line-dashed line-lg pull-in"></div>
-			<div class="form-group">
-				<label class="col-sm-3 control-label">上级菜单</label>
-				<div class="col-sm-9">
-					<select id="parentId" name="resFormMap.parentId" class="form-control m-b"
-						tabindex="-1">
-					</select>
-				</div>
-			</div>
 		</div>
 		<footer class="panel-footer text-right bg-light lter">
 		<button type="submit" class="btn btn-success btn-s-xs">提交</button>
