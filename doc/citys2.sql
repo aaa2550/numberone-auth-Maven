@@ -20,9 +20,9 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `city`;
 CREATE TABLE `city` (
-  `Id` int(11) NOT NULL,
-  `Name` varchar(40) default NULL,
-  `Pid` int(11) default NULL,
+  `id` int(11) NOT NULL,
+  `name` varchar(40) default NULL,
+  `pid` int(11) default NULL,
   PRIMARY KEY  (`Id`),
   KEY `FK_city_REFERENCE_city` (`Pid`),
   CONSTRAINT `FK_city_REFERENCE_city` FOREIGN KEY (`Pid`) REFERENCES `city` (`Id`)
