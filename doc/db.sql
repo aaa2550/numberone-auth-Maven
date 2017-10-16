@@ -14,7 +14,8 @@ CREATE TABLE `customer_info` (
   `linkmanName` varchar(50) NOT NULL COMMENT '联系人姓名',
   `linkmanTel` varchar(50) NOT NULL COMMENT '联系人电话',
   `email` varchar(100) NOT NULL COMMENT '邮箱',
-  `remark` varchar(500) NOT NULL COMMENT '备注'
+  `remark` varchar(500) NOT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户公司信息表';
 
 -- 供应商公司信息表
@@ -31,7 +32,8 @@ CREATE TABLE `provider_info` (
   `linkmanName` varchar(50) NOT NULL COMMENT '联系人姓名',
   `linkmanTel` varchar(50) NOT NULL COMMENT '联系人电话',
   `email` varchar(100) NOT NULL COMMENT '邮箱',
-  `remark` varchar(500) NOT NULL COMMENT '备注'
+  `remark` varchar(500) NOT NULL COMMENT '备注',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商公司信息表';
 
 -- 发票表
@@ -47,7 +49,8 @@ CREATE TABLE `invoice_info` (
   `address` varchar(200) NOT NULL COMMENT '地址',
   `tel` varchar(100) NOT NULL COMMENT '电话',
   `openAccountBank` varchar(100) NOT NULL COMMENT '开户银行',
-  `accountCode` varchar(100) NOT NULL COMMENT '银行账户号'
+  `accountCode` varchar(100) NOT NULL COMMENT '银行账户号',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发票表';
 
 -- 银行账户信息
@@ -60,7 +63,8 @@ CREATE TABLE `bank_account_info` (
   `type` int(11) NOT NULL COMMENT '我司0/客户1/供应商2',
   `accountName` varchar(100) NOT NULL COMMENT '账户名称',
   `bankName` varchar(100) NOT NULL COMMENT '银行名称',
-  `accountCode` varchar(100) NOT NULL COMMENT '账户号'
+  `accountCode` varchar(100) NOT NULL COMMENT '账户号',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='银行账户信息';
 
 -- 客户合同信息表
@@ -77,7 +81,8 @@ CREATE TABLE `customer_contract_info` (
   `contractStartTime` datetime NOT NULL COMMENT '合同开始时间',
   `contractEndTime` datetime NOT NULL COMMENT '合同结束时间',
   `rebates` decimal(10,2) DEFAULT NULL COMMENT '返点',
-  `orderfrom` int(11) DEFAULT NULL COMMENT '账期（天）'
+  `orderfrom` int(11) DEFAULT NULL COMMENT '账期（天）',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户合同信息表';
 
 -- 供应商合同信息表
@@ -94,7 +99,8 @@ CREATE TABLE `provider_contract_info` (
   `contractStartTime` datetime NOT NULL COMMENT '合同开始时间',
   `contractEndTime` datetime NOT NULL COMMENT '合同结束时间',
   `rebates` decimal(10,2) DEFAULT NULL COMMENT '返点',
-  `orderfrom` int(11) DEFAULT NULL COMMENT '账期（天）'
+  `orderfrom` int(11) DEFAULT NULL COMMENT '账期（天）',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商合同信息表';
 
 -- 点我账户表
@@ -116,7 +122,8 @@ CREATE TABLE `keepme_account_info` (
   `subpackage` varchar(50) NOT NULL COMMENT '分包',
   `ocpa` varchar(50) NOT NULL COMMENT 'ocpa',
   `passStatus` varchar(50) NOT NULL COMMENT '通过状态 未审核 已通过 未通过',
-  `passTime` datetime DEFAULT NULL COMMENT '通过时间'
+  `passTime` datetime DEFAULT NULL COMMENT '通过时间',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推广账户表';
 
 -- 充值信息表
@@ -135,7 +142,8 @@ CREATE TABLE `recharge_info` (
   `customerRebates` decimal(10,2) NOT NULL COMMENT '客户返点',
   `accountRecharge` decimal(10,2) NOT NULL COMMENT '我方返点',
   `rebatesRecharge` decimal(10,2) NOT NULL COMMENT '返点充值',
-  `rechargeCost` decimal(10,2) NOT NULL COMMENT '充值成本'
+  `rechargeCost` decimal(10,2) NOT NULL COMMENT '充值成本',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='充值信息表';
 
 -- 发票记录表
@@ -153,7 +161,8 @@ CREATE TABLE `invoice_record` (
   `platform` varchar(50) NOT NULL COMMENT '投放平台',
   `payTime` datetime NOT NULL COMMENT '费用发生日期',
   `invoiceCode` varchar(50) NOT NULL COMMENT '发票号',
-  `openTime` datetime NOT NULL COMMENT '开票日期'
+  `openTime` datetime NOT NULL COMMENT '开票日期',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发票记录表';
 
 -- 收付款信息导入表
@@ -177,7 +186,8 @@ CREATE TABLE `return_pay_info` (
   `remark` varchar(200) NOT NULL COMMENT '备注',
   `serialNumber` varchar(100) NOT NULL COMMENT '账户明细编号-交易流水号',
   `voucherSpecies` varchar(50) NOT NULL COMMENT '凭证种类',
-  `voucherCode` varchar(100) NOT NULL COMMENT '凭证号'
+  `voucherCode` varchar(100) NOT NULL COMMENT '凭证号',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收付款信息导入表';
 
 -- 返点详情表
@@ -192,5 +202,6 @@ CREATE TABLE `rebates_info` (
   `rebates` decimal(10,2) NOT NULL COMMENT '返点',
   `contractId` int(11) NOT NULL COMMENT '合同编号',
   `userId` int(11) NOT NULL COMMENT '操作人ID',
-  `userName` varchar(50) NOT NULL COMMENT '操作人名称'
+  `userName` varchar(50) NOT NULL COMMENT '操作人名称',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收付款信息导入表';
