@@ -64,11 +64,8 @@ $(function() {
 	$("#editCustomerInfo").click("click", function() {
         editCustomerInfo();
 	});
-	$("#delAccount").click("click", function() {
-		delAccount();
-	});
-	$("#permissions").click("click", function() {
-		permissions();
+	$("#deleteCustomerInfo").click("click", function() {
+        deleteCustomerInfo();
 	});
 });
 function editCustomerInfo() {
@@ -89,18 +86,18 @@ function addCustomerInfo() {
 		title : "新增",
 		type : 2,
 		area : [ "600px", "80%" ],
-		content : rootPath + '/customer/customerInfo/addUI.shtml'
+		content : rootPath + '/customer/customerInfo/editUI.shtml'
 	});
 }
 
-function delAccount() {
+function deleteCustomerInfo() {
 	var cbox = grid.getSelectedCheckbox();
 	if (cbox == "") {
 		layer.msg("请选择删除项！！");
 		return;
 	}
 	layer.confirm('是否删除？', function(index) {
-		var url = rootPath + '/user/deleteEntity.shtml';
+		var url = rootPath + '/customer/customerInfo/deleteEntity.shtml';
 		var s = CommnUtil.ajax(url, {
 			ids : cbox.join(",")
 		}, "json");
@@ -110,19 +107,5 @@ function delAccount() {
 		} else {
 			layer.msg('删除失败');
 		}
-	});
-}
-function permissions() {
-	var cbox = grid.getSelectedCheckbox();
-	if (cbox.length > 1 || cbox == "") {
-		layer.msg("请选择一个对象！");
-		return;
-	}
-	var url = rootPath + '/resources/permissions.shtml?userId='+cbox;
-	pageii = layer.open({
-		title : "分配权限",
-		type : 2,
-		area : [ "700px", "80%" ],
-		content : url
 	});
 }

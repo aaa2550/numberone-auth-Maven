@@ -88,8 +88,13 @@ public class CustomerInfoController extends BaseController {
     @SystemLog(module="客户信息",methods="客户信息-修改客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
     public String editEntity(Model model) throws Exception {
         CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-        customerInfoFormMap.put("updateTime", TimeUtils.getDate());
-        customerInfoMapper.editEntity(customerInfoFormMap);
+        customerInfoFormMap.set("updateTime", TimeUtils.getDate());
+        if(customerInfoFormMap.containsKey("id")){
+            customerInfoMapper.editEntity(customerInfoFormMap);
+        } else {
+            customerInfoFormMap.set("createTime", TimeUtils.getDate());
+            customerInfoMapper.addEntity(customerInfoFormMap);
+        }
         return "success";
     }
 
@@ -107,6 +112,25 @@ public class CustomerInfoController extends BaseController {
         customerInfoFormMap.set("createTime", TimeUtils.getDate());
         customerInfoFormMap.set("updateTime", TimeUtils.getDate());
         customerInfoMapper.addEntity(customerInfoFormMap);
+        return "success";
+    }
+
+    /**
+     * 根据ID删除
+     *
+     * @param model
+     * @param ids
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping("deleteEntity")
+    @SystemLog(module="客户信息",methods="客户信息-删除客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
+    public String deleteEntity(Model model) throws Exception {
+        String[] ids = getParaValues("ids");
+        for (String id : ids) {
+            customerInfoMapper.deleteByAttribute("id", id, CustomerInfoFormMap.class);
+        };
         return "success";
     }
 
