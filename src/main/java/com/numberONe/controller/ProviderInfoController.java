@@ -87,7 +87,7 @@ public class ProviderInfoController extends BaseController {
 
     @ResponseBody
     @RequestMapping("editEntity")
-    @SystemLog(module="客户信息",methods="客户信息-修改客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
+    @SystemLog(module="供应商信息",methods="供应商信息-修改")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg editEntity(Model model) throws Exception {
         ProviderInfoFormMap providerInfoFormMap = null;
         try {
@@ -125,7 +125,7 @@ public class ProviderInfoController extends BaseController {
      */
     @RequestMapping("addEntity")
     @ResponseBody
-    @SystemLog(module="客户信息",methods="客户信息-新增客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
+    @SystemLog(module="供应商信息",methods="供应商信息-新增")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg addEntity() throws Exception {
         ProviderInfoFormMap providerInfoFormMap = null;
         try {
@@ -149,7 +149,7 @@ public class ProviderInfoController extends BaseController {
      */
     @ResponseBody
     @RequestMapping("deleteEntity")
-    @SystemLog(module="客户信息",methods="客户信息-删除客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
+    @SystemLog(module="供应商信息",methods="供应商信息-删除")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg deleteEntity(Model model) throws Exception {
         try {
             String[] ids = getParaValues("ids");
