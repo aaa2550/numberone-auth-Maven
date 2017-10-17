@@ -73,11 +73,11 @@
                     },
                     "customerContractInfoFormMap.rebates" : {
                         required : true,
-                        digits: true
+                        percent : true
                     },
                     "customerContractInfoFormMap.orderfrom" : {
                         required : true,
-                        digits: true
+                        number: true
                     }
                 },
                 messages : {
