@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.numberONe.mapper.ProviderInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.ProviderInfo" >
+<mapper namespace="com.numberONe.mapper.CustomerInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="companyName" property="companyname" jdbcType="VARCHAR" />
+    <result column="customerType" property="customertype" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="city" property="city" jdbcType="VARCHAR" />
@@ -14,35 +15,39 @@
     <result column="linkmanTel" property="linkmantel" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="provinceName" property="provincename" jdbcType="VARCHAR" />
+    <result column="cityName" property="cityname" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, createTime, updateTime, companyName, name, province, city, address, linkmanName, 
-    linkmanTel, email, remark
+    id, createTime, updateTime, companyName, customerType, name, province, city, address, 
+    linkmanName, linkmanTel, email, remark, provinceName, cityName
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from provider_info
+    from customer_info
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from provider_info
+    delete from customer_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.ProviderInfo" >
-    insert into provider_info (id, createTime, updateTime, 
-      companyName, name, province, 
-      city, address, linkmanName, 
-      linkmanTel, email, remark
+  <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerInfo" >
+    insert into customer_info (id, createTime, updateTime, 
+      companyName, customerType, name, 
+      province, city, address, 
+      linkmanName, linkmanTel, email, 
+      remark, provinceName, cityName
       )
     values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{companyname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkmanname,jdbcType=VARCHAR}, 
-      #{linkmantel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      #{companyname,jdbcType=VARCHAR}, #{customertype,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{linkmanname,jdbcType=VARCHAR}, #{linkmantel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{provincename,jdbcType=VARCHAR}, #{cityname,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ProviderInfo" >
-    insert into provider_info
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerInfo" >
+    insert into customer_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -55,6 +60,9 @@
       </if>
       <if test="companyname != null" >
         companyName,
+      </if>
+      <if test="customertype != null" >
+        customerType,
       </if>
       <if test="name != null" >
         name,
@@ -80,6 +88,12 @@
       <if test="remark != null" >
         remark,
       </if>
+      <if test="provincename != null" >
+        provinceName,
+      </if>
+      <if test="cityname != null" >
+        cityName,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -93,6 +107,9 @@
       </if>
       <if test="companyname != null" >
         #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="customertype != null" >
+        #{customertype,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -118,10 +135,16 @@
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="provincename != null" >
+        #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="cityname != null" >
+        #{cityname,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ProviderInfo" >
-    update provider_info
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerInfo" >
+    update customer_info
     <set >
       <if test="createtime != null" >
         createTime = #{createtime,jdbcType=TIMESTAMP},
@@ -131,6 +154,9 @@
       </if>
       <if test="companyname != null" >
         companyName = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="customertype != null" >
+        customerType = #{customertype,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -156,14 +182,21 @@
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
       </if>
+      <if test="provincename != null" >
+        provinceName = #{provincename,jdbcType=VARCHAR},
+      </if>
+      <if test="cityname != null" >
+        cityName = #{cityname,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.ProviderInfo" >
-    update provider_info
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerInfo" >
+    update customer_info
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
       companyName = #{companyname,jdbcType=VARCHAR},
+      customerType = #{customertype,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
@@ -171,7 +204,9 @@
       linkmanName = #{linkmanname,jdbcType=VARCHAR},
       linkmanTel = #{linkmantel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      remark = #{remark,jdbcType=VARCHAR}
+      remark = #{remark,jdbcType=VARCHAR},
+      provinceName = #{provincename,jdbcType=VARCHAR},
+      cityName = #{cityname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -34,7 +34,7 @@
                         type : "post",
                         dataType : "json",
                         success : function(data) {
-                            if (data == "success") {
+                            if (data.code == 0) {
                                 layer.confirm('添加成功!是否关闭窗口?', function(index) {
                                     parent.grid.loadData();
                                     parent.layer.close(parent.pageii);
@@ -42,7 +42,7 @@
                                 });
                                 $("#form")[0].reset();
                             } else {
-                                layer.alert('添加失败！', 3);
+                                layer.alert(data.msg, 3);
                             }
                         }
                     });

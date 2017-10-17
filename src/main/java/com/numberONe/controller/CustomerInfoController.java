@@ -11,9 +11,12 @@ import com.numberONe.entity.ResFormMap;
 import com.numberONe.entity.UserFormMap;
 import com.numberONe.mapper.CityMapper;
 import com.numberONe.mapper.CustomerInfoMapper;
+import com.numberONe.tempEntity.City;
 import com.numberONe.util.CodeMsg;
 import com.numberONe.util.TimeUtils;
 import com.numberONe.util.TransformUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -36,6 +39,8 @@ import java.util.Date;
 @Controller
 @RequestMapping("/customer/customerInfo/")
 public class CustomerInfoController extends BaseController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerInfoController.class);
 
     @Inject
     private CustomerInfoMapper customerInfoMapper;
@@ -86,16 +91,33 @@ public class CustomerInfoController extends BaseController {
     @ResponseBody
     @RequestMapping("editEntity")
     @SystemLog(module="客户信息",methods="客户信息-修改客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
-    public String editEntity(Model model) throws Exception {
-        CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-        customerInfoFormMap.set("updateTime", TimeUtils.getDate());
-        if(customerInfoFormMap.containsKey("id")){
-            customerInfoMapper.editEntity(customerInfoFormMap);
-        } else {
-            customerInfoFormMap.set("createTime", TimeUtils.getDate());
-            customerInfoMapper.addEntity(customerInfoFormMap);
+    public CodeMsg editEntity(Model model) throws Exception {
+        CustomerInfoFormMap customerInfoFormMap = null;
+        try {
+            customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
+            customerInfoFormMap.set("updateTime", TimeUtils.getDate());
+
+            if (customerInfoFormMap.containsKey("province") && customerInfoFormMap.containsKey("city")) {
+                Object provinceParam = customerInfoFormMap.get("province");
+                Object cityParam = customerInfoFormMap.get("city");
+
+                City province = cityMapper.selectByPrimaryKey(Integer.valueOf(provinceParam.toString()));
+                City city = cityMapper.selectByPrimaryKey(Integer.valueOf(cityParam.toString()));
+                customerInfoFormMap.set("provinceName", province.getName());
+                customerInfoFormMap.set("cityName", city.getName());
+            }
+
+            if(customerInfoFormMap.containsKey("id")){
+                customerInfoMapper.editEntity(customerInfoFormMap);
+            } else {
+                customerInfoFormMap.set("createTime", TimeUtils.getDate());
+                customerInfoMapper.addEntity(customerInfoFormMap);
+            }
+            return CodeMsg.SUCCESS;
+        } catch (Throwable e) {
+            logger.error("editEntity error.customerInfoFormMap=" + customerInfoFormMap, e);
+            return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
-        return "success";
     }
 
     /**
@@ -107,31 +129,41 @@ public class CustomerInfoController extends BaseController {
     @RequestMapping("addEntity")
     @ResponseBody
     @SystemLog(module="客户信息",methods="客户信息-新增客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
-    public String addEntity() throws Exception {
-        CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-        customerInfoFormMap.set("createTime", TimeUtils.getDate());
-        customerInfoFormMap.set("updateTime", TimeUtils.getDate());
-        customerInfoMapper.addEntity(customerInfoFormMap);
-        return "success";
+    public CodeMsg addEntity() throws Exception {
+        CustomerInfoFormMap customerInfoFormMap = null;
+        try {
+            customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
+            customerInfoFormMap.set("createTime", TimeUtils.getDate());
+            customerInfoFormMap.set("updateTime", TimeUtils.getDate());
+            customerInfoMapper.addEntity(customerInfoFormMap);
+            return CodeMsg.SUCCESS;
+        } catch (Throwable e) {
+            logger.error("addEntity error.customerInfoFormMap=" + customerInfoFormMap, e);
+            return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
+        }
     }
 
     /**
      * 根据ID删除
      *
      * @param model
-     * @param ids
      * @return
      * @throws Exception
      */
     @ResponseBody
     @RequestMapping("deleteEntity")
     @SystemLog(module="客户信息",methods="客户信息-删除客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
-    public String deleteEntity(Model model) throws Exception {
-        String[] ids = getParaValues("ids");
-        for (String id : ids) {
-            customerInfoMapper.deleteByAttribute("id", id, CustomerInfoFormMap.class);
-        };
-        return "success";
+    public CodeMsg deleteEntity(Model model) throws Exception {
+        try {
+            String[] ids = getParaValues("ids");
+            for (String id : ids) {
+                customerInfoMapper.deleteByAttribute("id", id, CustomerInfoFormMap.class);
+            };
+            return CodeMsg.SUCCESS;
+        } catch (Throwable e) {
+            logger.error("deleteEntity error.", e);
+            return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
+        }
     }
 
     @ResponseBody

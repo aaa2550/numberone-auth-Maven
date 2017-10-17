@@ -31,6 +31,11 @@ public class CodeMsg {
 
     private Object obj;
 
+    public CodeMsg(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
     public boolean isSuccess() {
         return code == SUCCESS_CODE;
     }
