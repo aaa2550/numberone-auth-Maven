@@ -49,10 +49,12 @@
                 },
                 rules : {
                     "customerContractInfoFormMap.customerType" : {
-                        required : true
+                        required : true,
+                        digits: true
                     },
                     "customerContractInfoFormMap.businessType" : {
-                        required : true
+                        required : true,
+                        digits: true
                     },
                     "customerContractInfoFormMap.contractCode" : {
                         required : true,
@@ -70,18 +72,22 @@
                         required : true
                     },
                     "customerContractInfoFormMap.rebates" : {
-                        required : true
+                        required : true,
+                        digits: true
                     },
                     "customerContractInfoFormMap.orderfrom" : {
-                        required : true
+                        required : true,
+                        digits: true
                     }
                 },
                 messages : {
                     "customerContractInfoFormMap.customerType" : {
-                        required : "客户类型不能为空"
+                        required : "请选择客户类型",
+                        digits: "请选择客户类型"
                     },
                     "customerContractInfoFormMap.businessType" : {
-                        required : "业务类型不能为空"
+                        required : "业务类型不能为空",
+                        digits: "请选择业务类型"
                     },
                     "customerContractInfoFormMap.contractCode" : {
                         required : "合同编号不能为空",
@@ -99,10 +105,12 @@
                         required : "合同结束时间不能为空"
                     },
                     "customerContractInfoFormMap.rebates" : {
-                        required : "返点不能为空"
+                        required : "返点不能为空",
+                        digits: "返点为整数"
                     },
                     "customerContractInfoFormMap.orderfrom" : {
-                        required : "账期不能为空"
+                        required : "账期不能为空",
+                        digits: "账期为整数"
                     }
                 },
                 errorPlacement : function(error, element) {// 自定义提示错误位置
@@ -117,16 +125,17 @@
             var url = rootPath + '/business/businessType/findAll.shtml';
             var data = CommnUtil.ajax(url, null,"json");
             if (data && data.code === 0 && data.obj) {
-                var h = "<option>请选择</option>";
+                var h = "<option selected>请选择</option>";
                 for ( var i = 0; i < data.obj.length; i++) {
                     h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
                 }
                 $("#businessType").html(h);
-                init();
+                if ('${customerContractInfo}') {
+                    init();
+                }
             } else {
                 layer.msg("获取菜单信息错误，请联系管理员！");
             }
-            init();
         });
         function but(v){
             if(v.value==2){
@@ -215,8 +224,8 @@
                 <label class="col-sm-3 control-label">客户类型</label>
                 <div class="col-sm-9">
                     <select id="customerType" name="customerContractInfoFormMap.customerType" class="form-control m-b"
-                            tabindex="-1" onchange="but(this)">
-                        <option value="0">------ 直客 ------</option>
+                            tabindex="-1">
+                        <option selected value="0">------ 直客 ------</option>
                         <option value="1">------ 子客 ------</option>
                     </select>
                 </div>
@@ -228,6 +237,24 @@
                     <select id="businessType" name="customerContractInfoFormMap.businessType" class="form-control m-b"
                             tabindex="-1">
                     </select>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">合同起始时间</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control checkacc"
+                           placeholder="合同起始时间" onclick="WdatePicker()" value="${customerContractInfo.contractStartTime}" name="customerContractInfoFormMap.contractStartTime"
+                           id="contractStartTime">
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">合同结束时间</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control checkacc"
+                           placeholder="合同起始时间" onclick="WdatePicker()" value="${customerContractInfo.contractEndTime}" name="customerContractInfoFormMap.contractEndTime"
+                           id="contractEndTime">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>

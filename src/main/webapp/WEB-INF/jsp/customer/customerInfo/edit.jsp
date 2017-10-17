@@ -120,7 +120,9 @@
                     h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
                 }
                 $("#province").html(h);
-                init();
+                if ('${customerInfo}') {
+                    init();
+                }
             } else {
                 layer.msg("获取菜单信息错误，请联系管理员！");
             }

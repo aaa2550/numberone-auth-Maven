@@ -4,7 +4,9 @@ package com.numberONe.controller;
 import javax.inject.Inject;
 
 import com.numberONe.entity.CustomerContractInfoFormMap;
+import com.numberONe.mapper.BusinessTypeMapper;
 import com.numberONe.mapper.CustomerContractInfoMapper;
+import com.numberONe.tempEntity.BusinessType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,9 @@ public class CustomerContractInfoController extends BaseController {
 
     @Inject
     private CustomerContractInfoMapper customerContractInfoMapper;
+
+    @Inject
+    private BusinessTypeMapper businessTypeMapper;
 
     @Inject
 	private CityMapper cityMapper;
@@ -95,14 +100,10 @@ public class CustomerContractInfoController extends BaseController {
             customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
             customerContractInfoFormMap.set("updateTime", TimeUtils.getDate());
 
-            if (customerContractInfoFormMap.containsKey("province") && customerContractInfoFormMap.containsKey("city")) {
-                Object provinceParam = customerContractInfoFormMap.get("province");
-                Object cityParam = customerContractInfoFormMap.get("city");
-
-                City province = cityMapper.selectByPrimaryKey(Integer.valueOf(provinceParam.toString()));
-                City city = cityMapper.selectByPrimaryKey(Integer.valueOf(cityParam.toString()));
-                customerContractInfoFormMap.set("provinceName", province.getName());
-                customerContractInfoFormMap.set("cityName", city.getName());
+            if (customerContractInfoFormMap.containsKey("businessType")) {
+                Object businessTypeObj = customerContractInfoFormMap.get("businessType");
+                BusinessType businessType = businessTypeMapper.selectByPrimaryKey(Integer.valueOf(businessTypeObj.toString()));
+                customerContractInfoFormMap.set("businessTypeName", businessType);
             }
 
             if(customerContractInfoFormMap.containsKey("id")){
