@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@include file="/common/common.jspf" %>
-    <%--<script type="text/javascript" src="${ctx}/js/customer/customerInfo/add.js"></script>--%>
+    <%--<script type="text/javascript" src="${ctx}/js/provider/providerInfo/add.js"></script>--%>
     <style type="text/css">
         #but button {
             margin-bottom: 5px;
@@ -48,46 +48,46 @@
                     });
                 },
                 rules : {
-                    "customerInfoFormMap.customerName" : {
+                    "providerInfoFormMap.providerName" : {
                         required : true
                     },
-                    "customerInfoFormMap.name" : {
+                    "providerInfoFormMap.name" : {
                         required : true
                     },
-                    "customerInfoFormMap.province" : {
+                    "providerInfoFormMap.province" : {
                         required : true,
                         digits:true
                     },
-                    "customerInfoFormMap.city" : {
+                    "providerInfoFormMap.city" : {
                         required : true,
                         digits:true
                     },
-                    "customerInfoFormMap.linkmanName" : {
+                    "providerInfoFormMap.linkmanName" : {
                         required : true
                     },
-                    "customerInfoFormMap.linkmanTel" : {
+                    "providerInfoFormMap.linkmanTel" : {
                         required : true
                     }
                 },
                 messages : {
-                    "customerInfoFormMap.customerName" : {
+                    "providerInfoFormMap.providerName" : {
                         required : "公司全称不能为空"
                     },
-                    "customerInfoFormMap.name" : {
+                    "providerInfoFormMap.name" : {
                         required: "简称不能为空"
                     },
-                    "customerInfoFormMap.province" : {
+                    "providerInfoFormMap.province" : {
                         required : "请选择省份",
                         digits: "请选择城市"
                     },
-                    "customerInfoFormMap.city" : {
+                    "providerInfoFormMap.city" : {
                         required : "请选择城市",
                         digits: "请选择城市"
                     },
-                    "customerInfoFormMap.linkmanName" : {
+                    "providerInfoFormMap.linkmanName" : {
                         required : "联系人不能为空"
                     },
-                    "customerInfoFormMap.linkmanTel" : {
+                    "providerInfoFormMap.linkmanTel" : {
                         required : "联系电话不能为空"
                     }
                 },
@@ -101,7 +101,7 @@
                 }
             });
             $("#province").change(function(){
-                var data = CommnUtil.ajax(rootPath + "/customer/customerInfo/getCity.shtml?parentId=" + $(this).val(), null,"json");
+                var data = CommnUtil.ajax(rootPath + "/provider/providerInfo/getCity.shtml?parentId=" + $(this).val(), null,"json");
                 if (data != null && data.obj != null) {
                     var h = "<option>请选择</option>";
                     for ( var i = 0; i < data.obj.length; i++) {
@@ -112,7 +112,7 @@
                     layer.msg("获取菜单信息错误，请联系管理员！");
                 }
             });
-            var url = rootPath + '/customer/customerInfo/getCity.shtml?parentId=0';
+            var url = rootPath + '/provider/providerInfo/getCity.shtml?parentId=0';
             var data = CommnUtil.ajax(url, null,"json");
             if (data && data.code === 0 && data.obj) {
                 var h = "<option>请选择</option>";
@@ -150,16 +150,16 @@
             }
         }
         function init() {
-            $("#customerType").val("${customerInfo.customerType}");
-            $("#province").val("${customerInfo.province}");
-            var data = CommnUtil.ajax(rootPath + "/customer/customerInfo/getCity.shtml?parentId=${customerInfo.province}", null,"json");
+            $("#providerType").val("${providerInfo.providerType}");
+            $("#province").val("${providerInfo.province}");
+            var data = CommnUtil.ajax(rootPath + "/provider/providerInfo/getCity.shtml?parentId=${providerInfo.province}", null,"json");
             if (data != null && data.obj != null) {
                 var h = "<option>请选择</option>";
                 for ( var i = 0; i < data.obj.length; i++) {
                     h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
                 }
                 $("#city").html(h);
-                $("#city").val("${customerInfo.city}");
+                $("#city").val("${providerInfo.city}");
             } else {
                 layer.msg("获取菜单信息错误，请联系管理员！");
             }
@@ -169,16 +169,16 @@
 <body>
 <div class="l_err" style="width: 100%; margin-top: 2px;"></div>
 <form id="form" name="form" class="form-horizontal" method="post"
-      action="${pageContext.request.contextPath}/customer/customerInfo/editEntity.shtml">
+      action="${pageContext.request.contextPath}/provider/providerInfo/editEntity.shtml">
     <input type="hidden" class="form-control checkacc"
-           value="${customerInfo.id}" name="customerInfoFormMap.id" id="id">
+           value="${providerInfo.id}" name="providerInfoFormMap.id" id="id">
     <section class="panel panel-default">
         <div class="panel-body">
             <div class="form-group">
                 <label class="col-sm-3 control-label">公司全称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="公司全称" value="${customerInfo.companyName}" name="customerInfoFormMap.companyName"
+                           placeholder="公司全称" value="${providerInfo.companyName}" name="providerInfoFormMap.companyName"
                            id="companyName">
                 </div>
             </div>
@@ -187,18 +187,7 @@
                 <label class="col-sm-3 control-label">公司简称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="公司简称" value="${customerInfo.name}" name="customerInfoFormMap.name" id="name">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">客户类型</label>
-                <div class="col-sm-9">
-                    <select id="customerType" name="customerInfoFormMap.customerType" class="form-control m-b"
-                            tabindex="-1" onchange="but(this)">
-                        <option value="0">------ 直客 ------</option>
-                        <option value="1">------ 子客 ------</option>
-                    </select>
+                           placeholder="公司简称" value="${providerInfo.name}" name="providerInfoFormMap.name" id="name">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -206,8 +195,8 @@
                 <label class="col-sm-3 control-label">联系人姓名</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="联系人姓名" value="${customerInfo.linkmanName}"
-                           name="customerInfoFormMap.linkmanName" id="linkmanName">
+                           placeholder="联系人姓名" value="${providerInfo.linkmanName}"
+                           name="providerInfoFormMap.linkmanName" id="linkmanName">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -215,7 +204,7 @@
                 <label class="col-sm-3 control-label">电话</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="电话" value="${customerInfo.linkmanTel}" name="customerInfoFormMap.linkmanTel"
+                           placeholder="电话" value="${providerInfo.linkmanTel}" name="providerInfoFormMap.linkmanTel"
                            id="linkmanTel">
                 </div>
             </div>
@@ -224,14 +213,14 @@
                 <label class="col-sm-3 control-label">邮箱</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="邮箱" value="${customerInfo.email}" name="customerInfoFormMap.email" id="email">
+                           placeholder="邮箱" value="${providerInfo.email}" name="providerInfoFormMap.email" id="email">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">省份</label>
                 <div class="col-sm-9">
-                    <select id="province" value="${customerInfo.province}" name="customerInfoFormMap.province"
+                    <select id="province" value="${providerInfo.province}" name="providerInfoFormMap.province"
                             class="form-control m-b"
                             tabindex="-1">
                     </select>
@@ -241,7 +230,7 @@
             <div class="form-group">
                 <label class="col-sm-3 control-label">城市</label>
                 <div class="col-sm-9">
-                    <select id="city" name="customerInfoFormMap.city" class="form-control m-b"
+                    <select id="city" name="providerInfoFormMap.city" class="form-control m-b"
                             tabindex="-1">
                     </select>
                 </div>
@@ -251,7 +240,7 @@
                 <label class="col-sm-3 control-label">详细地址</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="详细地址" value="${customerInfo.address}" name="customerInfoFormMap.address"
+                           placeholder="详细地址" value="${providerInfo.address}" name="providerInfoFormMap.address"
                            id="address">
                 </div>
             </div>
@@ -260,7 +249,7 @@
                 <label class="col-sm-3 control-label">备注</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="备注" value="${customerInfo.remark}" name="customerInfoFormMap.remark"
+                           placeholder="备注" value="${providerInfo.remark}" name="providerInfoFormMap.remark"
                            id="remark">
                 </div>
             </div>

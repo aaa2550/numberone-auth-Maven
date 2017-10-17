@@ -47,6 +47,12 @@ public class BaseController {
 		formMap.put("paging", getPageView(pageNow, pageSize,orderby));
 		return t;
 	}
+
+	public void like(String paramName, FormMap<String,Object> formMap) {
+        if (formMap.containsKey(paramName)) {
+            formMap.put(paramName, "%" + formMap.get(paramName) + "%");
+        }
+    }
 	
 	/**
 	 * 获取返回某一页面的按扭组,

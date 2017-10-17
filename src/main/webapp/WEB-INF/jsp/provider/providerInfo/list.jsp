@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/customer/customerInfo/list.js"></script>--%>
+<%--<script type="text/javascript" src="${pageContext.request.contextPath}/js/provider/providerInfo/list.js"></script>--%>
 <script type="text/javascript">
     var pageii = null;
     var grid = null;
@@ -15,10 +15,6 @@
             }, {
                 colkey : "companyName",
                 name : "公司全称",
-                isSort:true,
-            }, {
-                colkey : "customerType",
-                name : "类型",
                 isSort:true,
             }, {
                 colkey : "name",
@@ -53,7 +49,7 @@
                     return "测试渲染函数";
                 }
             } ],
-            jsonUrl : rootPath + '/customer/customerInfo/findByPage.shtml',
+            jsonUrl : rootPath + '/provider/providerInfo/findByPage.shtml',
             checkbox : true,
             serNumber : true
         });
@@ -83,7 +79,7 @@
             title : "编辑",
             type : 2,
             area : [ "600px", "80%" ],
-            content : rootPath + '/customer/customerInfo/editUI.shtml?id=' + cbox
+            content : rootPath + '/provider/providerInfo/editUI.shtml?id=' + cbox
         });
     }
     function addCustomerInfo() {
@@ -91,7 +87,7 @@
             title : "新增",
             type : 2,
             area : [ "600px", "80%" ],
-            content : rootPath + '/customer/customerInfo/editUI.shtml'
+            content : rootPath + '/provider/providerInfo/editUI.shtml'
         });
     }
 
@@ -102,7 +98,7 @@
             return;
         }
         layer.confirm('是否删除？', function(index) {
-            var url = rootPath + '/customer/customerInfo/deleteEntity.shtml';
+            var url = rootPath + '/provider/providerInfo/deleteEntity.shtml';
             var data = CommnUtil.ajax(url, {
                 ids : cbox.join(",")
             }, "json");
@@ -122,11 +118,11 @@
             <label class="control-label"> <span
                 class="h4 font-thin v-middle">公司全称:</span></label> <input
             class="input-medium ui-autocomplete-input" id="companyName"
-            name="customerInfoFormMap.companyName">
+            name="providerInfoFormMap.companyName">
             <label class="control-label"> <span
                 class="h4 font-thin v-middle">简称:</span></label> <input
             class="input-medium ui-autocomplete-input" id="name"
-            name="customerInfoFormMap.name">
+            name="providerInfoFormMap.name">
         </div>
         <a href="javascript:void(0)" class="btn btn-default" id="search">查询</a>
     </form>

@@ -5,10 +5,10 @@ import com.numberONe.util.FormMap;
 
 
 /**
- * 客户信息表
+ * 供应商信息表
  */
-@TableSeg(tableName = "customer_info", id="id")
-public class CustomerInfoFormMap extends FormMap<String,Object>{
+@TableSeg(tableName = "provider_info", id="id")
+public class ProviderInfoFormMap extends FormMap<String,Object>{
 
 	/**
 	 *@descript

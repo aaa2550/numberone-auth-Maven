@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import com.numberONe.controller.CustomerInfoController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -31,6 +34,9 @@ import com.numberONe.util.TreeUtil;
 @Controller
 @RequestMapping("/resources/")
 public class ResourcesController extends BaseController {
+
+    private static final Logger logger = LoggerFactory.getLogger(ResourcesController.class);
+
 	@Inject
 	private ResourcesMapper resourcesMapper;
 
@@ -41,22 +47,28 @@ public class ResourcesController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping("treelists")
-	public ResFormMap findByPage(Model model) {
-		ResFormMap resFormMap = getFormMap(ResFormMap.class);
-		String order = " order by level asc";
-		resFormMap.put("$orderby", order);
-		List<ResFormMap> mps = resourcesMapper.findByNames(resFormMap);
-		List<TreeObject> list = new ArrayList<TreeObject>();
-		for (ResFormMap map : mps) {
-			TreeObject ts = new TreeObject();
-			Common.flushObject(ts, map);
-			list.add(ts);
-		}
-		TreeUtil treeUtil = new TreeUtil();
-		List<TreeObject> ns = treeUtil.getChildTreeObjects(list, 0);
-		resFormMap = new ResFormMap();
-		resFormMap.put("treelists", ns);
-		return resFormMap;
+	public ResFormMap treelists(Model model) {
+	    try {
+            ResFormMap resFormMap = getFormMap(ResFormMap.class);
+            String order = " order by level asc";
+            resFormMap.put("$orderby", order);
+            List<ResFormMap> mps = resourcesMapper.findByNames(resFormMap);
+            List<TreeObject> list = new ArrayList<TreeObject>();
+            for (ResFormMap map : mps) {
+                TreeObject ts = new TreeObject();
+                Common.flushObject(ts, map);
+                list.add(ts);
+            }
+            TreeUtil treeUtil = new TreeUtil();
+            List<TreeObject> ns = treeUtil.getChildTreeObjects(list, 0);
+            resFormMap = new ResFormMap();
+            resFormMap.put("treelists", ns);
+            return resFormMap;
+        } catch (Throwable e) {
+	        e.printStackTrace();
+            logger.error("treelists error.", e);
+	        return null;
+        }
 	}
 
 	@ResponseBody

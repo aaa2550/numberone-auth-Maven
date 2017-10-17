@@ -1,34 +1,29 @@
 package com.numberONe.controller;
 
 
-
 import javax.inject.Inject;
 
-import com.numberONe.annotation.SystemLog;
-import com.numberONe.entity.CityFormMap;
-import com.numberONe.entity.CustomerInfoFormMap;
-import com.numberONe.entity.ResFormMap;
-import com.numberONe.entity.UserFormMap;
-import com.numberONe.mapper.CityMapper;
-import com.numberONe.mapper.CustomerInfoMapper;
-import com.numberONe.tempEntity.City;
-import com.numberONe.util.CodeMsg;
-import com.numberONe.util.TimeUtils;
-import com.numberONe.util.TransformUtils;
+import com.numberONe.mapper.ProviderInfoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.numberONe.annotation.SystemLog;
 import com.numberONe.controller.index.BaseController;
+import com.numberONe.entity.CityFormMap;
+import com.numberONe.entity.ProviderInfoFormMap;
+import com.numberONe.mapper.CityMapper;
+import com.numberONe.mapper.ProviderInfoMapper;
 import com.numberONe.plugin.PageView;
+import com.numberONe.tempEntity.City;
+import com.numberONe.util.CodeMsg;
 import com.numberONe.util.Common;
-
-import java.util.Date;
+import com.numberONe.util.TimeUtils;
+import com.numberONe.util.TransformUtils;
 
 
 /**
@@ -37,18 +32,18 @@ import java.util.Date;
  * @version 3.0v
  */
 @Controller
-@RequestMapping("/customer/customerInfo/")
-public class CustomerInfoController extends BaseController {
+@RequestMapping("/provider/providerInfo/")
+public class ProviderInfoController extends BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomerInfoController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProviderInfoController.class);
 
     @Inject
-    private CustomerInfoMapper customerInfoMapper;
+    private ProviderInfoMapper providerInfoMapper;
 
     @Inject
 	private CityMapper cityMapper;
 
-	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/customer/customerInfo";
+	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/provider/providerInfo";
 	
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
@@ -60,19 +55,19 @@ public class CustomerInfoController extends BaseController {
 	@RequestMapping("findByPage")
 	public PageView findByPage( String pageNow,
 			String pageSize,String column,String sort) throws Exception {
-        CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
+        ProviderInfoFormMap providerInfoFormMap = getFormMap(ProviderInfoFormMap.class);
         String order = "";
-        like("companyName", customerInfoFormMap);
-        like("name", customerInfoFormMap);
+        like("companyName", providerInfoFormMap);
+        like("name", providerInfoFormMap);
         if(Common.isNotEmpty(column)){
             order = " order by "+column+" "+sort;
         }else{
             order = " order by id asc";
         }
 
-        customerInfoFormMap.put("$orderby", order);
-        customerInfoFormMap=toFormMap(customerInfoFormMap, pageNow, pageSize,customerInfoFormMap.getStr("orderby"));
-        pageView.setRecords(TransformUtils.transformEnum(customerInfoMapper.findByPage(customerInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
+        providerInfoFormMap.put("$orderby", order);
+        providerInfoFormMap=toFormMap(providerInfoFormMap, pageNow, pageSize,providerInfoFormMap.getStr("orderby"));
+        pageView.setRecords(TransformUtils.transformEnum(providerInfoMapper.findByPage(providerInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
 	}
 
@@ -85,39 +80,39 @@ public class CustomerInfoController extends BaseController {
     public String editUI(Model model) throws Exception {
         String id = getPara("id");
         if(Common.isNotEmpty(id)){
-            model.addAttribute("customerInfo", customerInfoMapper.findbyFrist("id", id, CustomerInfoFormMap.class));
+            model.addAttribute("providerInfo", providerInfoMapper.findbyFrist("id", id, ProviderInfoFormMap.class));
         }
-        return Common.BACKGROUND_PATH + "/customer/customerInfo/edit";
+        return Common.BACKGROUND_PATH + "/provider/providerInfo/edit";
     }
 
     @ResponseBody
     @RequestMapping("editEntity")
     @SystemLog(module="客户信息",methods="客户信息-修改客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg editEntity(Model model) throws Exception {
-        CustomerInfoFormMap customerInfoFormMap = null;
+        ProviderInfoFormMap providerInfoFormMap = null;
         try {
-            customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-            customerInfoFormMap.set("updateTime", TimeUtils.getDate());
+            providerInfoFormMap = getFormMap(ProviderInfoFormMap.class);
+            providerInfoFormMap.set("updateTime", TimeUtils.getDate());
 
-            if (customerInfoFormMap.containsKey("province") && customerInfoFormMap.containsKey("city")) {
-                Object provinceParam = customerInfoFormMap.get("province");
-                Object cityParam = customerInfoFormMap.get("city");
+            if (providerInfoFormMap.containsKey("province") && providerInfoFormMap.containsKey("city")) {
+                Object provinceParam = providerInfoFormMap.get("province");
+                Object cityParam = providerInfoFormMap.get("city");
 
                 City province = cityMapper.selectByPrimaryKey(Integer.valueOf(provinceParam.toString()));
                 City city = cityMapper.selectByPrimaryKey(Integer.valueOf(cityParam.toString()));
-                customerInfoFormMap.set("provinceName", province.getName());
-                customerInfoFormMap.set("cityName", city.getName());
+                providerInfoFormMap.set("provinceName", province.getName());
+                providerInfoFormMap.set("cityName", city.getName());
             }
 
-            if(customerInfoFormMap.containsKey("id")){
-                customerInfoMapper.editEntity(customerInfoFormMap);
+            if(providerInfoFormMap.containsKey("id")){
+                providerInfoMapper.editEntity(providerInfoFormMap);
             } else {
-                customerInfoFormMap.set("createTime", TimeUtils.getDate());
-                customerInfoMapper.addEntity(customerInfoFormMap);
+                providerInfoFormMap.set("createTime", TimeUtils.getDate());
+                providerInfoMapper.addEntity(providerInfoFormMap);
             }
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
-            logger.error("editEntity error.customerInfoFormMap=" + customerInfoFormMap, e);
+            logger.error("editEntity error.providerInfoFormMap=" + providerInfoFormMap, e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
     }
@@ -132,15 +127,15 @@ public class CustomerInfoController extends BaseController {
     @ResponseBody
     @SystemLog(module="客户信息",methods="客户信息-新增客户信息")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg addEntity() throws Exception {
-        CustomerInfoFormMap customerInfoFormMap = null;
+        ProviderInfoFormMap providerInfoFormMap = null;
         try {
-            customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-            customerInfoFormMap.set("createTime", TimeUtils.getDate());
-            customerInfoFormMap.set("updateTime", TimeUtils.getDate());
-            customerInfoMapper.addEntity(customerInfoFormMap);
+            providerInfoFormMap = getFormMap(ProviderInfoFormMap.class);
+            providerInfoFormMap.set("createTime", TimeUtils.getDate());
+            providerInfoFormMap.set("updateTime", TimeUtils.getDate());
+            providerInfoMapper.addEntity(providerInfoFormMap);
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
-            logger.error("addEntity error.customerInfoFormMap=" + customerInfoFormMap, e);
+            logger.error("addEntity error.providerInfoFormMap=" + providerInfoFormMap, e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
     }
@@ -159,7 +154,7 @@ public class CustomerInfoController extends BaseController {
         try {
             String[] ids = getParaValues("ids");
             for (String id : ids) {
-                customerInfoMapper.deleteByAttribute("id", id, CustomerInfoFormMap.class);
+                providerInfoMapper.deleteByAttribute("id", id, ProviderInfoFormMap.class);
             };
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
@@ -179,8 +174,8 @@ public class CustomerInfoController extends BaseController {
     @ResponseBody
     @RequestMapping("validate")
     public boolean validate() throws Exception {
-        CustomerInfoFormMap customerInfoFormMap = getFormMap(CustomerInfoFormMap.class);
-        return CollectionUtils.isEmpty(customerInfoMapper.findByNames(customerInfoFormMap));
+        ProviderInfoFormMap providerInfoFormMap = getFormMap(ProviderInfoFormMap.class);
+        return CollectionUtils.isEmpty(providerInfoMapper.findByNames(providerInfoFormMap));
     }
 
 }
