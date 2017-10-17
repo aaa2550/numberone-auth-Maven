@@ -77,14 +77,16 @@ CREATE TABLE `customer_contract_info` (
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
   `customerType` int(11) NOT NULL COMMENT '直客0/子客1',
-  `businessType` varchar(50) NOT NULL COMMENT '业务类型',
+  `businessType` int(11) NOT NULL COMMENT '业务类型',
+  `businessTypeName` varchar(100) NOT NULL COMMENT '业务类型名称',
   `contractCode` varchar(100) NOT NULL COMMENT '合同编号',
   `statisticsShortName` varchar(10) NOT NULL COMMENT '统计简称',
   `ourCompanyName` varchar(50) NOT NULL COMMENT '我方主体名称',
   `contractStartTime` datetime NOT NULL COMMENT '合同开始时间',
   `contractEndTime` datetime NOT NULL COMMENT '合同结束时间',
-  `rebates` decimal(10,2) DEFAULT NULL COMMENT '返点',
-  `orderfrom` int(11) DEFAULT NULL COMMENT '账期（天）',
+  `rebates` decimal(10,2) NOT NULL COMMENT '返点',
+  `orderfrom` int(11) NOT NULL COMMENT '账期（天）',
+  `remark` varchar(500) COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户合同信息表';
 
@@ -95,14 +97,16 @@ CREATE TABLE `provider_contract_info` (
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
   `customerType` int(11) NOT NULL COMMENT '直客0/子客1',
-  `businessType` varchar(50) NOT NULL COMMENT '业务类型',
+  `businessType` int(11) NOT NULL COMMENT '业务类型',
+  `businessTypeName` varchar(50) NOT NULL COMMENT '类型名称',
   `contractCode` varchar(100) NOT NULL COMMENT '合同编号',
   `statisticsShortName` varchar(10) NOT NULL COMMENT '统计简称',
   `ourCompanyName` varchar(50) NOT NULL COMMENT '我方主体名称',
   `contractStartTime` datetime NOT NULL COMMENT '合同开始时间',
   `contractEndTime` datetime NOT NULL COMMENT '合同结束时间',
-  `rebates` decimal(10,2) DEFAULT NULL COMMENT '返点',
-  `orderfrom` int(11) DEFAULT NULL COMMENT '账期（天）',
+  `rebates` decimal(10,2) NOT NULL COMMENT '返点',
+  `orderfrom` int(11) NOT NULL COMMENT '账期（天）',
+  `remark` varchar(500) COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商合同信息表';
 
@@ -208,3 +212,11 @@ CREATE TABLE `rebates_info` (
   `userName` varchar(50) NOT NULL COMMENT '操作人名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收付款信息导入表';
+
+-- 业务类型表
+DROP TABLE IF EXISTS `business_type`;
+CREATE TABLE `business_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL COMMENT '业务类型名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='业务类型表';

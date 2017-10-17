@@ -1,8 +1,10 @@
 package com.numberONe.mapper;
 
+import com.numberONe.mapper.base.BaseMapper;
 import com.numberONe.tempEntity.CustomerContractInfo;
 
-public interface CustomerContractInfoMapper {
+public interface CustomerContractInfoMapper extends BaseMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(CustomerContractInfo record);

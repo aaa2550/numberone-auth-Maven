@@ -13,47 +13,40 @@
                 colkey : "id",
                 name : "id",
             }, {
-                colkey : "companyName",
-                name : "公司全称",
+                colkey : "contractCode",
+                name : "合同编号",
                 isSort:true,
             }, {
                 colkey : "customerType",
-                name : "类型",
+                name : "客户类型",
                 isSort:true,
             }, {
-                colkey : "name",
-                name : "公司简称"
-            }, {
-                name : "地址",
-                renderData : function( rowindex ,data, rowdata, colkeyn) {
-                    return rowdata.provinceName + rowdata.cityName + rowdata.address;
-                }
-            }, {
-                colkey : "linkmanName",
-                name : "联系人"
-            }, {
-                colkey : "linkmanTel",
-                name : "联系人电话"
-            }, {
-                colkey : "email",
-                name : "邮箱"
-            }, {
-                colkey : "createTime",
-                name : "时间",
+                colkey : "businessTypeName",
+                name : "业务类型",
                 isSort:true,
-                renderData : function(rowindex,data, rowdata, column) {
-                    return new Date(data).format("yyyy-MM-dd hh:mm:ss");
-                }
+            }, {
+                colkey : "statisticsShortName",
+                name : "统计简称"
+            }, {
+                colkey : "ourCompanyName",
+                name : "我方主体名称"
+            }, {
+                colkey : "contractStartTime",
+                name : "起始日期"
+            }, {
+                colkey : "contractEndTime",
+                name : "结束日期"
+            }, {
+                colkey : "rebates",
+                name : "返点"
+            }, {
+                colkey : "orderfrom",
+                name : "账期（天）"
             }, {
                 colkey : "remark",
                 name : "备注"
-            }, {
-                name : "操作",
-                renderData : function( rowindex ,data, rowdata, colkeyn) {
-                    return "测试渲染函数";
-                }
-            } ],
-            jsonUrl : rootPath + '/customer/customerInfo/findByPage.shtml',
+            }],
+            jsonUrl : rootPath + '/customer/customerContractInfo/findByPage.shtml',
             checkbox : true,
             serNumber : true
         });
@@ -83,7 +76,7 @@
             title : "编辑",
             type : 2,
             area : [ "600px", "80%" ],
-            content : rootPath + '/customer/customerInfo/editUI.shtml?id=' + cbox
+            content : rootPath + '/customer/customerContractInfo/editUI.shtml?id=' + cbox
         });
     }
     function addFunction() {
@@ -91,7 +84,7 @@
             title : "新增",
             type : 2,
             area : [ "600px", "80%" ],
-            content : rootPath + '/customer/customerInfo/editUI.shtml'
+            content : rootPath + '/customer/customerContractInfo/editUI.shtml'
         });
     }
 
@@ -102,7 +95,7 @@
             return;
         }
         layer.confirm('是否删除？', function(index) {
-            var url = rootPath + '/customer/customerInfo/deleteEntity.shtml';
+            var url = rootPath + '/customer/customerContractInfo/deleteEntity.shtml';
             var data = CommnUtil.ajax(url, {
                 ids : cbox.join(",")
             }, "json");
@@ -120,13 +113,9 @@
           name="searchForm">
         <div class="form-group">
             <label class="control-label"> <span
-                class="h4 font-thin v-middle">公司全称:</span></label> <input
-            class="input-medium ui-autocomplete-input" id="companyName"
-            name="customerInfoFormMap.companyName">
-            <label class="control-label"> <span
-                class="h4 font-thin v-middle">简称:</span></label> <input
-            class="input-medium ui-autocomplete-input" id="name"
-            name="customerInfoFormMap.name">
+                class="h4 font-thin v-middle">统计简称:</span></label> <input
+            class="input-medium ui-autocomplete-input" id="statisticsShortName"
+            name="customerContractInfoFormMap.statisticsShortName">
         </div>
         <a href="javascript:void(0)" class="btn btn-default" id="search">查询</a>
     </form>

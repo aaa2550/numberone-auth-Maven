@@ -32,22 +32,22 @@
         </javaClientGenerator>
         <!--生成对应表及类名-->
         <!--<table tableName="bank_account_info" domainObjectName="BankAccountInfo" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="customer_contract_info" domainObjectName="CustomerContractInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table tableName="customer_info" domainObjectName="CustomerInfo" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="customer_contract_info" domainObjectName="CustomerContractInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <!--<table tableName="invoice_info" domainObjectName="InvoiceInfo" enableCountByExample="false" enableUpdateByExample="false"
+        <!--<table tableName="customer_info" domainObjectName="CustomerInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="invoice_info" domainObjectName="InvoiceInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="invoice_record" domainObjectName="InvoiceRecord" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="keepme_account_info" domainObjectName="KeepmeAccountInfo" enableCountByExample="false" enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="provider_contract_info" domainObjectName="ProviderContractInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
-        <table tableName="provider_info" domainObjectName="ProviderInfo" enableCountByExample="false" enableUpdateByExample="false"
+        <table tableName="provider_contract_info" domainObjectName="ProviderContractInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <!--<table tableName="rebates_info" domainObjectName="RebatesInfo" enableCountByExample="false" enableUpdateByExample="false"
+        <!--<table tableName="provider_info" domainObjectName="ProviderInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="rebates_info" domainObjectName="RebatesInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="recharge_info" domainObjectName="RechargeInfo" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
@@ -55,5 +55,7 @@
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
         <table tableName="city" domainObjectName="city" enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <table tableName="business_type" domainObjectName="businessType" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>
 </generatorConfiguration>

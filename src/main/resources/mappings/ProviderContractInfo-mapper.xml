@@ -6,7 +6,8 @@
     <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
     <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
     <result column="customerType" property="customertype" jdbcType="INTEGER" />
-    <result column="businessType" property="businesstype" jdbcType="VARCHAR" />
+    <result column="businessType" property="businesstype" jdbcType="INTEGER" />
+    <result column="businessTypeName" property="businesstypename" jdbcType="VARCHAR" />
     <result column="contractCode" property="contractcode" jdbcType="VARCHAR" />
     <result column="statisticsShortName" property="statisticsshortname" jdbcType="VARCHAR" />
     <result column="ourCompanyName" property="ourcompanyname" jdbcType="VARCHAR" />
@@ -14,10 +15,12 @@
     <result column="contractEndTime" property="contractendtime" jdbcType="TIMESTAMP" />
     <result column="rebates" property="rebates" jdbcType="DECIMAL" />
     <result column="orderfrom" property="orderfrom" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, createTime, updateTime, customerType, businessType, contractCode, statisticsShortName, 
-    ourCompanyName, contractStartTime, contractEndTime, rebates, orderfrom
+    id, createTime, updateTime, customerType, businessType, businessTypeName, contractCode, 
+    statisticsShortName, ourCompanyName, contractStartTime, contractEndTime, rebates, 
+    orderfrom, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -31,14 +34,16 @@
   </delete>
   <insert id="insert" parameterType="com.numberONe.tempEntity.ProviderContractInfo" >
     insert into provider_contract_info (id, createTime, updateTime, 
-      customerType, businessType, contractCode, 
-      statisticsShortName, ourCompanyName, contractStartTime, 
-      contractEndTime, rebates, orderfrom
+      customerType, businessType, businessTypeName, 
+      contractCode, statisticsShortName, ourCompanyName, 
+      contractStartTime, contractEndTime, 
+      rebates, orderfrom, remark
       )
     values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{customertype,jdbcType=INTEGER}, #{businesstype,jdbcType=VARCHAR}, #{contractcode,jdbcType=VARCHAR}, 
-      #{statisticsshortname,jdbcType=VARCHAR}, #{ourcompanyname,jdbcType=VARCHAR}, #{contractstarttime,jdbcType=TIMESTAMP}, 
-      #{contractendtime,jdbcType=TIMESTAMP}, #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}
+      #{customertype,jdbcType=INTEGER}, #{businesstype,jdbcType=INTEGER}, #{businesstypename,jdbcType=VARCHAR}, 
+      #{contractcode,jdbcType=VARCHAR}, #{statisticsshortname,jdbcType=VARCHAR}, #{ourcompanyname,jdbcType=VARCHAR}, 
+      #{contractstarttime,jdbcType=TIMESTAMP}, #{contractendtime,jdbcType=TIMESTAMP}, 
+      #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ProviderContractInfo" >
@@ -58,6 +63,9 @@
       </if>
       <if test="businesstype != null" >
         businessType,
+      </if>
+      <if test="businesstypename != null" >
+        businessTypeName,
       </if>
       <if test="contractcode != null" >
         contractCode,
@@ -80,6 +88,9 @@
       <if test="orderfrom != null" >
         orderfrom,
       </if>
+      <if test="remark != null" >
+        remark,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -95,7 +106,10 @@
         #{customertype,jdbcType=INTEGER},
       </if>
       <if test="businesstype != null" >
-        #{businesstype,jdbcType=VARCHAR},
+        #{businesstype,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypename != null" >
+        #{businesstypename,jdbcType=VARCHAR},
       </if>
       <if test="contractcode != null" >
         #{contractcode,jdbcType=VARCHAR},
@@ -118,6 +132,9 @@
       <if test="orderfrom != null" >
         #{orderfrom,jdbcType=INTEGER},
       </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ProviderContractInfo" >
@@ -133,7 +150,10 @@
         customerType = #{customertype,jdbcType=INTEGER},
       </if>
       <if test="businesstype != null" >
-        businessType = #{businesstype,jdbcType=VARCHAR},
+        businessType = #{businesstype,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypename != null" >
+        businessTypeName = #{businesstypename,jdbcType=VARCHAR},
       </if>
       <if test="contractcode != null" >
         contractCode = #{contractcode,jdbcType=VARCHAR},
@@ -156,6 +176,9 @@
       <if test="orderfrom != null" >
         orderfrom = #{orderfrom,jdbcType=INTEGER},
       </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -164,14 +187,16 @@
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
       customerType = #{customertype,jdbcType=INTEGER},
-      businessType = #{businesstype,jdbcType=VARCHAR},
+      businessType = #{businesstype,jdbcType=INTEGER},
+      businessTypeName = #{businesstypename,jdbcType=VARCHAR},
       contractCode = #{contractcode,jdbcType=VARCHAR},
       statisticsShortName = #{statisticsshortname,jdbcType=VARCHAR},
       ourCompanyName = #{ourcompanyname,jdbcType=VARCHAR},
       contractStartTime = #{contractstarttime,jdbcType=TIMESTAMP},
       contractEndTime = #{contractendtime,jdbcType=TIMESTAMP},
       rebates = #{rebates,jdbcType=DECIMAL},
-      orderfrom = #{orderfrom,jdbcType=INTEGER}
+      orderfrom = #{orderfrom,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

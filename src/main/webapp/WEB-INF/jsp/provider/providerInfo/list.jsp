@@ -22,7 +22,7 @@
             }, {
                 name : "地址",
                 renderData : function( rowindex ,data, rowdata, colkeyn) {
-                    return rowdata.province + rowdata.city + rowdata.address;
+                    return rowdata.provinceName + rowdata.cityName + rowdata.address;
                 }
             }, {
                 colkey : "linkmanName",
@@ -59,17 +59,17 @@
                 data : searchParams
             });
         });
-        $("#addCustomerInfo").click("click", function() {
-            addCustomerInfo();
+        $("#add").click("click", function() {
+            addFunction();
         });
-        $("#editCustomerInfo").click("click", function() {
-            editCustomerInfo();
+        $("#edit").click("click", function() {
+            editFunction();
         });
-        $("#deleteCustomerInfo").click("click", function() {
-            deleteCustomerInfo();
+        $("#delete").click("click", function() {
+            deleteFunction();
         });
     });
-    function editCustomerInfo() {
+    function editFunction() {
         var cbox = grid.getSelectedCheckbox();
         if (cbox.length > 1 || cbox == "") {
             layer.msg("只能选中一个");
@@ -82,7 +82,7 @@
             content : rootPath + '/provider/providerInfo/editUI.shtml?id=' + cbox
         });
     }
-    function addCustomerInfo() {
+    function addFunction() {
         pageii = layer.open({
             title : "新增",
             type : 2,
@@ -91,7 +91,7 @@
         });
     }
 
-    function deleteCustomerInfo() {
+    function deleteFunction() {
         var cbox = grid.getSelectedCheckbox();
         if (cbox == "") {
             layer.msg("请选择删除项！！");
@@ -129,9 +129,9 @@
 </div>
 <header class="panel-heading">
     <div class="doc-buttons">
-        <button type="button" id="addCustomerInfo" class="btn btn-primary marR10">新增</button>
-        <button type="button" id="editCustomerInfo" class="btn btn-info marR10">修改</button>
-        <button type="button" id="deleteCustomerInfo" class="btn btn-danger marR10">删除</button>
+        <button type="button" id="add" class="btn btn-primary marR10">新增</button>
+        <button type="button" id="edit" class="btn btn-info marR10">修改</button>
+        <button type="button" id="delete" class="btn btn-danger marR10">删除</button>
         <a href="javascript:grid.exportData('/user/export.shtml')" class="btn btn-info" id="export">导出excel</a>
     </div>
 </header>
