@@ -117,18 +117,17 @@ CREATE TABLE `keepme_account_info` (
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
   `appId` varchar(50) NOT NULL COMMENT 'APPID',
-  `platform` varchar(50) NOT NULL COMMENT '投放平台',
+  `platform` int(11) NOT NULL COMMENT '投放平台',
+  `platformName` varchar(50) NOT NULL COMMENT '投放平台名称',
   `keepmeAccountName` varchar(50) NOT NULL COMMENT '账户名称',
   `keepmeAccounId` varchar(100) NOT NULL COMMENT '账户ID',
   `providerId` int(11) NOT NULL COMMENT '供应商ID',
   `providerName` varchar(20) NOT NULL COMMENT '供应商名称',
   `qq` varchar(20) NOT NULL COMMENT '绑定QQ',
   `industry` varchar(20) NOT NULL COMMENT '行业',
-  `generalizeLink` varchar(200) NOT NULL COMMENT '推广链接',
-  `services` varchar(50) NOT NULL COMMENT 'feed/分包/oCPA/DMP/联盟屏蔽/oCP留存/oCP订单',
-  `subpackage` varchar(50) NOT NULL COMMENT '分包',
-  `ocpa` varchar(50) NOT NULL COMMENT 'ocpa',
-  `passStatus` varchar(50) NOT NULL COMMENT '通过状态 未审核 已通过 未通过',
+  `generalizeLink` varchar(300) NOT NULL COMMENT '推广链接',
+  `services` varchar(50) NOT NULL COMMENT '功能类型 feed/分包/oCPA/DMP/联盟屏蔽/oCP留存/oCP订单',
+  `passStatus` int(11) NOT NULL COMMENT '审核状态 未审核 已通过 未通过',
   `passTime` datetime DEFAULT NULL COMMENT '通过时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推广账户表';
@@ -218,5 +217,15 @@ DROP TABLE IF EXISTS `business_type`;
 CREATE TABLE `business_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL COMMENT '业务类型名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='业务类型表';
+
+-- 字典表
+DROP TABLE IF EXISTS `dictionary`;
+CREATE TABLE `dictionary` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `businessType` int(11) NOT NULL COMMENT '1业务类型2投放平台3功能类型',
+  `businessTypeIndex` int(11) NOT NULL COMMENT '业务对应索引',
+  `businessTypeName` varchar(100) NOT NULL COMMENT '业务类型名称',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='业务类型表';

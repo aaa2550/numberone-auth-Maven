@@ -12,7 +12,9 @@ public class ProviderContractInfo {
 
     private Integer customerType;
 
-    private String businessType;
+    private Integer businessType;
+
+    private String businessTypeName;
 
     private String contractCode;
 
@@ -27,6 +29,8 @@ public class ProviderContractInfo {
     private BigDecimal rebates;
 
     private Integer orderfrom;
+
+    private String remark;
 
     public Integer getId() {
         return id;
@@ -60,12 +64,20 @@ public class ProviderContractInfo {
         this.customerType = customerType;
     }
 
-    public String getBusinessType() {
+    public Integer getBusinessType() {
         return businessType;
     }
 
-    public void setBusinessType(String businessType) {
-        this.businessType = businessType == null ? null : businessType.trim();
+    public void setBusinessType(Integer businessType) {
+        this.businessType = businessType;
+    }
+
+    public String getBusinessTypeName() {
+        return businessTypeName;
+    }
+
+    public void setBusinessTypeName(String businessTypeName) {
+        this.businessTypeName = businessTypeName == null ? null : businessTypeName.trim();
     }
 
     public String getContractCode() {
@@ -122,5 +134,13 @@ public class ProviderContractInfo {
 
     public void setOrderfrom(Integer orderfrom) {
         this.orderfrom = orderfrom;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 }

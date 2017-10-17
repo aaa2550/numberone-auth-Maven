@@ -2,6 +2,7 @@ package com.numberONe.util;
 
 
 import com.numberONe.enums.CustomerType;
+import com.numberONe.enums.PassStatus;
 
 import java.sql.Timestamp;
 import java.util.*;
@@ -17,6 +18,12 @@ public class TransformUtils {
             put("customerType", new HashMap<Integer, String>() {
                 {
                     Arrays.asList(CustomerType.values()).forEach(e->put(e.type, e.name()));
+                }
+            });
+
+            put("passStatus", new HashMap<Integer, String>() {
+                {
+                    Arrays.asList(PassStatus.values()).forEach(e->put(e.type, e.name()));
                 }
             });
         }

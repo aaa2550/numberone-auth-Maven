@@ -1,10 +1,8 @@
-package com.numberONe.mapper;
+package com.numberONe.tempEntity;
 
-import com.numberONe.mapper.base.BaseMapper;
 import com.numberONe.tempEntity.KeepmeAccountInfo;
 
-public interface KeepmeAccountInfoMapper extends BaseMapper {
-
+public interface KeepmeAccountInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(KeepmeAccountInfo record);

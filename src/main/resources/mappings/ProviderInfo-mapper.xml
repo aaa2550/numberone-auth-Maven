@@ -1,199 +1,394 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.numberONe.mapper.ProviderInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.ProviderInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
-    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
-    <result column="companyName" property="companyname" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="province" property="province" jdbcType="VARCHAR" />
-    <result column="city" property="city" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="linkmanName" property="linkmanname" jdbcType="VARCHAR" />
-    <result column="linkmanTel" property="linkmantel" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="provinceName" property="provincename" jdbcType="VARCHAR" />
-    <result column="cityName" property="cityname" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberONe.mapper.ProviderInfoMapper">
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.ProviderInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="linkmanName" jdbcType="VARCHAR" property="linkmanName" />
+    <result column="linkmanTel" jdbcType="VARCHAR" property="linkmanTel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="provinceName" jdbcType="VARCHAR" property="provinceName" />
+    <result column="cityName" jdbcType="VARCHAR" property="cityName" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, createTime, updateTime, companyName, name, province, city, address, linkmanName, 
     linkmanTel, email, remark, provinceName, cityName
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from provider_info
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from provider_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.ProviderInfo" >
+  <insert id="insert" parameterType="com.numberONe.tempEntity.ProviderInfo">
     insert into provider_info (id, createTime, updateTime, 
       companyName, name, province, 
       city, address, linkmanName, 
       linkmanTel, email, remark, 
       provinceName, cityName)
-    values (#{id,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}, 
-      #{companyname,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkmanname,jdbcType=VARCHAR}, 
-      #{linkmantel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{provincename,jdbcType=VARCHAR}, #{cityname,jdbcType=VARCHAR})
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{companyName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkmanName,jdbcType=VARCHAR}, 
+      #{linkmanTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{provinceName,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ProviderInfo" >
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ProviderInfo">
     insert into provider_info
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="createtime != null" >
+      <if test="createTime != null">
         createTime,
       </if>
-      <if test="updatetime != null" >
+      <if test="updateTime != null">
         updateTime,
       </if>
-      <if test="companyname != null" >
+      <if test="companyName != null">
         companyName,
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         name,
       </if>
-      <if test="province != null" >
+      <if test="province != null">
         province,
       </if>
-      <if test="city != null" >
+      <if test="city != null">
         city,
       </if>
-      <if test="address != null" >
+      <if test="address != null">
         address,
       </if>
-      <if test="linkmanname != null" >
+      <if test="linkmanName != null">
         linkmanName,
       </if>
-      <if test="linkmantel != null" >
+      <if test="linkmanTel != null">
         linkmanTel,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email,
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark,
       </if>
-      <if test="provincename != null" >
+      <if test="provinceName != null">
         provinceName,
       </if>
-      <if test="cityname != null" >
+      <if test="cityName != null">
         cityName,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=TIMESTAMP},
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null" >
-        #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="companyname != null" >
-        #{companyname,jdbcType=VARCHAR},
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="province != null" >
+      <if test="province != null">
         #{province,jdbcType=VARCHAR},
       </if>
-      <if test="city != null" >
+      <if test="city != null">
         #{city,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
+      <if test="address != null">
         #{address,jdbcType=VARCHAR},
       </if>
-      <if test="linkmanname != null" >
-        #{linkmanname,jdbcType=VARCHAR},
+      <if test="linkmanName != null">
+        #{linkmanName,jdbcType=VARCHAR},
       </if>
-      <if test="linkmantel != null" >
-        #{linkmantel,jdbcType=VARCHAR},
+      <if test="linkmanTel != null">
+        #{linkmanTel,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="provincename != null" >
-        #{provincename,jdbcType=VARCHAR},
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
       </if>
-      <if test="cityname != null" >
-        #{cityname,jdbcType=VARCHAR},
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ProviderInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ProviderInfo">
     update provider_info
-    <set >
-      <if test="createtime != null" >
-        createTime = #{createtime,jdbcType=TIMESTAMP},
+    <set>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatetime != null" >
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="companyname != null" >
-        companyName = #{companyname,jdbcType=VARCHAR},
+      <if test="companyName != null">
+        companyName = #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="province != null" >
+      <if test="province != null">
         province = #{province,jdbcType=VARCHAR},
       </if>
-      <if test="city != null" >
+      <if test="city != null">
         city = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
+      <if test="address != null">
         address = #{address,jdbcType=VARCHAR},
       </if>
-      <if test="linkmanname != null" >
-        linkmanName = #{linkmanname,jdbcType=VARCHAR},
+      <if test="linkmanName != null">
+        linkmanName = #{linkmanName,jdbcType=VARCHAR},
       </if>
-      <if test="linkmantel != null" >
-        linkmanTel = #{linkmantel,jdbcType=VARCHAR},
+      <if test="linkmanTel != null">
+        linkmanTel = #{linkmanTel,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
       </if>
-      <if test="remark != null" >
+      <if test="remark != null">
         remark = #{remark,jdbcType=VARCHAR},
       </if>
-      <if test="provincename != null" >
-        provinceName = #{provincename,jdbcType=VARCHAR},
+      <if test="provinceName != null">
+        provinceName = #{provinceName,jdbcType=VARCHAR},
       </if>
-      <if test="cityname != null" >
-        cityName = #{cityname,jdbcType=VARCHAR},
+      <if test="cityName != null">
+        cityName = #{cityName,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.ProviderInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.ProviderInfo">
     update provider_info
-    set createTime = #{createtime,jdbcType=TIMESTAMP},
-      updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      companyName = #{companyname,jdbcType=VARCHAR},
+    set createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      companyName = #{companyName,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      linkmanName = #{linkmanname,jdbcType=VARCHAR},
-      linkmanTel = #{linkmantel,jdbcType=VARCHAR},
+      linkmanName = #{linkmanName,jdbcType=VARCHAR},
+      linkmanTel = #{linkmanTel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      provinceName = #{provincename,jdbcType=VARCHAR},
-      cityName = #{cityname,jdbcType=VARCHAR}
+      provinceName = #{provinceName,jdbcType=VARCHAR},
+      cityName = #{cityName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.ProviderInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="companyName" jdbcType="VARCHAR" property="companyName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="linkmanName" jdbcType="VARCHAR" property="linkmanName" />
+    <result column="linkmanTel" jdbcType="VARCHAR" property="linkmanTel" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="provinceName" jdbcType="VARCHAR" property="provinceName" />
+    <result column="cityName" jdbcType="VARCHAR" property="cityName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, createTime, updateTime, companyName, name, province, city, address, linkmanName, 
+    linkmanTel, email, remark, provinceName, cityName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from provider_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from provider_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.ProviderInfo">
+    insert into provider_info (id, createTime, updateTime, 
+      companyName, name, province, 
+      city, address, linkmanName, 
+      linkmanTel, email, remark, 
+      provinceName, cityName)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{companyName,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{linkmanName,jdbcType=VARCHAR}, 
+      #{linkmanTel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{provinceName,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.ProviderInfo">
+    insert into provider_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="updateTime != null">
+        updateTime,
+      </if>
+      <if test="companyName != null">
+        companyName,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="linkmanName != null">
+        linkmanName,
+      </if>
+      <if test="linkmanTel != null">
+        linkmanTel,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="provinceName != null">
+        provinceName,
+      </if>
+      <if test="cityName != null">
+        cityName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanName != null">
+        #{linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanTel != null">
+        #{linkmanTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.ProviderInfo">
+    update provider_info
+    <set>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="companyName != null">
+        companyName = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanName != null">
+        linkmanName = #{linkmanName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkmanTel != null">
+        linkmanTel = #{linkmanTel,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null">
+        provinceName = #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null">
+        cityName = #{cityName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.ProviderInfo">
+    update provider_info
+    set createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      companyName = #{companyName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      linkmanName = #{linkmanName,jdbcType=VARCHAR},
+      linkmanTel = #{linkmanTel,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      provinceName = #{provinceName,jdbcType=VARCHAR},
+      cityName = #{cityName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

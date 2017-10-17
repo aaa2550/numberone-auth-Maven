@@ -11,11 +11,13 @@ public class KeepmeAccountInfo {
 
     private String appId;
 
-    private String platform;
+    private Integer platform;
+
+    private String platformName;
 
     private String keepmeAccountName;
 
-    private String keepmeAccountId;
+    private String keepmeAccounId;
 
     private Integer providerId;
 
@@ -29,11 +31,7 @@ public class KeepmeAccountInfo {
 
     private String services;
 
-    private String subpackage;
-
-    private String ocpa;
-
-    private String passStatus;
+    private Integer passStatus;
 
     private Date passTime;
 
@@ -69,12 +67,20 @@ public class KeepmeAccountInfo {
         this.appId = appId == null ? null : appId.trim();
     }
 
-    public String getPlatform() {
+    public Integer getPlatform() {
         return platform;
     }
 
-    public void setPlatform(String platform) {
-        this.platform = platform == null ? null : platform.trim();
+    public void setPlatform(Integer platform) {
+        this.platform = platform;
+    }
+
+    public String getPlatformName() {
+        return platformName;
+    }
+
+    public void setPlatformName(String platformName) {
+        this.platformName = platformName == null ? null : platformName.trim();
     }
 
     public String getKeepmeAccountName() {
@@ -85,12 +91,12 @@ public class KeepmeAccountInfo {
         this.keepmeAccountName = keepmeAccountName == null ? null : keepmeAccountName.trim();
     }
 
-    public String getKeepmeAccountId() {
-        return keepmeAccountId;
+    public String getKeepmeAccounId() {
+        return keepmeAccounId;
     }
 
-    public void setKeepmeAccountId(String keepmeAccountId) {
-        this.keepmeAccountId = keepmeAccountId == null ? null : keepmeAccountId.trim();
+    public void setKeepmeAccounId(String keepmeAccounId) {
+        this.keepmeAccounId = keepmeAccounId == null ? null : keepmeAccounId.trim();
     }
 
     public Integer getProviderId() {
@@ -141,28 +147,12 @@ public class KeepmeAccountInfo {
         this.services = services == null ? null : services.trim();
     }
 
-    public String getSubpackage() {
-        return subpackage;
-    }
-
-    public void setSubpackage(String subpackage) {
-        this.subpackage = subpackage == null ? null : subpackage.trim();
-    }
-
-    public String getOcpa() {
-        return ocpa;
-    }
-
-    public void setOcpa(String ocpa) {
-        this.ocpa = ocpa == null ? null : ocpa.trim();
-    }
-
-    public String getPassStatus() {
+    public Integer getPassStatus() {
         return passStatus;
     }
 
-    public void setPassStatus(String passStatus) {
-        this.passStatus = passStatus == null ? null : passStatus.trim();
+    public void setPassStatus(Integer passStatus) {
+        this.passStatus = passStatus;
     }
 
     public Date getPassTime() {

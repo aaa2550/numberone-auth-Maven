@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.numberONe.mapper.DictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.Dictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="businessType" jdbcType="INTEGER" property="businessType" />
+    <result column="businessTypeIndex" jdbcType="INTEGER" property="businessTypeIndex" />
+    <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, businessType, businessTypeIndex, businessTypeName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary (id, businessType, businessTypeIndex, 
+      businessTypeName)
+    values (#{id,jdbcType=INTEGER}, #{businessType,jdbcType=INTEGER}, #{businessTypeIndex,jdbcType=INTEGER}, 
+      #{businessTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="businessType != null">
+        businessType,
+      </if>
+      <if test="businessTypeIndex != null">
+        businessTypeIndex,
+      </if>
+      <if test="businessTypeName != null">
+        businessTypeName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeIndex != null">
+        #{businessTypeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null">
+        #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    <set>
+      <if test="businessType != null">
+        businessType = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeIndex != null">
+        businessTypeIndex = #{businessTypeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null">
+        businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    set businessType = #{businessType,jdbcType=INTEGER},
+      businessTypeIndex = #{businessTypeIndex,jdbcType=INTEGER},
+      businessTypeName = #{businessTypeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.Dictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="businessType" jdbcType="INTEGER" property="businessType" />
+    <result column="businessTypeIndex" jdbcType="INTEGER" property="businessTypeIndex" />
+    <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, businessType, businessTypeIndex, businessTypeName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary (id, businessType, businessTypeIndex, 
+      businessTypeName)
+    values (#{id,jdbcType=INTEGER}, #{businessType,jdbcType=INTEGER}, #{businessTypeIndex,jdbcType=INTEGER}, 
+      #{businessTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="businessType != null">
+        businessType,
+      </if>
+      <if test="businessTypeIndex != null">
+        businessTypeIndex,
+      </if>
+      <if test="businessTypeName != null">
+        businessTypeName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeIndex != null">
+        #{businessTypeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null">
+        #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    <set>
+      <if test="businessType != null">
+        businessType = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeIndex != null">
+        businessTypeIndex = #{businessTypeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null">
+        businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    set businessType = #{businessType,jdbcType=INTEGER},
+      businessTypeIndex = #{businessTypeIndex,jdbcType=INTEGER},
+      businessTypeName = #{businessTypeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.Dictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="businessType" jdbcType="INTEGER" property="businessType" />
+    <result column="businessTypeIndex" jdbcType="INTEGER" property="businessTypeIndex" />
+    <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, businessType, businessTypeIndex, businessTypeName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary (id, businessType, businessTypeIndex, 
+      businessTypeName)
+    values (#{id,jdbcType=INTEGER}, #{businessType,jdbcType=INTEGER}, #{businessTypeIndex,jdbcType=INTEGER}, 
+      #{businessTypeName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="businessType != null">
+        businessType,
+      </if>
+      <if test="businessTypeIndex != null">
+        businessTypeIndex,
+      </if>
+      <if test="businessTypeName != null">
+        businessTypeName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businessType != null">
+        #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeIndex != null">
+        #{businessTypeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null">
+        #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    <set>
+      <if test="businessType != null">
+        businessType = #{businessType,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeIndex != null">
+        businessTypeIndex = #{businessTypeIndex,jdbcType=INTEGER},
+      </if>
+      <if test="businessTypeName != null">
+        businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    set businessType = #{businessType,jdbcType=INTEGER},
+      businessTypeIndex = #{businessTypeIndex,jdbcType=INTEGER},
+      businessTypeName = #{businessTypeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.Dictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="businessType" jdbcType="INTEGER" property="businesstype" />
+    <result column="businessTypeIndex" jdbcType="INTEGER" property="businesstypeindex" />
+    <result column="businessTypeName" jdbcType="VARCHAR" property="businesstypename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, businessType, businessTypeIndex, businessTypeName
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary (id, businessType, businessTypeIndex, 
+      businessTypeName)
+    values (#{id,jdbcType=INTEGER}, #{businesstype,jdbcType=INTEGER}, #{businesstypeindex,jdbcType=INTEGER}, 
+      #{businesstypename,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="businesstype != null">
+        businessType,
+      </if>
+      <if test="businesstypeindex != null">
+        businessTypeIndex,
+      </if>
+      <if test="businesstypename != null">
+        businessTypeName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="businesstype != null">
+        #{businesstype,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypeindex != null">
+        #{businesstypeindex,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypename != null">
+        #{businesstypename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    <set>
+      <if test="businesstype != null">
+        businessType = #{businesstype,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypeindex != null">
+        businessTypeIndex = #{businesstypeindex,jdbcType=INTEGER},
+      </if>
+      <if test="businesstypename != null">
+        businessTypeName = #{businesstypename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    set businessType = #{businesstype,jdbcType=INTEGER},
+      businessTypeIndex = #{businesstypeindex,jdbcType=INTEGER},
+      businessTypeName = #{businesstypename,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.Dictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="index" jdbcType="INTEGER" property="index" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, index, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary (id, type, index, 
+      name)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{index,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="index != null">
+        index,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="index != null">
+        #{index,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="index != null">
+        index = #{index,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    set type = #{type,jdbcType=INTEGER},
+      index = #{index,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.Dictionary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="typeId" jdbcType="INTEGER" property="typeid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, type, typeId, name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dictionary
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary (id, type, typeId, 
+      name)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{typeid,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    insert into dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="typeid != null">
+        typeId,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null">
+        #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    <set>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="typeid != null">
+        typeId = #{typeid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.Dictionary">
+    update dictionary
+    set type = #{type,jdbcType=INTEGER},
+      typeId = #{typeid,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

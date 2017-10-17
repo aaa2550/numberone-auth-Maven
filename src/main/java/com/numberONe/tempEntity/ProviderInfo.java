@@ -5,11 +5,11 @@ import java.util.Date;
 public class ProviderInfo {
     private Integer id;
 
-    private Date createtime;
+    private Date createTime;
 
-    private Date updatetime;
+    private Date updateTime;
 
-    private String companyname;
+    private String companyName;
 
     private String name;
 
@@ -19,17 +19,17 @@ public class ProviderInfo {
 
     private String address;
 
-    private String linkmanname;
+    private String linkmanName;
 
-    private String linkmantel;
+    private String linkmanTel;
 
     private String email;
 
     private String remark;
 
-    private String provincename;
+    private String provinceName;
 
-    private String cityname;
+    private String cityName;
 
     public Integer getId() {
         return id;
@@ -39,28 +39,28 @@ public class ProviderInfo {
         this.id = id;
     }
 
-    public Date getCreatetime() {
-        return createtime;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatetime() {
-        return updatetime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatetime(Date updatetime) {
-        this.updatetime = updatetime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
-    public String getCompanyname() {
-        return companyname;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompanyname(String companyname) {
-        this.companyname = companyname == null ? null : companyname.trim();
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName == null ? null : companyName.trim();
     }
 
     public String getName() {
@@ -95,20 +95,20 @@ public class ProviderInfo {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getLinkmanname() {
-        return linkmanname;
+    public String getLinkmanName() {
+        return linkmanName;
     }
 
-    public void setLinkmanname(String linkmanname) {
-        this.linkmanname = linkmanname == null ? null : linkmanname.trim();
+    public void setLinkmanName(String linkmanName) {
+        this.linkmanName = linkmanName == null ? null : linkmanName.trim();
     }
 
-    public String getLinkmantel() {
-        return linkmantel;
+    public String getLinkmanTel() {
+        return linkmanTel;
     }
 
-    public void setLinkmantel(String linkmantel) {
-        this.linkmantel = linkmantel == null ? null : linkmantel.trim();
+    public void setLinkmanTel(String linkmanTel) {
+        this.linkmanTel = linkmanTel == null ? null : linkmanTel.trim();
     }
 
     public String getEmail() {
@@ -127,19 +127,19 @@ public class ProviderInfo {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public String getProvincename() {
-        return provincename;
+    public String getProvinceName() {
+        return provinceName;
     }
 
-    public void setProvincename(String provincename) {
-        this.provincename = provincename == null ? null : provincename.trim();
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName == null ? null : provinceName.trim();
     }
 
-    public String getCityname() {
-        return cityname;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCityname(String cityname) {
-        this.cityname = cityname == null ? null : cityname.trim();
+    public void setCityName(String cityName) {
+        this.cityName = cityName == null ? null : cityName.trim();
     }
 }
