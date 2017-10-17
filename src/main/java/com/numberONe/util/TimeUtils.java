@@ -13,9 +13,13 @@ public class TimeUtils {
 
     public static final String DAY_DEFAULT = "yyyy-MM-dd";
 
-    public static String getDate(String pattern){
+    public static String getDate(Date date, String pattern){
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
-        return dateFormat.format(new Date());
+        return dateFormat.format(date);
+    }
+
+    public static String getDate(String pattern){
+        return getDate(new Date(), pattern);
     }
 
     public static String getDate(){

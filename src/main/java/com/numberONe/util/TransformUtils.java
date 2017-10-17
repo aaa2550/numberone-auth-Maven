@@ -2,6 +2,8 @@ package com.numberONe.util;
 
 
 import com.numberONe.enums.CustomerType;
+
+import java.sql.Timestamp;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -39,6 +41,10 @@ public class TransformUtils {
                 } else {
                     entry.setValue("未知");
                 }
+            }
+            if (value instanceof Timestamp) {
+                Timestamp timestamp = (Timestamp)value;
+                entry.setValue(TimeUtils.getDate(new Date(timestamp.getTime()), TimeUtils.TIME_PATTERN));
             }
         }
         return map;

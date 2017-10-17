@@ -63,8 +63,7 @@ public class CustomerContractInfoController extends BaseController {
 			String pageSize,String column,String sort) throws Exception {
         CustomerContractInfoFormMap customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
         String order = "";
-        like("companyName", customerContractInfoFormMap);
-        like("name", customerContractInfoFormMap);
+        like("statisticsShortName", customerContractInfoFormMap);
         if(Common.isNotEmpty(column)){
             order = " order by "+column+" "+sort;
         }else{
@@ -103,7 +102,7 @@ public class CustomerContractInfoController extends BaseController {
             if (customerContractInfoFormMap.containsKey("businessType")) {
                 Object businessTypeObj = customerContractInfoFormMap.get("businessType");
                 BusinessType businessType = businessTypeMapper.selectByPrimaryKey(Integer.valueOf(businessTypeObj.toString()));
-                customerContractInfoFormMap.set("businessTypeName", businessType);
+                customerContractInfoFormMap.set("businessTypeName", businessType.getName());
             }
 
             if(customerContractInfoFormMap.containsKey("id")){
