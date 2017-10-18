@@ -120,9 +120,8 @@
                     $(".l_err").css('display', 'none');
                 }
             });
-            initCustomer();
+            initCustomerId();
             initProviderId();
-
         });
 
         function initProviderId() {
@@ -132,7 +131,7 @@
                 var h = "";
                 var services = "${rechargeInfo.services}";
                 for ( var i = 0; i < data.obj.length; i++) {
-                    h+="<input type='checkbox' "+(services.indexOf("["+data.obj[i].id+"]")>=0?"checked":"")+" value='"+data.obj[i].id+"'/>"+data.obj[i].companyName;
+                    h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
                 }
                 $("#providerId").html(h);
                 if ('${rechargeInfo}') {
@@ -143,14 +142,14 @@
             }
         }
 
-        function initCustomer() {
+        function initCustomerId() {
             var url = rootPath + '/customer/customerInfo/findAll.shtml';
             var data = CommnUtil.ajax(url, null,"json");
             if (data && data.code === 0 && data.obj) {
                 var h = "";
                 var services = "${rechargeInfo.services}";
                 for ( var i = 0; i < data.obj.length; i++) {
-                    h+="<input type='checkbox' "+(services.indexOf("["+data.obj[i].id+"]")>=0?"checked":"")+" value='"+data.obj[i].id+"'/>"+data.obj[i].companyName;
+                    h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
                 }
                 $("#customerId").html(h);
                 if ('${rechargeInfo}') {

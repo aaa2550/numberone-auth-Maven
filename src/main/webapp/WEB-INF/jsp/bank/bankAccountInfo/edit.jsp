@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@include file="/common/common.jspf" %>
-    <%--<script type="text/javascript" src="${ctx}/js/account/keepmeAccountInfo/add.js"></script>--%>
+    <%--<script type="text/javascript" src="${ctx}/js/customer/bankAccountInfo/add.js"></script>--%>
     <style type="text/css">
         #but button {
             margin-bottom: 5px;
@@ -48,55 +48,37 @@
                     });
                 },
                 rules : {
-                    "keepmeAccountInfoFormMap.appId" : {
+                    "bankAccountInfoFormMap.companyId" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.platform" : {
+                    "bankAccountInfoFormMap.type" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.keepmeAccounId" : {
-                        required : true,
-                    },
-                    "keepmeAccountInfoFormMap.keepmeAccountName" : {
-                        required : true,
-                    },
-                    "keepmeAccountInfoFormMap.providerId" : {
+                    "bankAccountInfoFormMap.accountName" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.qq" : {
+                    "bankAccountInfoFormMap.bankName" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.industry" : {
-                        required : true
-                    },
-                    "keepmeAccountInfoFormMap.generalizeLink" : {
+                    "bankAccountInfoFormMap.accountCode" : {
                         required : true
                     }
                 },
                 messages : {
-                    "keepmeAccountInfoFormMap.appId" : {
-                        required : "APPID不能为空"
+                    "bankAccountInfoFormMap.companyId" : {
+                        required : "必须选择公司"
                     },
-                    "keepmeAccountInfoFormMap.platform" : {
-                        required : "平台不能为空"
+                    "bankAccountInfoFormMap.type" : {
+                        required : "必须选择类型"
                     },
-                    "keepmeAccountInfoFormMap.keepmeAccounId" : {
-                        required : "点我账号不能为空"
+                    "bankAccountInfoFormMap.accountName" : {
+                        required : "账户名称不能为空"
                     },
-                    "keepmeAccountInfoFormMap.keepmeAccountName" : {
-                        required : "点我名称不能为空"
+                    "bankAccountInfoFormMap.bankName" : {
+                        required : "公司名称不能为空"
                     },
-                    "keepmeAccountInfoFormMap.providerId" : {
-                        required : "必须选择一个供应商"
-                    },
-                    "keepmeAccountInfoFormMap.qq" : {
-                        required : "绑定QQ不能为空"
-                    },
-                    "keepmeAccountInfoFormMap.industry" : {
-                        required : "行业不能为空"
-                    },
-                    "keepmeAccountInfoFormMap.generalizeLink" : {
-                        required : "推广链接不能为空"
+                    "bankAccountInfoFormMap.accountCode" : {
+                        required : "账户号不能为空"
                     }
                 },
                 errorPlacement : function(error, element) {// 自定义提示错误位置
@@ -108,29 +90,21 @@
                     $(".l_err").css('display', 'none');
                 }
             });
-            initPlatform();
-            initServices();
-            initProviderId();
-
-        });
-
-        function initProviderId() {
-            var url = rootPath + '/provider/providerInfo/findAll.shtml';
+            var url = rootPath + '/dictionary/findByBusinessType.shtml?businessType=1';
             var data = CommnUtil.ajax(url, null,"json");
             if (data && data.code === 0 && data.obj) {
-                var h = "";
-                var services = "${keepmeAccountInfo.services}";
+                var h = "<option selected>请选择</option>";
                 for ( var i = 0; i < data.obj.length; i++) {
-                    h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
+                    h+="<option value='" + data.obj[i].businessTypeIndex + "'>"+ data.obj[i].businessTypeName + "</option>";
                 }
-                $("#providerId").html(h);
-                if ('${keepmeAccountInfo}') {
-                    $("#providerId").val("${keepmeAccountInfo.providerId}");
+                $("#businessType").html(h);
+                if ('${bankAccountInfo}') {
+                    init();
                 }
             } else {
                 layer.msg("获取菜单信息错误，请联系管理员！");
             }
-        }
+        });
 
         function initServices() {
             var url = rootPath + '/dictionary/findByBusinessType.shtml?businessType=3';
@@ -162,9 +136,32 @@
                 layer.msg("获取菜单信息错误，请联系管理员！");
             }
         }
-
         function but(v){
-            if(v.value==2){
+            if (v.value==1) {
+                $("#companyId").html("<option value='1'>点我公司</option>");
+            } else {
+                var url = "";
+                if (v.value==2) {
+                    url = rootPath + '/customer/customerInfo/findAll.shtml';
+                } else {
+                    url = rootPath + '/provider/providerInfo/findAll.shtml';
+                }
+                var data = CommnUtil.ajax(url, null,"json");
+                if (data && data.code === 0 && data.obj) {
+                    var h = "";
+                    for ( var i = 0; i < data.obj.length; i++) {
+                        h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
+                    }
+                    $("#companyId").html(h);
+                    if ('${bankAccountInfo}') {
+                        $("#companyId").val("${bankAccountInfo.companyId}");
+                    }
+                } else {
+                    layer.msg("获取菜单信息错误，请联系管理员！");
+                }
+            }
+
+            if(v.value==1){
                 showBut();
             }else{
                 $("#divbut").css("display","none");
@@ -187,31 +184,43 @@
                 layer.msg("获取按扭列表失败！");
             }
         }
+        function init() {
+            if ('${bankAccountInfo}') {
+                $("#type").val(${bankAccountInfo.type});
+            } else {
+                $("#type").val(1);
+                but({value : ${bankAccountInfo.type}});
+            }
+        }
     </script>
 </head>
 <body>
 <div class="l_err" style="width: 100%; margin-top: 2px;"></div>
 <form id="form" name="form" class="form-horizontal" method="post"
-      action="${pageContext.request.contextPath}/account/keepmeAccountInfo/editEntity.shtml">
+      action="${pageContext.request.contextPath}/customer/bankAccountInfo/editEntity.shtml">
     <input type="hidden" class="form-control checkacc"
-           value="${keepmeAccountInfo.id}" name="keepmeAccountInfoFormMap.id" id="id">
+           value="${bankAccountInfo.id}" name="bankAccountInfoFormMap.id" id="id">
     <section class="panel panel-default">
         <div class="panel-body">
-            <div class="form-group">
-                <label class="col-sm-3 control-label">APPID</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="APPID" value="${keepmeAccountInfo.appId}" name="keepmeAccountInfoFormMap.appId"
-                           id="appId">
-                </div>
-            </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">账户ID</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="账户ID" value="${keepmeAccountInfo.keepmeAccounId}" name="keepmeAccountInfoFormMap.keepmeAccounId"
-                           id="keepmeAccounId">
+                    <select id="type" name="bankAccountInfoFormMap.type" class="form-control m-b"
+                            tabindex="-1" onclick="but(this)">
+                        <option selected value="1">------ 我方 ------</option>
+                        <option value="2">------ 客户 ------</option>
+                        <option value="3">------ 供应商 ------</option>
+                    </select>
+                </div>
+            </div>
+            <div class="line line-dashed line-lg pull-in"></div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">公司</label>
+                <div class="col-sm-9">
+                    <select id="companyId" name="bankAccountInfoFormMap.companyId" class="form-control m-b"
+                            tabindex="-1">
+                    </select>
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
@@ -219,59 +228,26 @@
                 <label class="col-sm-3 control-label">账户名称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="账户名称" value="${keepmeAccountInfo.keepmeAccountName}" name="keepmeAccountInfoFormMap.keepmeAccountName"
-                           id="keepmeAccountName">
+                           placeholder="账户名称" value="${bankAccountInfo.accountName}" name="bankAccountInfoFormMap.accountName"
+                           id="accountName">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">QQ</label>
+                <label class="col-sm-3 control-label">公司名称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="QQ" value="${keepmeAccountInfo.qq}" name="keepmeAccountInfoFormMap.qq"
-                           id="qq">
+                           placeholder="公司名称" value="${bankAccountInfo.bankName}" name="bankAccountInfoFormMap.bankName"
+                           id="bankName">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">行业</label>
+                <label class="col-sm-3 control-label">账户号</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="行业" value="${keepmeAccountInfo.industry}" name="keepmeAccountInfoFormMap.industry"
-                           id="industry">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">推广链接</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="推广链接" value="${keepmeAccountInfo.generalizeLink}" name="keepmeAccountInfoFormMap.generalizeLink"
-                           id="generalizeLink">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">投放平台</label>
-                <div class="col-sm-9">
-                    <select id="platform" name="keepmeAccountInfoFormMap.platform" class="form-control m-b"
-                            tabindex="-1">
-                    </select>
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">供应商</label>
-                <div class="col-sm-9">
-                    <select id="providerId" name="keepmeAccountInfoFormMap.providerId" class="form-control m-b"
-                            tabindex="-1">
-                    </select>
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">功能类型</label>
-                <div class="col-sm-9" id="services">
+                           placeholder="账户号" value="${bankAccountInfo.accountCode}" name="bankAccountInfoFormMap.accountCode"
+                           id="accountCode">
                 </div>
             </div>
         </div>

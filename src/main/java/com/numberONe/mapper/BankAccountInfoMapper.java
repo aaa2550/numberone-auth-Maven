@@ -1,8 +1,10 @@
 package com.numberONe.mapper;
 
+import com.numberONe.mapper.base.BaseMapper;
 import com.numberONe.tempEntity.BankAccountInfo;
 
-public interface BankAccountInfoMapper {
+public interface BankAccountInfoMapper extends BaseMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(BankAccountInfo record);
