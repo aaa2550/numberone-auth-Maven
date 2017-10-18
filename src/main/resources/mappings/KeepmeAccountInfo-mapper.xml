@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.numberONe.mapper.KeepmeAccountInfoMapper">
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="appId" jdbcType="VARCHAR" property="appId" />
-    <result column="platform" jdbcType="INTEGER" property="platform" />
-    <result column="platformName" jdbcType="VARCHAR" property="platformName" />
-    <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeAccountName" />
-    <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeAccounId" />
-    <result column="providerId" jdbcType="INTEGER" property="providerId" />
-    <result column="providerName" jdbcType="VARCHAR" property="providerName" />
-    <result column="qq" jdbcType="VARCHAR" property="qq" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="generalizeLink" jdbcType="VARCHAR" property="generalizeLink" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="passStatus" jdbcType="INTEGER" property="passStatus" />
-    <result column="passTime" jdbcType="TIMESTAMP" property="passTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="appId" jdbcType="VARCHAR" property="appId"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="platformName" jdbcType="VARCHAR" property="platformName"/>
+        <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeAccountName"/>
+        <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeAccounId"/>
+        <result column="providerId" jdbcType="INTEGER" property="providerId"/>
+        <result column="providerName" jdbcType="VARCHAR" property="providerName"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="generalizeLink" jdbcType="VARCHAR" property="generalizeLink"/>
+        <result column="services" jdbcType="VARCHAR" property="services"/>
+        <result column="passStatus" jdbcType="INTEGER" property="passStatus"/>
+        <result column="passTime" jdbcType="TIMESTAMP" property="passTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, appId, platform, platformName, keepmeAccountName, keepmeAccounId, 
     providerId, providerName, qq, industry, generalizeLink, services, passStatus, passTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from keepme_account_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from keepme_account_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from keepme_account_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     insert into keepme_account_info (id, createTime, updateTime, 
       appId, platform, platformName, 
       keepmeAccountName, keepmeAccounId, providerId, 
@@ -47,161 +47,161 @@
       #{generalizeLink,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{passStatus,jdbcType=INTEGER}, 
       #{passTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    insert into keepme_account_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="updateTime != null">
-        updateTime,
-      </if>
-      <if test="appId != null">
-        appId,
-      </if>
-      <if test="platform != null">
-        platform,
-      </if>
-      <if test="platformName != null">
-        platformName,
-      </if>
-      <if test="keepmeAccountName != null">
-        keepmeAccountName,
-      </if>
-      <if test="keepmeAccounId != null">
-        keepmeAccounId,
-      </if>
-      <if test="providerId != null">
-        providerId,
-      </if>
-      <if test="providerName != null">
-        providerName,
-      </if>
-      <if test="qq != null">
-        qq,
-      </if>
-      <if test="industry != null">
-        industry,
-      </if>
-      <if test="generalizeLink != null">
-        generalizeLink,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="passStatus != null">
-        passStatus,
-      </if>
-      <if test="passTime != null">
-        passTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appId != null">
-        #{appId,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformName != null">
-        #{platformName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccountName != null">
-        #{keepmeAccountName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccounId != null">
-        #{keepmeAccounId,jdbcType=VARCHAR},
-      </if>
-      <if test="providerId != null">
-        #{providerId,jdbcType=INTEGER},
-      </if>
-      <if test="providerName != null">
-        #{providerName,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizeLink != null">
-        #{generalizeLink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passStatus != null">
-        #{passStatus,jdbcType=INTEGER},
-      </if>
-      <if test="passTime != null">
-        #{passTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    update keepme_account_info
-    <set>
-      <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        updateTime = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appId != null">
-        appId = #{appId,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformName != null">
-        platformName = #{platformName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccountName != null">
-        keepmeAccountName = #{keepmeAccountName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccounId != null">
-        keepmeAccounId = #{keepmeAccounId,jdbcType=VARCHAR},
-      </if>
-      <if test="providerId != null">
-        providerId = #{providerId,jdbcType=INTEGER},
-      </if>
-      <if test="providerName != null">
-        providerName = #{providerName,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        industry = #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizeLink != null">
-        generalizeLink = #{generalizeLink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passStatus != null">
-        passStatus = #{passStatus,jdbcType=INTEGER},
-      </if>
-      <if test="passTime != null">
-        passTime = #{passTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        insert into keepme_account_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="appId != null">
+                appId,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="platformName != null">
+                platformName,
+            </if>
+            <if test="keepmeAccountName != null">
+                keepmeAccountName,
+            </if>
+            <if test="keepmeAccounId != null">
+                keepmeAccounId,
+            </if>
+            <if test="providerId != null">
+                providerId,
+            </if>
+            <if test="providerName != null">
+                providerName,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="industry != null">
+                industry,
+            </if>
+            <if test="generalizeLink != null">
+                generalizeLink,
+            </if>
+            <if test="services != null">
+                services,
+            </if>
+            <if test="passStatus != null">
+                passStatus,
+            </if>
+            <if test="passTime != null">
+                passTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appId != null">
+                #{appId,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformName != null">
+                #{platformName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccountName != null">
+                #{keepmeAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccounId != null">
+                #{keepmeAccounId,jdbcType=VARCHAR},
+            </if>
+            <if test="providerId != null">
+                #{providerId,jdbcType=INTEGER},
+            </if>
+            <if test="providerName != null">
+                #{providerName,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizeLink != null">
+                #{generalizeLink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passStatus != null">
+                #{passStatus,jdbcType=INTEGER},
+            </if>
+            <if test="passTime != null">
+                #{passTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        update keepme_account_info
+        <set>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appId != null">
+                appId = #{appId,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformName != null">
+                platformName = #{platformName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccountName != null">
+                keepmeAccountName = #{keepmeAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccounId != null">
+                keepmeAccounId = #{keepmeAccounId,jdbcType=VARCHAR},
+            </if>
+            <if test="providerId != null">
+                providerId = #{providerId,jdbcType=INTEGER},
+            </if>
+            <if test="providerName != null">
+                providerName = #{providerName,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizeLink != null">
+                generalizeLink = #{generalizeLink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                services = #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passStatus != null">
+                passStatus = #{passStatus,jdbcType=INTEGER},
+            </if>
+            <if test="passTime != null">
+                passTime = #{passTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     update keepme_account_info
     set createTime = #{createTime,jdbcType=TIMESTAMP},
       updateTime = #{updateTime,jdbcType=TIMESTAMP},
@@ -220,39 +220,39 @@
       passTime = #{passTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="appId" jdbcType="VARCHAR" property="appId" />
-    <result column="platform" jdbcType="INTEGER" property="platform" />
-    <result column="platformName" jdbcType="VARCHAR" property="platformName" />
-    <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeAccountName" />
-    <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeAccounId" />
-    <result column="providerId" jdbcType="INTEGER" property="providerId" />
-    <result column="providerName" jdbcType="VARCHAR" property="providerName" />
-    <result column="qq" jdbcType="VARCHAR" property="qq" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="generalizeLink" jdbcType="VARCHAR" property="generalizeLink" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="passStatus" jdbcType="INTEGER" property="passStatus" />
-    <result column="passTime" jdbcType="TIMESTAMP" property="passTime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="appId" jdbcType="VARCHAR" property="appId"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="platformName" jdbcType="VARCHAR" property="platformName"/>
+        <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeAccountName"/>
+        <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeAccounId"/>
+        <result column="providerId" jdbcType="INTEGER" property="providerId"/>
+        <result column="providerName" jdbcType="VARCHAR" property="providerName"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="generalizeLink" jdbcType="VARCHAR" property="generalizeLink"/>
+        <result column="services" jdbcType="VARCHAR" property="services"/>
+        <result column="passStatus" jdbcType="INTEGER" property="passStatus"/>
+        <result column="passTime" jdbcType="TIMESTAMP" property="passTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, appId, platform, platformName, keepmeAccountName, keepmeAccounId, 
     providerId, providerName, qq, industry, generalizeLink, services, passStatus, passTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from keepme_account_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from keepme_account_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from keepme_account_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     insert into keepme_account_info (id, createTime, updateTime, 
       appId, platform, platformName, 
       keepmeAccountName, keepmeAccounId, providerId, 
@@ -266,161 +266,161 @@
       #{generalizeLink,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{passStatus,jdbcType=INTEGER}, 
       #{passTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    insert into keepme_account_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="updateTime != null">
-        updateTime,
-      </if>
-      <if test="appId != null">
-        appId,
-      </if>
-      <if test="platform != null">
-        platform,
-      </if>
-      <if test="platformName != null">
-        platformName,
-      </if>
-      <if test="keepmeAccountName != null">
-        keepmeAccountName,
-      </if>
-      <if test="keepmeAccounId != null">
-        keepmeAccounId,
-      </if>
-      <if test="providerId != null">
-        providerId,
-      </if>
-      <if test="providerName != null">
-        providerName,
-      </if>
-      <if test="qq != null">
-        qq,
-      </if>
-      <if test="industry != null">
-        industry,
-      </if>
-      <if test="generalizeLink != null">
-        generalizeLink,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="passStatus != null">
-        passStatus,
-      </if>
-      <if test="passTime != null">
-        passTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appId != null">
-        #{appId,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformName != null">
-        #{platformName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccountName != null">
-        #{keepmeAccountName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccounId != null">
-        #{keepmeAccounId,jdbcType=VARCHAR},
-      </if>
-      <if test="providerId != null">
-        #{providerId,jdbcType=INTEGER},
-      </if>
-      <if test="providerName != null">
-        #{providerName,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizeLink != null">
-        #{generalizeLink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passStatus != null">
-        #{passStatus,jdbcType=INTEGER},
-      </if>
-      <if test="passTime != null">
-        #{passTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    update keepme_account_info
-    <set>
-      <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        updateTime = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appId != null">
-        appId = #{appId,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformName != null">
-        platformName = #{platformName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccountName != null">
-        keepmeAccountName = #{keepmeAccountName,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeAccounId != null">
-        keepmeAccounId = #{keepmeAccounId,jdbcType=VARCHAR},
-      </if>
-      <if test="providerId != null">
-        providerId = #{providerId,jdbcType=INTEGER},
-      </if>
-      <if test="providerName != null">
-        providerName = #{providerName,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        industry = #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizeLink != null">
-        generalizeLink = #{generalizeLink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passStatus != null">
-        passStatus = #{passStatus,jdbcType=INTEGER},
-      </if>
-      <if test="passTime != null">
-        passTime = #{passTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        insert into keepme_account_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="appId != null">
+                appId,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="platformName != null">
+                platformName,
+            </if>
+            <if test="keepmeAccountName != null">
+                keepmeAccountName,
+            </if>
+            <if test="keepmeAccounId != null">
+                keepmeAccounId,
+            </if>
+            <if test="providerId != null">
+                providerId,
+            </if>
+            <if test="providerName != null">
+                providerName,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="industry != null">
+                industry,
+            </if>
+            <if test="generalizeLink != null">
+                generalizeLink,
+            </if>
+            <if test="services != null">
+                services,
+            </if>
+            <if test="passStatus != null">
+                passStatus,
+            </if>
+            <if test="passTime != null">
+                passTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appId != null">
+                #{appId,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformName != null">
+                #{platformName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccountName != null">
+                #{keepmeAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccounId != null">
+                #{keepmeAccounId,jdbcType=VARCHAR},
+            </if>
+            <if test="providerId != null">
+                #{providerId,jdbcType=INTEGER},
+            </if>
+            <if test="providerName != null">
+                #{providerName,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizeLink != null">
+                #{generalizeLink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passStatus != null">
+                #{passStatus,jdbcType=INTEGER},
+            </if>
+            <if test="passTime != null">
+                #{passTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        update keepme_account_info
+        <set>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appId != null">
+                appId = #{appId,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformName != null">
+                platformName = #{platformName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccountName != null">
+                keepmeAccountName = #{keepmeAccountName,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeAccounId != null">
+                keepmeAccounId = #{keepmeAccounId,jdbcType=VARCHAR},
+            </if>
+            <if test="providerId != null">
+                providerId = #{providerId,jdbcType=INTEGER},
+            </if>
+            <if test="providerName != null">
+                providerName = #{providerName,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizeLink != null">
+                generalizeLink = #{generalizeLink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                services = #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passStatus != null">
+                passStatus = #{passStatus,jdbcType=INTEGER},
+            </if>
+            <if test="passTime != null">
+                passTime = #{passTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     update keepme_account_info
     set createTime = #{createTime,jdbcType=TIMESTAMP},
       updateTime = #{updateTime,jdbcType=TIMESTAMP},
@@ -439,39 +439,39 @@
       passTime = #{passTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="appId" jdbcType="VARCHAR" property="appid" />
-    <result column="platform" jdbcType="INTEGER" property="platform" />
-    <result column="platformName" jdbcType="VARCHAR" property="platformname" />
-    <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname" />
-    <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid" />
-    <result column="providerId" jdbcType="INTEGER" property="providerid" />
-    <result column="providerName" jdbcType="VARCHAR" property="providername" />
-    <result column="qq" jdbcType="VARCHAR" property="qq" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="passStatus" jdbcType="INTEGER" property="passstatus" />
-    <result column="passTime" jdbcType="TIMESTAMP" property="passtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="appId" jdbcType="VARCHAR" property="appid"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="platformName" jdbcType="VARCHAR" property="platformname"/>
+        <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname"/>
+        <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid"/>
+        <result column="providerId" jdbcType="INTEGER" property="providerid"/>
+        <result column="providerName" jdbcType="VARCHAR" property="providername"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink"/>
+        <result column="services" jdbcType="VARCHAR" property="services"/>
+        <result column="passStatus" jdbcType="INTEGER" property="passstatus"/>
+        <result column="passTime" jdbcType="TIMESTAMP" property="passtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, appId, platform, platformName, keepmeAccountName, keepmeAccounId, 
     providerId, providerName, qq, industry, generalizeLink, services, passStatus, passTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from keepme_account_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from keepme_account_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from keepme_account_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     insert into keepme_account_info (id, createTime, updateTime, 
       appId, platform, platformName, 
       keepmeAccountName, keepmeAccounId, providerId, 
@@ -485,161 +485,161 @@
       #{generalizelink,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{passstatus,jdbcType=INTEGER}, 
       #{passtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    insert into keepme_account_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
-      <if test="updatetime != null">
-        updateTime,
-      </if>
-      <if test="appid != null">
-        appId,
-      </if>
-      <if test="platform != null">
-        platform,
-      </if>
-      <if test="platformname != null">
-        platformName,
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName,
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId,
-      </if>
-      <if test="providerid != null">
-        providerId,
-      </if>
-      <if test="providername != null">
-        providerName,
-      </if>
-      <if test="qq != null">
-        qq,
-      </if>
-      <if test="industry != null">
-        industry,
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="passstatus != null">
-        passStatus,
-      </if>
-      <if test="passtime != null">
-        passTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformname != null">
-        #{platformname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        #{passstatus,jdbcType=INTEGER},
-      </if>
-      <if test="passtime != null">
-        #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    update keepme_account_info
-    <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        appId = #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformname != null">
-        platformName = #{platformname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        providerId = #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        providerName = #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        industry = #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink = #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        passStatus = #{passstatus,jdbcType=INTEGER},
-      </if>
-      <if test="passtime != null">
-        passTime = #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        insert into keepme_account_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="appid != null">
+                appId,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="platformname != null">
+                platformName,
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName,
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId,
+            </if>
+            <if test="providerid != null">
+                providerId,
+            </if>
+            <if test="providername != null">
+                providerName,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="industry != null">
+                industry,
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink,
+            </if>
+            <if test="services != null">
+                services,
+            </if>
+            <if test="passstatus != null">
+                passStatus,
+            </if>
+            <if test="passtime != null">
+                passTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformname != null">
+                #{platformname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                #{passstatus,jdbcType=INTEGER},
+            </if>
+            <if test="passtime != null">
+                #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        update keepme_account_info
+        <set>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                appId = #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformname != null">
+                platformName = #{platformname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                providerId = #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                providerName = #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink = #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                services = #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                passStatus = #{passstatus,jdbcType=INTEGER},
+            </if>
+            <if test="passtime != null">
+                passTime = #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     update keepme_account_info
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
@@ -658,39 +658,39 @@
       passTime = #{passtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="appId" jdbcType="VARCHAR" property="appid" />
-    <result column="platform" jdbcType="INTEGER" property="platform" />
-    <result column="platformName" jdbcType="VARCHAR" property="platformname" />
-    <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname" />
-    <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid" />
-    <result column="providerId" jdbcType="INTEGER" property="providerid" />
-    <result column="providerName" jdbcType="VARCHAR" property="providername" />
-    <result column="qq" jdbcType="VARCHAR" property="qq" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="passStatus" jdbcType="INTEGER" property="passstatus" />
-    <result column="passTime" jdbcType="TIMESTAMP" property="passtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="appId" jdbcType="VARCHAR" property="appid"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="platformName" jdbcType="VARCHAR" property="platformname"/>
+        <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname"/>
+        <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid"/>
+        <result column="providerId" jdbcType="INTEGER" property="providerid"/>
+        <result column="providerName" jdbcType="VARCHAR" property="providername"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink"/>
+        <result column="services" jdbcType="VARCHAR" property="services"/>
+        <result column="passStatus" jdbcType="INTEGER" property="passstatus"/>
+        <result column="passTime" jdbcType="TIMESTAMP" property="passtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, appId, platform, platformName, keepmeAccountName, keepmeAccounId, 
     providerId, providerName, qq, industry, generalizeLink, services, passStatus, passTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from keepme_account_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from keepme_account_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from keepme_account_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     insert into keepme_account_info (id, createTime, updateTime, 
       appId, platform, platformName, 
       keepmeAccountName, keepmeAccounId, providerId, 
@@ -704,161 +704,161 @@
       #{generalizelink,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{passstatus,jdbcType=INTEGER}, 
       #{passtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    insert into keepme_account_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
-      <if test="updatetime != null">
-        updateTime,
-      </if>
-      <if test="appid != null">
-        appId,
-      </if>
-      <if test="platform != null">
-        platform,
-      </if>
-      <if test="platformname != null">
-        platformName,
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName,
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId,
-      </if>
-      <if test="providerid != null">
-        providerId,
-      </if>
-      <if test="providername != null">
-        providerName,
-      </if>
-      <if test="qq != null">
-        qq,
-      </if>
-      <if test="industry != null">
-        industry,
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="passstatus != null">
-        passStatus,
-      </if>
-      <if test="passtime != null">
-        passTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformname != null">
-        #{platformname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        #{passstatus,jdbcType=INTEGER},
-      </if>
-      <if test="passtime != null">
-        #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    update keepme_account_info
-    <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        appId = #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformname != null">
-        platformName = #{platformname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        providerId = #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        providerName = #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        industry = #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink = #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        passStatus = #{passstatus,jdbcType=INTEGER},
-      </if>
-      <if test="passtime != null">
-        passTime = #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        insert into keepme_account_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="appid != null">
+                appId,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="platformname != null">
+                platformName,
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName,
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId,
+            </if>
+            <if test="providerid != null">
+                providerId,
+            </if>
+            <if test="providername != null">
+                providerName,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="industry != null">
+                industry,
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink,
+            </if>
+            <if test="services != null">
+                services,
+            </if>
+            <if test="passstatus != null">
+                passStatus,
+            </if>
+            <if test="passtime != null">
+                passTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformname != null">
+                #{platformname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                #{passstatus,jdbcType=INTEGER},
+            </if>
+            <if test="passtime != null">
+                #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        update keepme_account_info
+        <set>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                appId = #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformname != null">
+                platformName = #{platformname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                providerId = #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                providerName = #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink = #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                services = #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                passStatus = #{passstatus,jdbcType=INTEGER},
+            </if>
+            <if test="passtime != null">
+                passTime = #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     update keepme_account_info
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
@@ -877,39 +877,39 @@
       passTime = #{passtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="appId" jdbcType="VARCHAR" property="appid" />
-    <result column="platform" jdbcType="INTEGER" property="platform" />
-    <result column="platformName" jdbcType="VARCHAR" property="platformname" />
-    <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname" />
-    <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid" />
-    <result column="providerId" jdbcType="INTEGER" property="providerid" />
-    <result column="providerName" jdbcType="VARCHAR" property="providername" />
-    <result column="qq" jdbcType="VARCHAR" property="qq" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="passStatus" jdbcType="INTEGER" property="passstatus" />
-    <result column="passTime" jdbcType="TIMESTAMP" property="passtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="appId" jdbcType="VARCHAR" property="appid"/>
+        <result column="platform" jdbcType="INTEGER" property="platform"/>
+        <result column="platformName" jdbcType="VARCHAR" property="platformname"/>
+        <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname"/>
+        <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid"/>
+        <result column="providerId" jdbcType="INTEGER" property="providerid"/>
+        <result column="providerName" jdbcType="VARCHAR" property="providername"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink"/>
+        <result column="services" jdbcType="VARCHAR" property="services"/>
+        <result column="passStatus" jdbcType="INTEGER" property="passstatus"/>
+        <result column="passTime" jdbcType="TIMESTAMP" property="passtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, appId, platform, platformName, keepmeAccountName, keepmeAccounId, 
     providerId, providerName, qq, industry, generalizeLink, services, passStatus, passTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from keepme_account_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from keepme_account_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from keepme_account_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     insert into keepme_account_info (id, createTime, updateTime, 
       appId, platform, platformName, 
       keepmeAccountName, keepmeAccounId, providerId, 
@@ -923,161 +923,161 @@
       #{generalizelink,jdbcType=VARCHAR}, #{services,jdbcType=VARCHAR}, #{passstatus,jdbcType=INTEGER}, 
       #{passtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    insert into keepme_account_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
-      <if test="updatetime != null">
-        updateTime,
-      </if>
-      <if test="appid != null">
-        appId,
-      </if>
-      <if test="platform != null">
-        platform,
-      </if>
-      <if test="platformname != null">
-        platformName,
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName,
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId,
-      </if>
-      <if test="providerid != null">
-        providerId,
-      </if>
-      <if test="providername != null">
-        providerName,
-      </if>
-      <if test="qq != null">
-        qq,
-      </if>
-      <if test="industry != null">
-        industry,
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="passstatus != null">
-        passStatus,
-      </if>
-      <if test="passtime != null">
-        passTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformname != null">
-        #{platformname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        #{passstatus,jdbcType=INTEGER},
-      </if>
-      <if test="passtime != null">
-        #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    update keepme_account_info
-    <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        appId = #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=INTEGER},
-      </if>
-      <if test="platformname != null">
-        platformName = #{platformname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        providerId = #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        providerName = #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        industry = #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink = #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        passStatus = #{passstatus,jdbcType=INTEGER},
-      </if>
-      <if test="passtime != null">
-        passTime = #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        insert into keepme_account_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="appid != null">
+                appId,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="platformname != null">
+                platformName,
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName,
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId,
+            </if>
+            <if test="providerid != null">
+                providerId,
+            </if>
+            <if test="providername != null">
+                providerName,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="industry != null">
+                industry,
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink,
+            </if>
+            <if test="services != null">
+                services,
+            </if>
+            <if test="passstatus != null">
+                passStatus,
+            </if>
+            <if test="passtime != null">
+                passTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformname != null">
+                #{platformname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                #{passstatus,jdbcType=INTEGER},
+            </if>
+            <if test="passtime != null">
+                #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        update keepme_account_info
+        <set>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                appId = #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=INTEGER},
+            </if>
+            <if test="platformname != null">
+                platformName = #{platformname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                providerId = #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                providerName = #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink = #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                services = #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                passStatus = #{passstatus,jdbcType=INTEGER},
+            </if>
+            <if test="passtime != null">
+                passTime = #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     update keepme_account_info
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
@@ -1096,38 +1096,38 @@
       passTime = #{passtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="appId" jdbcType="VARCHAR" property="appid" />
-    <result column="platform" jdbcType="VARCHAR" property="platform" />
-    <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname" />
-    <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid" />
-    <result column="providerId" jdbcType="INTEGER" property="providerid" />
-    <result column="providerName" jdbcType="VARCHAR" property="providername" />
-    <result column="qq" jdbcType="VARCHAR" property="qq" />
-    <result column="industry" jdbcType="VARCHAR" property="industry" />
-    <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink" />
-    <result column="services" jdbcType="VARCHAR" property="services" />
-    <result column="passStatus" jdbcType="VARCHAR" property="passstatus" />
-    <result column="passTime" jdbcType="TIMESTAMP" property="passtime" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.KeepmeAccountInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="appId" jdbcType="VARCHAR" property="appid"/>
+        <result column="platform" jdbcType="VARCHAR" property="platform"/>
+        <result column="keepmeAccountName" jdbcType="VARCHAR" property="keepmeaccountname"/>
+        <result column="keepmeAccounId" jdbcType="VARCHAR" property="keepmeaccounid"/>
+        <result column="providerId" jdbcType="INTEGER" property="providerid"/>
+        <result column="providerName" jdbcType="VARCHAR" property="providername"/>
+        <result column="qq" jdbcType="VARCHAR" property="qq"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="generalizeLink" jdbcType="VARCHAR" property="generalizelink"/>
+        <result column="services" jdbcType="VARCHAR" property="services"/>
+        <result column="passStatus" jdbcType="VARCHAR" property="passstatus"/>
+        <result column="passTime" jdbcType="TIMESTAMP" property="passtime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, appId, platform, keepmeAccountName, keepmeAccounId, providerId, 
     providerName, qq, industry, generalizeLink, services, passStatus, passTime
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from keepme_account_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from keepme_account_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from keepme_account_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     insert into keepme_account_info (id, createTime, updateTime, 
       appId, platform, keepmeAccountName, 
       keepmeAccounId, providerId, providerName, 
@@ -1141,152 +1141,152 @@
       #{services,jdbcType=VARCHAR}, #{passstatus,jdbcType=VARCHAR}, #{passtime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    insert into keepme_account_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
-      <if test="updatetime != null">
-        updateTime,
-      </if>
-      <if test="appid != null">
-        appId,
-      </if>
-      <if test="platform != null">
-        platform,
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName,
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId,
-      </if>
-      <if test="providerid != null">
-        providerId,
-      </if>
-      <if test="providername != null">
-        providerName,
-      </if>
-      <if test="qq != null">
-        qq,
-      </if>
-      <if test="industry != null">
-        industry,
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink,
-      </if>
-      <if test="services != null">
-        services,
-      </if>
-      <if test="passstatus != null">
-        passStatus,
-      </if>
-      <if test="passtime != null">
-        passTime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        #{platform,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        #{passstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="passtime != null">
-        #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
-    update keepme_account_info
-    <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="appid != null">
-        appId = #{appid,jdbcType=VARCHAR},
-      </if>
-      <if test="platform != null">
-        platform = #{platform,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccountname != null">
-        keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
-      </if>
-      <if test="keepmeaccounid != null">
-        keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
-      </if>
-      <if test="providerid != null">
-        providerId = #{providerid,jdbcType=INTEGER},
-      </if>
-      <if test="providername != null">
-        providerName = #{providername,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null">
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="industry != null">
-        industry = #{industry,jdbcType=VARCHAR},
-      </if>
-      <if test="generalizelink != null">
-        generalizeLink = #{generalizelink,jdbcType=VARCHAR},
-      </if>
-      <if test="services != null">
-        services = #{services,jdbcType=VARCHAR},
-      </if>
-      <if test="passstatus != null">
-        passStatus = #{passstatus,jdbcType=VARCHAR},
-      </if>
-      <if test="passtime != null">
-        passTime = #{passtime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        insert into keepme_account_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="appid != null">
+                appId,
+            </if>
+            <if test="platform != null">
+                platform,
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName,
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId,
+            </if>
+            <if test="providerid != null">
+                providerId,
+            </if>
+            <if test="providername != null">
+                providerName,
+            </if>
+            <if test="qq != null">
+                qq,
+            </if>
+            <if test="industry != null">
+                industry,
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink,
+            </if>
+            <if test="services != null">
+                services,
+            </if>
+            <if test="passstatus != null">
+                passStatus,
+            </if>
+            <if test="passtime != null">
+                passTime,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                #{passstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="passtime != null">
+                #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
+        update keepme_account_info
+        <set>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="appid != null">
+                appId = #{appid,jdbcType=VARCHAR},
+            </if>
+            <if test="platform != null">
+                platform = #{platform,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccountname != null">
+                keepmeAccountName = #{keepmeaccountname,jdbcType=VARCHAR},
+            </if>
+            <if test="keepmeaccounid != null">
+                keepmeAccounId = #{keepmeaccounid,jdbcType=VARCHAR},
+            </if>
+            <if test="providerid != null">
+                providerId = #{providerid,jdbcType=INTEGER},
+            </if>
+            <if test="providername != null">
+                providerName = #{providername,jdbcType=VARCHAR},
+            </if>
+            <if test="qq != null">
+                qq = #{qq,jdbcType=VARCHAR},
+            </if>
+            <if test="industry != null">
+                industry = #{industry,jdbcType=VARCHAR},
+            </if>
+            <if test="generalizelink != null">
+                generalizeLink = #{generalizelink,jdbcType=VARCHAR},
+            </if>
+            <if test="services != null">
+                services = #{services,jdbcType=VARCHAR},
+            </if>
+            <if test="passstatus != null">
+                passStatus = #{passstatus,jdbcType=VARCHAR},
+            </if>
+            <if test="passtime != null">
+                passTime = #{passtime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.KeepmeAccountInfo">
     update keepme_account_info
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},

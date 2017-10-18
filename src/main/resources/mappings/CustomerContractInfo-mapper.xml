@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.numberONe.mapper.CustomerContractInfoMapper">
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="customerType" jdbcType="INTEGER" property="customerType" />
-    <result column="businessType" jdbcType="INTEGER" property="businessType" />
-    <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName" />
-    <result column="contractCode" jdbcType="VARCHAR" property="contractCode" />
-    <result column="statisticsShortName" jdbcType="VARCHAR" property="statisticsShortName" />
-    <result column="ourCompanyName" jdbcType="VARCHAR" property="ourCompanyName" />
-    <result column="contractStartTime" jdbcType="TIMESTAMP" property="contractStartTime" />
-    <result column="contractEndTime" jdbcType="TIMESTAMP" property="contractEndTime" />
-    <result column="rebates" jdbcType="DECIMAL" property="rebates" />
-    <result column="orderfrom" jdbcType="INTEGER" property="orderfrom" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="customerType" jdbcType="INTEGER" property="customerType"/>
+        <result column="businessType" jdbcType="INTEGER" property="businessType"/>
+        <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName"/>
+        <result column="contractCode" jdbcType="VARCHAR" property="contractCode"/>
+        <result column="statisticsShortName" jdbcType="VARCHAR" property="statisticsShortName"/>
+        <result column="ourCompanyName" jdbcType="VARCHAR" property="ourCompanyName"/>
+        <result column="contractStartTime" jdbcType="TIMESTAMP" property="contractStartTime"/>
+        <result column="contractEndTime" jdbcType="TIMESTAMP" property="contractEndTime"/>
+        <result column="rebates" jdbcType="DECIMAL" property="rebates"/>
+        <result column="orderfrom" jdbcType="INTEGER" property="orderfrom"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, customerType, businessType, businessTypeName, contractCode, 
     statisticsShortName, ourCompanyName, contractStartTime, contractEndTime, rebates, 
     orderfrom, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_contract_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_contract_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from customer_contract_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
     insert into customer_contract_info (id, createTime, updateTime, 
       customerType, businessType, businessTypeName, 
       contractCode, statisticsShortName, ourCompanyName, 
@@ -46,143 +46,143 @@
       #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
-    insert into customer_contract_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="updateTime != null">
-        updateTime,
-      </if>
-      <if test="customerType != null">
-        customerType,
-      </if>
-      <if test="businessType != null">
-        businessType,
-      </if>
-      <if test="businessTypeName != null">
-        businessTypeName,
-      </if>
-      <if test="contractCode != null">
-        contractCode,
-      </if>
-      <if test="statisticsShortName != null">
-        statisticsShortName,
-      </if>
-      <if test="ourCompanyName != null">
-        ourCompanyName,
-      </if>
-      <if test="contractStartTime != null">
-        contractStartTime,
-      </if>
-      <if test="contractEndTime != null">
-        contractEndTime,
-      </if>
-      <if test="rebates != null">
-        rebates,
-      </if>
-      <if test="orderfrom != null">
-        orderfrom,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="customerType != null">
-        #{customerType,jdbcType=INTEGER},
-      </if>
-      <if test="businessType != null">
-        #{businessType,jdbcType=INTEGER},
-      </if>
-      <if test="businessTypeName != null">
-        #{businessTypeName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractCode != null">
-        #{contractCode,jdbcType=VARCHAR},
-      </if>
-      <if test="statisticsShortName != null">
-        #{statisticsShortName,jdbcType=VARCHAR},
-      </if>
-      <if test="ourCompanyName != null">
-        #{ourCompanyName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractStartTime != null">
-        #{contractStartTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="contractEndTime != null">
-        #{contractEndTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="rebates != null">
-        #{rebates,jdbcType=DECIMAL},
-      </if>
-      <if test="orderfrom != null">
-        #{orderfrom,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
-    update customer_contract_info
-    <set>
-      <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        updateTime = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="customerType != null">
-        customerType = #{customerType,jdbcType=INTEGER},
-      </if>
-      <if test="businessType != null">
-        businessType = #{businessType,jdbcType=INTEGER},
-      </if>
-      <if test="businessTypeName != null">
-        businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractCode != null">
-        contractCode = #{contractCode,jdbcType=VARCHAR},
-      </if>
-      <if test="statisticsShortName != null">
-        statisticsShortName = #{statisticsShortName,jdbcType=VARCHAR},
-      </if>
-      <if test="ourCompanyName != null">
-        ourCompanyName = #{ourCompanyName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractStartTime != null">
-        contractStartTime = #{contractStartTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="contractEndTime != null">
-        contractEndTime = #{contractEndTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="rebates != null">
-        rebates = #{rebates,jdbcType=DECIMAL},
-      </if>
-      <if test="orderfrom != null">
-        orderfrom = #{orderfrom,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+        insert into customer_contract_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="customerType != null">
+                customerType,
+            </if>
+            <if test="businessType != null">
+                businessType,
+            </if>
+            <if test="businessTypeName != null">
+                businessTypeName,
+            </if>
+            <if test="contractCode != null">
+                contractCode,
+            </if>
+            <if test="statisticsShortName != null">
+                statisticsShortName,
+            </if>
+            <if test="ourCompanyName != null">
+                ourCompanyName,
+            </if>
+            <if test="contractStartTime != null">
+                contractStartTime,
+            </if>
+            <if test="contractEndTime != null">
+                contractEndTime,
+            </if>
+            <if test="rebates != null">
+                rebates,
+            </if>
+            <if test="orderfrom != null">
+                orderfrom,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerType != null">
+                #{customerType,jdbcType=INTEGER},
+            </if>
+            <if test="businessType != null">
+                #{businessType,jdbcType=INTEGER},
+            </if>
+            <if test="businessTypeName != null">
+                #{businessTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCode != null">
+                #{contractCode,jdbcType=VARCHAR},
+            </if>
+            <if test="statisticsShortName != null">
+                #{statisticsShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="ourCompanyName != null">
+                #{ourCompanyName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractStartTime != null">
+                #{contractStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractEndTime != null">
+                #{contractEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rebates != null">
+                #{rebates,jdbcType=DECIMAL},
+            </if>
+            <if test="orderfrom != null">
+                #{orderfrom,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+        update customer_contract_info
+        <set>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerType != null">
+                customerType = #{customerType,jdbcType=INTEGER},
+            </if>
+            <if test="businessType != null">
+                businessType = #{businessType,jdbcType=INTEGER},
+            </if>
+            <if test="businessTypeName != null">
+                businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCode != null">
+                contractCode = #{contractCode,jdbcType=VARCHAR},
+            </if>
+            <if test="statisticsShortName != null">
+                statisticsShortName = #{statisticsShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="ourCompanyName != null">
+                ourCompanyName = #{ourCompanyName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractStartTime != null">
+                contractStartTime = #{contractStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractEndTime != null">
+                contractEndTime = #{contractEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rebates != null">
+                rebates = #{rebates,jdbcType=DECIMAL},
+            </if>
+            <if test="orderfrom != null">
+                orderfrom = #{orderfrom,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
     update customer_contract_info
     set createTime = #{createTime,jdbcType=TIMESTAMP},
       updateTime = #{updateTime,jdbcType=TIMESTAMP},
@@ -199,38 +199,38 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="customerType" jdbcType="INTEGER" property="customerType" />
-    <result column="businessType" jdbcType="INTEGER" property="businessType" />
-    <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName" />
-    <result column="contractCode" jdbcType="VARCHAR" property="contractCode" />
-    <result column="statisticsShortName" jdbcType="VARCHAR" property="statisticsShortName" />
-    <result column="ourCompanyName" jdbcType="VARCHAR" property="ourCompanyName" />
-    <result column="contractStartTime" jdbcType="TIMESTAMP" property="contractStartTime" />
-    <result column="contractEndTime" jdbcType="TIMESTAMP" property="contractEndTime" />
-    <result column="rebates" jdbcType="DECIMAL" property="rebates" />
-    <result column="orderfrom" jdbcType="INTEGER" property="orderfrom" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="customerType" jdbcType="INTEGER" property="customerType"/>
+        <result column="businessType" jdbcType="INTEGER" property="businessType"/>
+        <result column="businessTypeName" jdbcType="VARCHAR" property="businessTypeName"/>
+        <result column="contractCode" jdbcType="VARCHAR" property="contractCode"/>
+        <result column="statisticsShortName" jdbcType="VARCHAR" property="statisticsShortName"/>
+        <result column="ourCompanyName" jdbcType="VARCHAR" property="ourCompanyName"/>
+        <result column="contractStartTime" jdbcType="TIMESTAMP" property="contractStartTime"/>
+        <result column="contractEndTime" jdbcType="TIMESTAMP" property="contractEndTime"/>
+        <result column="rebates" jdbcType="DECIMAL" property="rebates"/>
+        <result column="orderfrom" jdbcType="INTEGER" property="orderfrom"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, customerType, businessType, businessTypeName, contractCode, 
     statisticsShortName, ourCompanyName, contractStartTime, contractEndTime, rebates, 
     orderfrom, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_contract_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_contract_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from customer_contract_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
     insert into customer_contract_info (id, createTime, updateTime, 
       customerType, businessType, businessTypeName, 
       contractCode, statisticsShortName, ourCompanyName, 
@@ -244,143 +244,143 @@
       #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
-    insert into customer_contract_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="updateTime != null">
-        updateTime,
-      </if>
-      <if test="customerType != null">
-        customerType,
-      </if>
-      <if test="businessType != null">
-        businessType,
-      </if>
-      <if test="businessTypeName != null">
-        businessTypeName,
-      </if>
-      <if test="contractCode != null">
-        contractCode,
-      </if>
-      <if test="statisticsShortName != null">
-        statisticsShortName,
-      </if>
-      <if test="ourCompanyName != null">
-        ourCompanyName,
-      </if>
-      <if test="contractStartTime != null">
-        contractStartTime,
-      </if>
-      <if test="contractEndTime != null">
-        contractEndTime,
-      </if>
-      <if test="rebates != null">
-        rebates,
-      </if>
-      <if test="orderfrom != null">
-        orderfrom,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="customerType != null">
-        #{customerType,jdbcType=INTEGER},
-      </if>
-      <if test="businessType != null">
-        #{businessType,jdbcType=INTEGER},
-      </if>
-      <if test="businessTypeName != null">
-        #{businessTypeName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractCode != null">
-        #{contractCode,jdbcType=VARCHAR},
-      </if>
-      <if test="statisticsShortName != null">
-        #{statisticsShortName,jdbcType=VARCHAR},
-      </if>
-      <if test="ourCompanyName != null">
-        #{ourCompanyName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractStartTime != null">
-        #{contractStartTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="contractEndTime != null">
-        #{contractEndTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="rebates != null">
-        #{rebates,jdbcType=DECIMAL},
-      </if>
-      <if test="orderfrom != null">
-        #{orderfrom,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
-    update customer_contract_info
-    <set>
-      <if test="createTime != null">
-        createTime = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null">
-        updateTime = #{updateTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="customerType != null">
-        customerType = #{customerType,jdbcType=INTEGER},
-      </if>
-      <if test="businessType != null">
-        businessType = #{businessType,jdbcType=INTEGER},
-      </if>
-      <if test="businessTypeName != null">
-        businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractCode != null">
-        contractCode = #{contractCode,jdbcType=VARCHAR},
-      </if>
-      <if test="statisticsShortName != null">
-        statisticsShortName = #{statisticsShortName,jdbcType=VARCHAR},
-      </if>
-      <if test="ourCompanyName != null">
-        ourCompanyName = #{ourCompanyName,jdbcType=VARCHAR},
-      </if>
-      <if test="contractStartTime != null">
-        contractStartTime = #{contractStartTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="contractEndTime != null">
-        contractEndTime = #{contractEndTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="rebates != null">
-        rebates = #{rebates,jdbcType=DECIMAL},
-      </if>
-      <if test="orderfrom != null">
-        orderfrom = #{orderfrom,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+        insert into customer_contract_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="updateTime != null">
+                updateTime,
+            </if>
+            <if test="customerType != null">
+                customerType,
+            </if>
+            <if test="businessType != null">
+                businessType,
+            </if>
+            <if test="businessTypeName != null">
+                businessTypeName,
+            </if>
+            <if test="contractCode != null">
+                contractCode,
+            </if>
+            <if test="statisticsShortName != null">
+                statisticsShortName,
+            </if>
+            <if test="ourCompanyName != null">
+                ourCompanyName,
+            </if>
+            <if test="contractStartTime != null">
+                contractStartTime,
+            </if>
+            <if test="contractEndTime != null">
+                contractEndTime,
+            </if>
+            <if test="rebates != null">
+                rebates,
+            </if>
+            <if test="orderfrom != null">
+                orderfrom,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerType != null">
+                #{customerType,jdbcType=INTEGER},
+            </if>
+            <if test="businessType != null">
+                #{businessType,jdbcType=INTEGER},
+            </if>
+            <if test="businessTypeName != null">
+                #{businessTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCode != null">
+                #{contractCode,jdbcType=VARCHAR},
+            </if>
+            <if test="statisticsShortName != null">
+                #{statisticsShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="ourCompanyName != null">
+                #{ourCompanyName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractStartTime != null">
+                #{contractStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractEndTime != null">
+                #{contractEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rebates != null">
+                #{rebates,jdbcType=DECIMAL},
+            </if>
+            <if test="orderfrom != null">
+                #{orderfrom,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+        update customer_contract_info
+        <set>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                updateTime = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customerType != null">
+                customerType = #{customerType,jdbcType=INTEGER},
+            </if>
+            <if test="businessType != null">
+                businessType = #{businessType,jdbcType=INTEGER},
+            </if>
+            <if test="businessTypeName != null">
+                businessTypeName = #{businessTypeName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractCode != null">
+                contractCode = #{contractCode,jdbcType=VARCHAR},
+            </if>
+            <if test="statisticsShortName != null">
+                statisticsShortName = #{statisticsShortName,jdbcType=VARCHAR},
+            </if>
+            <if test="ourCompanyName != null">
+                ourCompanyName = #{ourCompanyName,jdbcType=VARCHAR},
+            </if>
+            <if test="contractStartTime != null">
+                contractStartTime = #{contractStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractEndTime != null">
+                contractEndTime = #{contractEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rebates != null">
+                rebates = #{rebates,jdbcType=DECIMAL},
+            </if>
+            <if test="orderfrom != null">
+                orderfrom = #{orderfrom,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
     update customer_contract_info
     set createTime = #{createTime,jdbcType=TIMESTAMP},
       updateTime = #{updateTime,jdbcType=TIMESTAMP},
@@ -397,38 +397,38 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
-    <result column="customerType" jdbcType="INTEGER" property="customertype" />
-    <result column="businessType" jdbcType="INTEGER" property="businesstype" />
-    <result column="businessTypeName" jdbcType="VARCHAR" property="businesstypename" />
-    <result column="contractCode" jdbcType="VARCHAR" property="contractcode" />
-    <result column="statisticsShortName" jdbcType="VARCHAR" property="statisticsshortname" />
-    <result column="ourCompanyName" jdbcType="VARCHAR" property="ourcompanyname" />
-    <result column="contractStartTime" jdbcType="TIMESTAMP" property="contractstarttime" />
-    <result column="contractEndTime" jdbcType="TIMESTAMP" property="contractendtime" />
-    <result column="rebates" jdbcType="DECIMAL" property="rebates" />
-    <result column="orderfrom" jdbcType="INTEGER" property="orderfrom" />
-    <result column="remark" jdbcType="VARCHAR" property="remark" />
-  </resultMap>
-  <sql id="Base_Column_List">
+    <resultMap id="BaseResultMap" type="com.numberONe.tempEntity.CustomerContractInfo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="customerType" jdbcType="INTEGER" property="customertype"/>
+        <result column="businessType" jdbcType="INTEGER" property="businesstype"/>
+        <result column="businessTypeName" jdbcType="VARCHAR" property="businesstypename"/>
+        <result column="contractCode" jdbcType="VARCHAR" property="contractcode"/>
+        <result column="statisticsShortName" jdbcType="VARCHAR" property="statisticsshortname"/>
+        <result column="ourCompanyName" jdbcType="VARCHAR" property="ourcompanyname"/>
+        <result column="contractStartTime" jdbcType="TIMESTAMP" property="contractstarttime"/>
+        <result column="contractEndTime" jdbcType="TIMESTAMP" property="contractendtime"/>
+        <result column="rebates" jdbcType="DECIMAL" property="rebates"/>
+        <result column="orderfrom" jdbcType="INTEGER" property="orderfrom"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, createTime, updateTime, customerType, businessType, businessTypeName, contractCode, 
     statisticsShortName, ourCompanyName, contractStartTime, contractEndTime, rebates, 
     orderfrom, remark
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from customer_contract_info
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from customer_contract_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from customer_contract_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+    <insert id="insert" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
     insert into customer_contract_info (id, createTime, updateTime, 
       customerType, businessType, businessTypeName, 
       contractCode, statisticsShortName, ourCompanyName, 
@@ -442,143 +442,143 @@
       #{rebates,jdbcType=DECIMAL}, #{orderfrom,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
-    insert into customer_contract_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="createtime != null">
-        createTime,
-      </if>
-      <if test="updatetime != null">
-        updateTime,
-      </if>
-      <if test="customertype != null">
-        customerType,
-      </if>
-      <if test="businesstype != null">
-        businessType,
-      </if>
-      <if test="businesstypename != null">
-        businessTypeName,
-      </if>
-      <if test="contractcode != null">
-        contractCode,
-      </if>
-      <if test="statisticsshortname != null">
-        statisticsShortName,
-      </if>
-      <if test="ourcompanyname != null">
-        ourCompanyName,
-      </if>
-      <if test="contractstarttime != null">
-        contractStartTime,
-      </if>
-      <if test="contractendtime != null">
-        contractEndTime,
-      </if>
-      <if test="rebates != null">
-        rebates,
-      </if>
-      <if test="orderfrom != null">
-        orderfrom,
-      </if>
-      <if test="remark != null">
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="createtime != null">
-        #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="customertype != null">
-        #{customertype,jdbcType=INTEGER},
-      </if>
-      <if test="businesstype != null">
-        #{businesstype,jdbcType=INTEGER},
-      </if>
-      <if test="businesstypename != null">
-        #{businesstypename,jdbcType=VARCHAR},
-      </if>
-      <if test="contractcode != null">
-        #{contractcode,jdbcType=VARCHAR},
-      </if>
-      <if test="statisticsshortname != null">
-        #{statisticsshortname,jdbcType=VARCHAR},
-      </if>
-      <if test="ourcompanyname != null">
-        #{ourcompanyname,jdbcType=VARCHAR},
-      </if>
-      <if test="contractstarttime != null">
-        #{contractstarttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="contractendtime != null">
-        #{contractendtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="rebates != null">
-        #{rebates,jdbcType=DECIMAL},
-      </if>
-      <if test="orderfrom != null">
-        #{orderfrom,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
-    update customer_contract_info
-    <set>
-      <if test="createtime != null">
-        createTime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updatetime != null">
-        updateTime = #{updatetime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="customertype != null">
-        customerType = #{customertype,jdbcType=INTEGER},
-      </if>
-      <if test="businesstype != null">
-        businessType = #{businesstype,jdbcType=INTEGER},
-      </if>
-      <if test="businesstypename != null">
-        businessTypeName = #{businesstypename,jdbcType=VARCHAR},
-      </if>
-      <if test="contractcode != null">
-        contractCode = #{contractcode,jdbcType=VARCHAR},
-      </if>
-      <if test="statisticsshortname != null">
-        statisticsShortName = #{statisticsshortname,jdbcType=VARCHAR},
-      </if>
-      <if test="ourcompanyname != null">
-        ourCompanyName = #{ourcompanyname,jdbcType=VARCHAR},
-      </if>
-      <if test="contractstarttime != null">
-        contractStartTime = #{contractstarttime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="contractendtime != null">
-        contractEndTime = #{contractendtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="rebates != null">
-        rebates = #{rebates,jdbcType=DECIMAL},
-      </if>
-      <if test="orderfrom != null">
-        orderfrom = #{orderfrom,jdbcType=INTEGER},
-      </if>
-      <if test="remark != null">
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+    <insert id="insertSelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+        insert into customer_contract_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createtime != null">
+                createTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="customertype != null">
+                customerType,
+            </if>
+            <if test="businesstype != null">
+                businessType,
+            </if>
+            <if test="businesstypename != null">
+                businessTypeName,
+            </if>
+            <if test="contractcode != null">
+                contractCode,
+            </if>
+            <if test="statisticsshortname != null">
+                statisticsShortName,
+            </if>
+            <if test="ourcompanyname != null">
+                ourCompanyName,
+            </if>
+            <if test="contractstarttime != null">
+                contractStartTime,
+            </if>
+            <if test="contractendtime != null">
+                contractEndTime,
+            </if>
+            <if test="rebates != null">
+                rebates,
+            </if>
+            <if test="orderfrom != null">
+                orderfrom,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null">
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customertype != null">
+                #{customertype,jdbcType=INTEGER},
+            </if>
+            <if test="businesstype != null">
+                #{businesstype,jdbcType=INTEGER},
+            </if>
+            <if test="businesstypename != null">
+                #{businesstypename,jdbcType=VARCHAR},
+            </if>
+            <if test="contractcode != null">
+                #{contractcode,jdbcType=VARCHAR},
+            </if>
+            <if test="statisticsshortname != null">
+                #{statisticsshortname,jdbcType=VARCHAR},
+            </if>
+            <if test="ourcompanyname != null">
+                #{ourcompanyname,jdbcType=VARCHAR},
+            </if>
+            <if test="contractstarttime != null">
+                #{contractstarttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractendtime != null">
+                #{contractendtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rebates != null">
+                #{rebates,jdbcType=DECIMAL},
+            </if>
+            <if test="orderfrom != null">
+                #{orderfrom,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
+        update customer_contract_info
+        <set>
+            <if test="createtime != null">
+                createTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="customertype != null">
+                customerType = #{customertype,jdbcType=INTEGER},
+            </if>
+            <if test="businesstype != null">
+                businessType = #{businesstype,jdbcType=INTEGER},
+            </if>
+            <if test="businesstypename != null">
+                businessTypeName = #{businesstypename,jdbcType=VARCHAR},
+            </if>
+            <if test="contractcode != null">
+                contractCode = #{contractcode,jdbcType=VARCHAR},
+            </if>
+            <if test="statisticsshortname != null">
+                statisticsShortName = #{statisticsshortname,jdbcType=VARCHAR},
+            </if>
+            <if test="ourcompanyname != null">
+                ourCompanyName = #{ourcompanyname,jdbcType=VARCHAR},
+            </if>
+            <if test="contractstarttime != null">
+                contractStartTime = #{contractstarttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="contractendtime != null">
+                contractEndTime = #{contractendtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="rebates != null">
+                rebates = #{rebates,jdbcType=DECIMAL},
+            </if>
+            <if test="orderfrom != null">
+                orderfrom = #{orderfrom,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.numberONe.tempEntity.CustomerContractInfo">
     update customer_contract_info
     set createTime = #{createtime,jdbcType=TIMESTAMP},
       updateTime = #{updatetime,jdbcType=TIMESTAMP},
