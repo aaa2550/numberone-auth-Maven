@@ -231,13 +231,12 @@ CREATE TABLE `return_pay_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收付款信息导入表';
 
--- 返点详情表
-DROP TABLE IF EXISTS `rebates_info`;
-CREATE TABLE `rebates_info` (
+-- 客户返点详情表
+DROP TABLE IF EXISTS `customer_rebates_info`;
+CREATE TABLE `customer_rebates_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
-  `type` int(11) NOT NULL COMMENT '客户0|供应商1',
   `startTime` datetime NOT NULL COMMENT '返点开始日期',
   `endTime` datetime NOT NULL COMMENT '返点结束日期',
   `rebates` decimal(10,2) NOT NULL COMMENT '返点',
@@ -245,7 +244,22 @@ CREATE TABLE `rebates_info` (
   `userId` int(11) NOT NULL COMMENT '操作人ID',
   `userName` varchar(50) NOT NULL COMMENT '操作人名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收付款信息导入表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户返点详情表';
+
+-- 供应商返点详情表
+DROP TABLE IF EXISTS `provider_rebates_info`;
+CREATE TABLE `provider_rebates_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createTime` datetime NOT NULL COMMENT '创建时间',
+  `updateTime` datetime NOT NULL COMMENT '修改时间',
+  `startTime` datetime NOT NULL COMMENT '返点开始日期',
+  `endTime` datetime NOT NULL COMMENT '返点结束日期',
+  `rebates` decimal(10,2) NOT NULL COMMENT '返点',
+  `contractId` int(11) NOT NULL COMMENT '合同编号',
+  `userId` int(11) NOT NULL COMMENT '操作人ID',
+  `userName` varchar(50) NOT NULL COMMENT '操作人名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商返点详情表';
 
 -- 业务类型表
 DROP TABLE IF EXISTS `business_type`;
