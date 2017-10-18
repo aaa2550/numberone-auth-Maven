@@ -1,8 +1,10 @@
 package com.numberONe.mapper;
 
+import com.numberONe.mapper.base.BaseMapper;
 import com.numberONe.tempEntity.RechargeInfo;
 
-public interface RechargeInfoMapper {
+public interface RechargeInfoMapper extends BaseMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(RechargeInfo record);

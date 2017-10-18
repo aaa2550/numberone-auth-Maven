@@ -146,7 +146,7 @@ CREATE TABLE `recharge_info` (
   `providerName` varchar(150) NOT NULL COMMENT '供应商名称',
   `ourRebates` decimal(10,2) NOT NULL COMMENT '我方返点',
   `customerRebates` decimal(10,2) NOT NULL COMMENT '客户返点',
-  `accountRecharge` decimal(10,2) NOT NULL COMMENT '我方返点',
+  `accountRecharge` decimal(10,2) NOT NULL COMMENT '账户充值',
   `rebatesRecharge` decimal(10,2) NOT NULL COMMENT '返点充值',
   `rechargeCost` decimal(10,2) NOT NULL COMMENT '充值成本',
   PRIMARY KEY (`id`)

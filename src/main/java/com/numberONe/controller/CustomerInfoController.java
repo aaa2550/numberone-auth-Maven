@@ -5,10 +5,7 @@ package com.numberONe.controller;
 import javax.inject.Inject;
 
 import com.numberONe.annotation.SystemLog;
-import com.numberONe.entity.CityFormMap;
-import com.numberONe.entity.CustomerInfoFormMap;
-import com.numberONe.entity.ResFormMap;
-import com.numberONe.entity.UserFormMap;
+import com.numberONe.entity.*;
 import com.numberONe.mapper.CityMapper;
 import com.numberONe.mapper.CustomerInfoMapper;
 import com.numberONe.tempEntity.City;
@@ -165,6 +162,17 @@ public class CustomerInfoController extends BaseController {
         } catch (Throwable e) {
             logger.error("deleteEntity error.", e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
+        }
+    }
+
+    @ResponseBody
+    @RequestMapping("findAll")
+    public CodeMsg findAll() {
+        try {
+            return success(customerInfoMapper.findByWhere(new CustomerInfoFormMap()));
+        } catch (Exception e) {
+            logger.error("findAll error.", e);
+            return error(e.getMessage());
         }
     }
 

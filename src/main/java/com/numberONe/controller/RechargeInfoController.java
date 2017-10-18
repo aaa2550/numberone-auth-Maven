@@ -3,7 +3,6 @@ package com.numberONe.controller;
 
 import javax.inject.Inject;
 
-import com.numberONe.mapper.KeepmeAccountInfoMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.numberONe.annotation.SystemLog;
 import com.numberONe.controller.index.BaseController;
 import com.numberONe.entity.CityFormMap;
-import com.numberONe.entity.KeepmeAccountInfoFormMap;
+import com.numberONe.entity.RechargeInfoFormMap;
 import com.numberONe.mapper.BusinessTypeMapper;
 import com.numberONe.mapper.CityMapper;
-import com.numberONe.mapper.KeepmeAccountInfoMapper;
+import com.numberONe.mapper.RechargeInfoMapper;
 import com.numberONe.plugin.PageView;
 import com.numberONe.tempEntity.BusinessType;
 import com.numberONe.util.CodeMsg;
@@ -33,13 +32,13 @@ import com.numberONe.util.TransformUtils;
  * @version 3.0v
  */
 @Controller
-@RequestMapping("/account/keepmeAccountInfo/")
-public class KeepmeAccountInfoController extends BaseController {
+@RequestMapping("/customer/rechargeInfo/")
+public class RechargeInfoController extends BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(KeepmeAccountInfoController.class);
+    private static final Logger logger = LoggerFactory.getLogger(RechargeInfoController.class);
 
     @Inject
-    private KeepmeAccountInfoMapper keepmeAccountInfoMapper;
+    private RechargeInfoMapper rechargeInfoMapper;
 
     @Inject
     private BusinessTypeMapper businessTypeMapper;
@@ -47,7 +46,7 @@ public class KeepmeAccountInfoController extends BaseController {
     @Inject
 	private CityMapper cityMapper;
 
-	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/account/keepmeAccountInfo";
+	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/account/rechargeInfo";
 	
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
@@ -59,18 +58,18 @@ public class KeepmeAccountInfoController extends BaseController {
 	@RequestMapping("findByPage")
 	public PageView findByPage( String pageNow,
 			String pageSize,String column,String sort) throws Exception {
-        KeepmeAccountInfoFormMap keepmeAccountInfoFormMap = getFormMap(KeepmeAccountInfoFormMap.class);
+        RechargeInfoFormMap rechargeInfoFormMap = getFormMap(RechargeInfoFormMap.class);
         String order = "";
-        like("keepmeAccountName", keepmeAccountInfoFormMap);
+        like("keepmeAccountName", rechargeInfoFormMap);
         if(Common.isNotEmpty(column)){
             order = " order by "+column+" "+sort;
         }else{
             order = " order by id asc";
         }
 
-        keepmeAccountInfoFormMap.put("$orderby", order);
-        keepmeAccountInfoFormMap=toFormMap(keepmeAccountInfoFormMap, pageNow, pageSize,keepmeAccountInfoFormMap.getStr("orderby"));
-        pageView.setRecords(TransformUtils.transformEnum(keepmeAccountInfoMapper.findByPage(keepmeAccountInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
+        rechargeInfoFormMap.put("$orderby", order);
+        rechargeInfoFormMap=toFormMap(rechargeInfoFormMap, pageNow, pageSize,rechargeInfoFormMap.getStr("orderby"));
+        pageView.setRecords(TransformUtils.transformEnum(rechargeInfoMapper.findByPage(rechargeInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
 	}
 
@@ -83,35 +82,35 @@ public class KeepmeAccountInfoController extends BaseController {
     public String editUI(Model model) throws Exception {
         String id = getPara("id");
         if(Common.isNotEmpty(id)){
-            model.addAttribute("keepmeAccountInfo", keepmeAccountInfoMapper.findbyFrist("id", id, KeepmeAccountInfoFormMap.class));
+            model.addAttribute("rechargeInfo", rechargeInfoMapper.findbyFrist("id", id, RechargeInfoFormMap.class));
         }
-        return Common.BACKGROUND_PATH + "/account/keepmeAccountInfo/edit";
+        return Common.BACKGROUND_PATH + "/account/rechargeInfo/edit";
     }
 
     @ResponseBody
     @RequestMapping("editEntity")
     @SystemLog(module="客户合同信息",methods="客户合同信息-修改")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg editEntity(Model model) throws Exception {
-        KeepmeAccountInfoFormMap keepmeAccountInfoFormMap = null;
+        RechargeInfoFormMap rechargeInfoFormMap = null;
         try {
-            keepmeAccountInfoFormMap = getFormMap(KeepmeAccountInfoFormMap.class);
-            keepmeAccountInfoFormMap.set("updateTime", TimeUtils.getDate());
+            rechargeInfoFormMap = getFormMap(RechargeInfoFormMap.class);
+            rechargeInfoFormMap.set("updateTime", TimeUtils.getDate());
 
-            if (keepmeAccountInfoFormMap.containsKey("businessType")) {
-                Object businessTypeObj = keepmeAccountInfoFormMap.get("businessType");
+            if (rechargeInfoFormMap.containsKey("businessType")) {
+                Object businessTypeObj = rechargeInfoFormMap.get("businessType");
                 BusinessType businessType = businessTypeMapper.selectByPrimaryKey(Integer.valueOf(businessTypeObj.toString()));
-                keepmeAccountInfoFormMap.set("businessTypeName", businessType.getName());
+                rechargeInfoFormMap.set("businessTypeName", businessType.getName());
             }
 
-            if(keepmeAccountInfoFormMap.containsKey("id")){
-                keepmeAccountInfoMapper.editEntity(keepmeAccountInfoFormMap);
+            if(rechargeInfoFormMap.containsKey("id")){
+                rechargeInfoMapper.editEntity(rechargeInfoFormMap);
             } else {
-                keepmeAccountInfoFormMap.set("createTime", TimeUtils.getDate());
-                keepmeAccountInfoMapper.addEntity(keepmeAccountInfoFormMap);
+                rechargeInfoFormMap.set("createTime", TimeUtils.getDate());
+                rechargeInfoMapper.addEntity(rechargeInfoFormMap);
             }
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
-            logger.error("editEntity error.keepmeAccountInfoFormMap=" + keepmeAccountInfoFormMap, e);
+            logger.error("editEntity error.rechargeInfoFormMap=" + rechargeInfoFormMap, e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
     }
@@ -126,15 +125,15 @@ public class KeepmeAccountInfoController extends BaseController {
     @ResponseBody
     @SystemLog(module="客户合同信息",methods="客户合同信息-新增")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg addEntity() throws Exception {
-        KeepmeAccountInfoFormMap keepmeAccountInfoFormMap = null;
+        RechargeInfoFormMap rechargeInfoFormMap = null;
         try {
-            keepmeAccountInfoFormMap = getFormMap(KeepmeAccountInfoFormMap.class);
-            keepmeAccountInfoFormMap.set("createTime", TimeUtils.getDate());
-            keepmeAccountInfoFormMap.set("updateTime", TimeUtils.getDate());
-            keepmeAccountInfoMapper.addEntity(keepmeAccountInfoFormMap);
+            rechargeInfoFormMap = getFormMap(RechargeInfoFormMap.class);
+            rechargeInfoFormMap.set("createTime", TimeUtils.getDate());
+            rechargeInfoFormMap.set("updateTime", TimeUtils.getDate());
+            rechargeInfoMapper.addEntity(rechargeInfoFormMap);
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
-            logger.error("addEntity error.keepmeAccountInfoFormMap=" + keepmeAccountInfoFormMap, e);
+            logger.error("addEntity error.rechargeInfoFormMap=" + rechargeInfoFormMap, e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
     }
@@ -153,7 +152,7 @@ public class KeepmeAccountInfoController extends BaseController {
         try {
             String[] ids = getParaValues("ids");
             for (String id : ids) {
-                keepmeAccountInfoMapper.deleteByAttribute("id", id, KeepmeAccountInfoFormMap.class);
+                rechargeInfoMapper.deleteByAttribute("id", id, RechargeInfoFormMap.class);
             };
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
@@ -173,8 +172,8 @@ public class KeepmeAccountInfoController extends BaseController {
     @ResponseBody
     @RequestMapping("validate")
     public boolean validate() throws Exception {
-        KeepmeAccountInfoFormMap keepmeAccountInfoFormMap = getFormMap(KeepmeAccountInfoFormMap.class);
-        return CollectionUtils.isEmpty(keepmeAccountInfoMapper.findByNames(keepmeAccountInfoFormMap));
+        RechargeInfoFormMap rechargeInfoFormMap = getFormMap(RechargeInfoFormMap.class);
+        return CollectionUtils.isEmpty(rechargeInfoMapper.findByNames(rechargeInfoFormMap));
     }
 
 }
