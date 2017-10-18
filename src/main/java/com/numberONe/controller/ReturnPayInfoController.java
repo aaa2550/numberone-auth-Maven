@@ -3,11 +3,6 @@ package com.numberONe.controller;
 
 import javax.inject.Inject;
 
-import com.numberONe.entity.CustomerContractInfoFormMap;
-import com.numberONe.enums.DictionaryEnum;
-import com.numberONe.mapper.*;
-import com.numberONe.tempEntity.BusinessType;
-import com.numberONe.tempEntity.Dictionary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -19,9 +14,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.numberONe.annotation.SystemLog;
 import com.numberONe.controller.index.BaseController;
 import com.numberONe.entity.CityFormMap;
-import com.numberONe.entity.CustomerInfoFormMap;
+import com.numberONe.entity.ReturnPayInfoFormMap;
+import com.numberONe.enums.DictionaryEnum;
+import com.numberONe.mapper.BusinessTypeMapper;
+import com.numberONe.mapper.CityMapper;
+import com.numberONe.mapper.ReturnPayInfoMapper;
+import com.numberONe.mapper.DictionaryMapper;
 import com.numberONe.plugin.PageView;
-import com.numberONe.tempEntity.City;
+import com.numberONe.tempEntity.Dictionary;
 import com.numberONe.util.CodeMsg;
 import com.numberONe.util.Common;
 import com.numberONe.util.TimeUtils;
@@ -34,13 +34,13 @@ import com.numberONe.util.TransformUtils;
  * @version 3.0v
  */
 @Controller
-@RequestMapping("/customer/customerContractInfo/")
-public class CustomerContractInfoController extends BaseController {
+@RequestMapping("/finance/returnPayInfo/")
+public class ReturnPayInfoController extends BaseController {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomerContractInfoController.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReturnPayInfoController.class);
 
     @Inject
-    private CustomerContractInfoMapper customerContractInfoMapper;
+    private ReturnPayInfoMapper returnPayInfoMapper;
 
     @Inject
     private BusinessTypeMapper businessTypeMapper;
@@ -51,7 +51,7 @@ public class CustomerContractInfoController extends BaseController {
     @Inject
 	private CityMapper cityMapper;
 
-	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/customer/customerContractInfo";
+	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/customer/returnPayInfo";
 
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
@@ -63,18 +63,18 @@ public class CustomerContractInfoController extends BaseController {
 	@RequestMapping("findByPage")
 	public PageView findByPage( String pageNow,
 			String pageSize,String column,String sort) throws Exception {
-        CustomerContractInfoFormMap customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
+        ReturnPayInfoFormMap returnPayInfoFormMap = getFormMap(ReturnPayInfoFormMap.class);
         String order = "";
-        like("statisticsShortName", customerContractInfoFormMap);
+        like("statisticsShortName", returnPayInfoFormMap);
         if(Common.isNotEmpty(column)){
             order = " order by "+column+" "+sort;
         }else{
             order = " order by id asc";
         }
 
-        customerContractInfoFormMap.put("$orderby", order);
-        customerContractInfoFormMap=toFormMap(customerContractInfoFormMap, pageNow, pageSize,customerContractInfoFormMap.getStr("orderby"));
-        pageView.setRecords(TransformUtils.transformEnum(customerContractInfoMapper.findByPage(customerContractInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
+        returnPayInfoFormMap.put("$orderby", order);
+        returnPayInfoFormMap=toFormMap(returnPayInfoFormMap, pageNow, pageSize,returnPayInfoFormMap.getStr("orderby"));
+        pageView.setRecords(TransformUtils.transformEnum(returnPayInfoMapper.findByPage(returnPayInfoFormMap)));//不调用默认分页,调用自已的mapper中findUserPage
         return pageView;
 	}
 
@@ -87,35 +87,35 @@ public class CustomerContractInfoController extends BaseController {
     public String editUI(Model model) throws Exception {
         String id = getPara("id");
         if(Common.isNotEmpty(id)){
-            model.addAttribute("customerContractInfo", customerContractInfoMapper.findbyFrist("id", id, CustomerContractInfoFormMap.class));
+            model.addAttribute("returnPayInfo", returnPayInfoMapper.findbyFrist("id", id, ReturnPayInfoFormMap.class));
         }
-        return Common.BACKGROUND_PATH + "/customer/customerContractInfo/edit";
+        return Common.BACKGROUND_PATH + "/customer/returnPayInfo/edit";
     }
 
     @ResponseBody
     @RequestMapping("editEntity")
     @SystemLog(module="客户合同信息",methods="客户合同信息-修改")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg editEntity(Model model) throws Exception {
-        CustomerContractInfoFormMap customerContractInfoFormMap = null;
+        ReturnPayInfoFormMap returnPayInfoFormMap = null;
         try {
-            customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
-            customerContractInfoFormMap.set("updateTime", TimeUtils.getDate());
+            returnPayInfoFormMap = getFormMap(ReturnPayInfoFormMap.class);
+            returnPayInfoFormMap.set("updateTime", TimeUtils.getDate());
 
-            if (customerContractInfoFormMap.containsKey("businessType")) {
-                Object businessTypeObj = customerContractInfoFormMap.get("businessType");
+            if (returnPayInfoFormMap.containsKey("businessType")) {
+                Object businessTypeObj = returnPayInfoFormMap.get("businessType");
                 Dictionary dictionary = dictionaryMapper.single(new Dictionary(DictionaryEnum.业务类型.type, Integer.valueOf(businessTypeObj.toString())));
-                customerContractInfoFormMap.set("businessTypeName", dictionary.getBusinessTypeName());
+                returnPayInfoFormMap.set("businessTypeName", dictionary.getBusinessTypeName());
             }
 
-            if(customerContractInfoFormMap.containsKey("id")){
-                customerContractInfoMapper.editEntity(customerContractInfoFormMap);
+            if(returnPayInfoFormMap.containsKey("id")){
+                returnPayInfoMapper.editEntity(returnPayInfoFormMap);
             } else {
-                customerContractInfoFormMap.set("createTime", TimeUtils.getDate());
-                customerContractInfoMapper.addEntity(customerContractInfoFormMap);
+                returnPayInfoFormMap.set("createTime", TimeUtils.getDate());
+                returnPayInfoMapper.addEntity(returnPayInfoFormMap);
             }
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
-            logger.error("editEntity error.customerContractInfoFormMap=" + customerContractInfoFormMap, e);
+            logger.error("editEntity error.returnPayInfoFormMap=" + returnPayInfoFormMap, e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
     }
@@ -130,15 +130,15 @@ public class CustomerContractInfoController extends BaseController {
     @ResponseBody
     @SystemLog(module="客户合同信息",methods="客户合同信息-新增")//凡需要处理业务逻辑的.都需要记录操作日志
     public CodeMsg addEntity() throws Exception {
-        CustomerContractInfoFormMap customerContractInfoFormMap = null;
+        ReturnPayInfoFormMap returnPayInfoFormMap = null;
         try {
-            customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
-            customerContractInfoFormMap.set("createTime", TimeUtils.getDate());
-            customerContractInfoFormMap.set("updateTime", TimeUtils.getDate());
-            customerContractInfoMapper.addEntity(customerContractInfoFormMap);
+            returnPayInfoFormMap = getFormMap(ReturnPayInfoFormMap.class);
+            returnPayInfoFormMap.set("createTime", TimeUtils.getDate());
+            returnPayInfoFormMap.set("updateTime", TimeUtils.getDate());
+            returnPayInfoMapper.addEntity(returnPayInfoFormMap);
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
-            logger.error("addEntity error.customerContractInfoFormMap=" + customerContractInfoFormMap, e);
+            logger.error("addEntity error.returnPayInfoFormMap=" + returnPayInfoFormMap, e);
             return new CodeMsg(CodeMsg.ERROR_CODE, e.getMessage());
         }
     }
@@ -157,7 +157,7 @@ public class CustomerContractInfoController extends BaseController {
         try {
             String[] ids = getParaValues("ids");
             for (String id : ids) {
-                customerContractInfoMapper.deleteByAttribute("id", id, CustomerContractInfoFormMap.class);
+                returnPayInfoMapper.deleteByAttribute("id", id, ReturnPayInfoFormMap.class);
             };
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
@@ -177,8 +177,8 @@ public class CustomerContractInfoController extends BaseController {
     @ResponseBody
     @RequestMapping("validate")
     public boolean validate() throws Exception {
-        CustomerContractInfoFormMap customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
-        return CollectionUtils.isEmpty(customerContractInfoMapper.findByNames(customerContractInfoFormMap));
+        ReturnPayInfoFormMap returnPayInfoFormMap = getFormMap(ReturnPayInfoFormMap.class);
+        return CollectionUtils.isEmpty(returnPayInfoMapper.findByNames(returnPayInfoFormMap));
     }
 
 }
