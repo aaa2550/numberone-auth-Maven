@@ -39,14 +39,14 @@ CREATE TABLE `provider_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商公司信息表';
 
--- 发票表
-DROP TABLE IF EXISTS `invoice_info`;
-CREATE TABLE `invoice_info` (
+-- 客户发票表
+DROP TABLE IF EXISTS `customer_invoice_info`;
+CREATE TABLE `customer_invoice_info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
   `companyId` int(11) NOT NULL COMMENT '所属公司',
-  `type` int(11) NOT NULL COMMENT '我司0/客户1/供应商2',
+  `companyName` varchar(250) NOT NULL COMMENT '所属公司名称',
   `taxpayerCode` varchar(100) NOT NULL COMMENT '纳税人识别号',
   `title` varchar(20) NOT NULL COMMENT '收票公司',
   `address` varchar(200) NOT NULL COMMENT '地址',
@@ -54,7 +54,24 @@ CREATE TABLE `invoice_info` (
   `openAccountBank` varchar(100) NOT NULL COMMENT '开户银行',
   `accountCode` varchar(100) NOT NULL COMMENT '银行账户号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发票表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户发票表';
+
+-- 供应商发票表
+DROP TABLE IF EXISTS `provider_invoice_info`;
+CREATE TABLE `provider_invoice_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createTime` datetime NOT NULL COMMENT '创建时间',
+  `updateTime` datetime NOT NULL COMMENT '修改时间',
+  `companyId` int(11) NOT NULL COMMENT '所属公司',
+  `companyName` varchar(250) NOT NULL COMMENT '所属公司名称',
+  `taxpayerCode` varchar(100) NOT NULL COMMENT '纳税人识别号',
+  `title` varchar(20) NOT NULL COMMENT '收票公司',
+  `address` varchar(200) NOT NULL COMMENT '地址',
+  `tel` varchar(100) NOT NULL COMMENT '电话',
+  `openAccountBank` varchar(100) NOT NULL COMMENT '开户银行',
+  `accountCode` varchar(100) NOT NULL COMMENT '银行账户号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商发票表';
 
 -- 银行账户信息
 DROP TABLE IF EXISTS `bank_account_info`;

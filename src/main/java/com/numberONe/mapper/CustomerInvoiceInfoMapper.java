@@ -1,8 +1,10 @@
 package com.numberONe.mapper;
 
+import com.numberONe.mapper.base.BaseMapper;
 import com.numberONe.tempEntity.InvoiceInfo;
 
-public interface InvoiceInfoMapper {
+public interface CustomerInvoiceInfoMapper extends BaseMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(InvoiceInfo record);
