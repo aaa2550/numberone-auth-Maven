@@ -269,6 +269,17 @@ CREATE TABLE `business_type` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='业务类型表';
 
+-- 客户收款明细
+DROP TABLE IF EXISTS `customer_account_detail`;
+CREATE TABLE `customer_account_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `businessType` int(11) NOT NULL COMMENT '1业务类型2投放平台3功能类型',
+  `businessName` varchar(100) NOT NULL COMMENT '业务名称',
+  `businessTypeIndex` int(11) NOT NULL COMMENT '业务对应索引',
+  `businessTypeName` varchar(100) NOT NULL COMMENT '业务类型名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='业务类型表';
+
 -- 字典表
 DROP TABLE IF EXISTS `dictionary`;
 CREATE TABLE `dictionary` (
