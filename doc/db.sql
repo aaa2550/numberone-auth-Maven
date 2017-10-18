@@ -170,24 +170,41 @@ CREATE TABLE `recharge_info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='充值信息表';
 
--- 发票记录表
-DROP TABLE IF EXISTS `invoice_record`;
-CREATE TABLE `invoice_record` (
+-- 销售发票记录表
+DROP TABLE IF EXISTS `customer_invoice_record`;
+CREATE TABLE `customer_invoice_record` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `createTime` datetime NOT NULL COMMENT '创建时间',
   `updateTime` datetime NOT NULL COMMENT '修改时间',
   `invoiceInfoId`  int(11) NOT NULL COMMENT '发票信息表ID',
-  `type` int(11) NOT NULL COMMENT '销售发票|媒介发票',
   `applyName` varchar(50) NOT NULL COMMENT '申请人姓名',
-  `customerId` int(11) NOT NULL COMMENT '客户ID',
-  `customerName` varchar(150) NOT NULL COMMENT '客户名称',
+  `customerId` int(11) NOT NULL COMMENT '被开票公司ID',
+  `customerName` varchar(150) NOT NULL COMMENT '被开票公司名称',
   `money` decimal(10,2) NOT NULL COMMENT '金额',
   `platform` varchar(50) NOT NULL COMMENT '投放平台',
   `payTime` datetime NOT NULL COMMENT '费用发生日期',
   `invoiceCode` varchar(50) NOT NULL COMMENT '发票号',
   `openTime` datetime NOT NULL COMMENT '开票日期',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='发票记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='销售发票记录表';
+
+-- 供应商发票记录表
+DROP TABLE IF EXISTS `provider_invoice_record`;
+CREATE TABLE `provider_invoice_record` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createTime` datetime NOT NULL COMMENT '创建时间',
+  `updateTime` datetime NOT NULL COMMENT '修改时间',
+  `invoiceInfoId`  int(11) NOT NULL COMMENT '发票信息表ID',
+  `applyName` varchar(50) NOT NULL COMMENT '申请人姓名',
+  `customerId` int(11) NOT NULL COMMENT '被开票公司ID',
+  `customerName` varchar(150) NOT NULL COMMENT '被开票公司名称',
+  `money` decimal(10,2) NOT NULL COMMENT '金额',
+  `platform` varchar(50) NOT NULL COMMENT '投放平台',
+  `payTime` datetime NOT NULL COMMENT '费用发生日期',
+  `invoiceCode` varchar(50) NOT NULL COMMENT '发票号',
+  `openTime` datetime NOT NULL COMMENT '开票日期',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='供应商发票记录表';
 
 -- 收付款信息导入表
 DROP TABLE IF EXISTS `return_pay_info`;
