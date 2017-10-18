@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
+import com.numberONe.util.CodeMsg;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -47,6 +48,22 @@ public class BaseController {
 		formMap.put("paging", getPageView(pageNow, pageSize,orderby));
 		return t;
 	}
+
+	public CodeMsg error() {
+	    return error("ERROR");
+    }
+
+	public CodeMsg error(String massage) {
+	    return new CodeMsg(CodeMsg.ERROR_CODE, massage);
+    }
+
+	public CodeMsg success() {
+	    return success(null);
+    }
+
+	public CodeMsg success(Object obj) {
+	    return new CodeMsg(CodeMsg.SUCCESS_CODE, "SUCCESS", obj);
+    }
 
 	public void like(String paramName, FormMap<String,Object> formMap) {
         if (formMap.containsKey(paramName)) {

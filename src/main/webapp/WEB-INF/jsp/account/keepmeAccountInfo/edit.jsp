@@ -48,69 +48,55 @@
                     });
                 },
                 rules : {
-                    "keepmeAccountInfoFormMap.accountType" : {
-                        required : true,
-                        digits: true
-                    },
-                    "keepmeAccountInfoFormMap.businessType" : {
-                        required : true,
-                        digits: true
-                    },
-                    "keepmeAccountInfoFormMap.contractCode" : {
-                        required : true,
-                    },
-                    "keepmeAccountInfoFormMap.statisticsShortName" : {
-                        required : true,
-                    },
-                    "keepmeAccountInfoFormMap.ourCompanyName" : {
+                    "keepmeAccountInfoFormMap.appId" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.contractStartTime" : {
+                    "keepmeAccountInfoFormMap.platform" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.contractEndTime" : {
+                    "keepmeAccountInfoFormMap.keepmeAccounId" : {
+                        required : true,
+                    },
+                    "keepmeAccountInfoFormMap.keepmeAccountName" : {
+                        required : true,
+                    },
+                    "keepmeAccountInfoFormMap.providerId" : {
                         required : true
                     },
-                    "keepmeAccountInfoFormMap.rebates" : {
-                        required : true,
-                        percent : true
+                    "keepmeAccountInfoFormMap.qq" : {
+                        required : true
                     },
-                    "keepmeAccountInfoFormMap.orderfrom" : {
-                        required : true,
-                        number: true
+                    "keepmeAccountInfoFormMap.industry" : {
+                        required : true
+                    },
+                    "keepmeAccountInfoFormMap.generalizeLink" : {
+                        required : true
                     }
                 },
                 messages : {
-                    "keepmeAccountInfoFormMap.accountType" : {
-                        required : "请选择客户类型",
-                        digits: "请选择客户类型"
+                    "keepmeAccountInfoFormMap.appId" : {
+                        required : "APPID不能为空"
                     },
-                    "keepmeAccountInfoFormMap.businessType" : {
-                        required : "业务类型不能为空",
-                        digits: "请选择业务类型"
+                    "keepmeAccountInfoFormMap.platform" : {
+                        required : "平台不能为空"
                     },
-                    "keepmeAccountInfoFormMap.contractCode" : {
-                        required : "合同编号不能为空",
+                    "keepmeAccountInfoFormMap.keepmeAccounId" : {
+                        required : "点我账号不能为空"
                     },
-                    "keepmeAccountInfoFormMap.statisticsShortName" : {
-                        required : "统计简称不能为空",
+                    "keepmeAccountInfoFormMap.keepmeAccountName" : {
+                        required : "点我名称不能为空"
                     },
-                    "keepmeAccountInfoFormMap.ourCompanyName" : {
-                        required : "我方主体名称不能为空"
+                    "keepmeAccountInfoFormMap.providerId" : {
+                        required : "必须选择一个供应商"
                     },
-                    "keepmeAccountInfoFormMap.contractStartTime" : {
-                        required : "合同开始时间不能为空"
+                    "keepmeAccountInfoFormMap.qq" : {
+                        required : "绑定QQ不能为空"
                     },
-                    "keepmeAccountInfoFormMap.contractEndTime" : {
-                        required : "合同结束时间不能为空"
+                    "keepmeAccountInfoFormMap.industry" : {
+                        required : "行业不能为空"
                     },
-                    "keepmeAccountInfoFormMap.rebates" : {
-                        required : "返点不能为空",
-                        digits: "返点为整数"
-                    },
-                    "keepmeAccountInfoFormMap.orderfrom" : {
-                        required : "账期不能为空",
-                        digits: "账期为整数"
+                    "keepmeAccountInfoFormMap.generalizeLink" : {
+                        required : "推广链接不能为空"
                     }
                 },
                 errorPlacement : function(error, element) {// 自定义提示错误位置
@@ -122,21 +108,61 @@
                     $(".l_err").css('display', 'none');
                 }
             });
-            var url = rootPath + '/business/businessType/findAll.shtml';
+            initPlatform();
+            initServices();
+            initProviderId();
+
+        });
+
+        function initProviderId() {
+            var url = rootPath + '/provider/providerInfo/findAll.shtml';
             var data = CommnUtil.ajax(url, null,"json");
             if (data && data.code === 0 && data.obj) {
-                var h = "<option selected>请选择</option>";
+                var h = "";
+                var services = "${keepmeAccountInfo.services}";
                 for ( var i = 0; i < data.obj.length; i++) {
-                    h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
+                    h+="<input type='checkbox' "+(services.indexOf("["+data.obj[i].id+"]")>=0?"checked":"")+" value='"+data.obj[i].id+"'/>"+data.obj[i].companyName;
                 }
-                $("#businessType").html(h);
+                $("#providerId").html(h);
                 if ('${keepmeAccountInfo}') {
-                    init();
+                    $("#providerId").val("${keepmeAccountInfo.providerId}");
                 }
             } else {
                 layer.msg("获取菜单信息错误，请联系管理员！");
             }
-        });
+        }
+
+        function initServices() {
+            var url = rootPath + '/dictionary/findByBusinessType.shtml?businessType=3';
+            var data = CommnUtil.ajax(url, null,"json");
+            if (data && data.code === 0 && data.obj) {
+                var h = "";
+                var services = "${keepmeAccountInfo.services}";
+                for ( var i = 0; i < data.obj.length; i++) {
+                    h+="<input type='checkbox' "+(services.indexOf("["+data.obj[i].businessTypeIndex+"]")>=0?"checked":"")+" value='"+data.obj[i].businessTypeIndex+"'/>"+data.obj[i].businessTypeName;
+                }
+            } else {
+                layer.msg("获取菜单信息错误，请联系管理员！");
+            }
+        }
+
+        function initPlatform() {
+            var url = rootPath + '/dictionary/findByBusinessType.shtml?businessType=2';
+            var data = CommnUtil.ajax(url, null,"json");
+            if (data && data.code === 0 && data.obj) {
+                var h = "<option selected>请选择</option>";
+                for ( var i = 0; i < data.obj.length; i++) {
+                    h+="<option value='" + data.obj[i].businessTypeIndex + "'>"+ data.obj[i].businessTypeName + "</option>";
+                }
+                $("#platform").html(h);
+                if ('${keepmeAccountInfo}') {
+                    $("#platform").val("${keepmeAccountInfo.platform}");
+                }
+            } else {
+                layer.msg("获取菜单信息错误，请联系管理员！");
+            }
+        }
+
         function but(v){
             if(v.value==2){
                 showBut();
@@ -160,10 +186,6 @@
             } else {
                 layer.msg("获取按扭列表失败！");
             }
-        }
-        function init() {
-            $("#accountType").val("${keepmeAccountInfo.accountType}");
-            $("#businessType").val("${keepmeAccountInfo.businessType}");
         }
     </script>
 </head>

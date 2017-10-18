@@ -164,6 +164,17 @@ public class ProviderInfoController extends BaseController {
     }
 
     @ResponseBody
+    @RequestMapping("findAll")
+    public CodeMsg findAll() {
+        try {
+            return success(providerInfoMapper.findByWhere(new ProviderInfoFormMap()));
+        } catch (Exception e) {
+            logger.error("findAll error.", e);
+            return error(e.getMessage());
+        }
+    }
+
+    @ResponseBody
     @RequestMapping("getCity")
     public CodeMsg getCity(Integer parentId) throws Exception {
         CityFormMap cityFormMap = new CityFormMap();

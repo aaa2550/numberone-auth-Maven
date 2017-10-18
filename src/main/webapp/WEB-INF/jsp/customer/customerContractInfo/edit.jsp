@@ -122,12 +122,12 @@
                     $(".l_err").css('display', 'none');
                 }
             });
-            var url = rootPath + '/business/businessType/findAll.shtml';
+            var url = rootPath + '/dictionary/findByBusinessType.shtml?businessType=1';
             var data = CommnUtil.ajax(url, null,"json");
             if (data && data.code === 0 && data.obj) {
                 var h = "<option selected>请选择</option>";
                 for ( var i = 0; i < data.obj.length; i++) {
-                    h+="<option value='" + data.obj[i].id + "'>"+ data.obj[i].name + "</option>";
+                    h+="<option value='" + data.obj[i].businessTypeIndex + "'>"+ data.obj[i].businessTypeName + "</option>";
                 }
                 $("#businessType").html(h);
                 if ('${customerContractInfo}') {
