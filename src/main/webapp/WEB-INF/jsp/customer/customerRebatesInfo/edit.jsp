@@ -48,30 +48,30 @@
                     });
                 },
                 rules : {
-                    "customerInvoiceInfoFormMap.startTime" : {
+                    "customerRebatesInfoFormMap.startTime" : {
                         required : true
                     },
-                    "customerInvoiceInfoFormMap.endTime" : {
+                    "customerRebatesInfoFormMap.endTime" : {
                         required : true
                     },
-                    "customerInvoiceInfoFormMap.rebates" : {
+                    "customerRebatesInfoFormMap.rebates" : {
                         required : true
                     },
-                    "customerInvoiceInfoFormMap.contractId" : {
+                    "customerRebatesInfoFormMap.contractId" : {
                         required : true
                     }
                 },
                 messages : {
-                    "customerInvoiceInfoFormMap.startTime" : {
+                    "customerRebatesInfoFormMap.startTime" : {
                         required : "返点开始时间不能为空"
                     },
-                    "customerInvoiceInfoFormMap.endTime" : {
+                    "customerRebatesInfoFormMap.endTime" : {
                         required : "返点结束时间不能为空"
                     },
-                    "customerInvoiceInfoFormMap.rebates" : {
+                    "customerRebatesInfoFormMap.rebates" : {
                         required : "返点不能为空"
                     },
-                    "customerInvoiceInfoFormMap.contractId" : {
+                    "customerRebatesInfoFormMap.contractId" : {
                         required : "请选择合同"
                     }
                 },
@@ -141,7 +141,7 @@
                 <label class="col-sm-3 control-label">返点开始时间</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="返点开始时间" value="${customerInvoiceInfo.startTime}" name="customerInvoiceInfoFormMap.startTime"
+                           placeholder="返点开始时间" value="${customerRebatesInfo.startTime}" name="customerRebatesInfoFormMap.startTime"
                            id="startTime">
                 </div>
             </div>
@@ -150,7 +150,7 @@
                 <label class="col-sm-3 control-label">返点结束时间</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="返点结束时间" value="${customerInvoiceInfo.endTime}" name="customerInvoiceInfoFormMap.endTime"
+                           placeholder="返点结束时间" value="${customerRebatesInfo.endTime}" name="customerRebatesInfoFormMap.endTime"
                            id="endTime">
                 </div>
             </div>
@@ -159,14 +159,14 @@
                 <label class="col-sm-3 control-label">返点</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="返点" value="${customerInvoiceInfo.rebates}" name="customerInvoiceInfoFormMap.rebates"
+                           placeholder="返点" value="${customerRebatesInfo.rebates}" name="customerRebatesInfoFormMap.rebates"
                            id="rebates">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
                 <label class="col-sm-3 control-label">对应合同</label>
-                <select id="contractId" name="customerInvoiceInfoFormMap.contractId" class="form-control m-b"
+                <select id="contractId" name="customerRebatesInfoFormMap.contractId" class="form-control m-b"
                         tabindex="-1">
                 </select>
             </div>

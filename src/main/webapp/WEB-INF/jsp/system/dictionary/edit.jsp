@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@include file="/common/common.jspf" %>
-    <%--<script type="text/javascript" src="${ctx}/js/customer/customerInvoiceRecord/add.js"></script>--%>
+    <%--<script type="text/javascript" src="${ctx}/js/system/dictionary/add.js"></script>--%>
     <style type="text/css">
         #but button {
             margin-bottom: 5px;
@@ -48,56 +48,32 @@
                     });
                 },
                 rules : {
-                    "customerInvoiceRecordFormMap.invoiceInfoId" : {
+                    "dictionaryFormMap.businessType" : {
                         required : true
                     },
-                    "customerInvoiceRecordFormMap.applyName" : {
+                    "dictionaryFormMap.businessName" : {
                         required : true
                     },
-                    "customerInvoiceRecordFormMap.customerId" : {
+                    "dictionaryFormMap.businessTypeIndex" : {
                         required : true
                     },
-                    "customerInvoiceRecordFormMap.money" : {
-                        required : true
-                    },
-                    "customerInvoiceRecordFormMap.platform" : {
-                        required : true
-                    },
-                    "customerInvoiceRecordFormMap.payTime" : {
-                        required : true
-                    },
-                    "customerInvoiceRecordFormMap.invoiceCode" : {
-                        required : true
-                    },
-                    "customerInvoiceRecordFormMap.openTime" : {
+                    "dictionaryFormMap.businessTypeName" : {
                         required : true
                     }
                 },
                 messages : {
-                    "customerInvoiceRecordFormMap.invoiceInfoId" : {
-                        required : "发票信息表ID不能为空"
+                    "dictionaryFormMap.businessType" : {
+                        required : "业务类型ID不能为空"
                     },
-                    "customerInvoiceRecordFormMap.applyName" : {
-                        required : "申请人姓名不能为空"
+                    "dictionaryFormMap.businessName" : {
+                        required : "业务类型名称不能为空"
                     },
-                    "customerInvoiceRecordFormMap.customerId" : {
-                        required : "请选择被开票公司"
+                    "dictionaryFormMap.businessTypeIndex" : {
+                        required : "词典索引不能为空"
                     },
-                    "customerInvoiceRecordFormMap.money" : {
-                        required : "金额不能为空"
+                    "dictionaryFormMap.businessTypeName" : {
+                        required : "词典名称不能为空"
                     },
-                    "customerInvoiceRecordFormMap.platform" : {
-                        required : "投放平台不能为空"
-                    },
-                    "customerInvoiceRecordFormMap.payTime" : {
-                        required : "费用发生日期不能为空"
-                    },
-                    "customerInvoiceRecordFormMap.invoiceCode" : {
-                        required : "发票号不能为空"
-                    },
-                    "customerInvoiceRecordFormMap.openTime" : {
-                        required : "开票日期不能为空"
-                    }
                 },
                 errorPlacement : function(error, element) {// 自定义提示错误位置
                     $(".l_err").css('display', 'block');
@@ -158,78 +134,43 @@
 <form id="form" name="form" class="form-horizontal" method="post"
       action="${pageContext.request.contextPath}/customer/customerContractInfo/editEntity.shtml">
     <input type="hidden" class="form-control checkacc"
-           value="${customerInvoiceRecord.id}" name="customerContractInfoFormMap.id" id="id">
+           value="${dictionary.id}" name="customerContractInfoFormMap.id" id="id">
     <section class="panel panel-default">
         <div class="panel-body">
+            <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">发票信息</label>
+                <label class="col-sm-3 control-label">业务类型</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="发票信息" value="${customerInvoiceRecord.invoiceInfoId}" name="customerInvoiceRecordFormMap.invoiceInfoId"
-                           id="invoiceInfoId">
+                           placeholder="业务类型" value="${dictionary.businessType}" name="dictionaryFormMap.businessType"
+                           id="businessType">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">申请人</label>
+                <label class="col-sm-3 control-label">业务类型名称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="申请人" value="${customerInvoiceRecord.applyName}" name="customerInvoiceRecordFormMap.applyName"
-                           id="applyName">
+                           placeholder="业务类型名称" value="${dictionary.businessName}" name="dictionaryFormMap.businessName"
+                           id="businessName">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">开票公司</label>
+                <label class="col-sm-3 control-label">词典索引</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="开票公司" value="${customerInvoiceRecord.customerId}" name="customerInvoiceRecordFormMap.customerId"
-                           id="customerId">
+                           placeholder="词典索引" value="${dictionary.businessTypeIndex}" name="dictionaryFormMap.businessTypeIndex"
+                           id="businessTypeIndex">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">金额</label>
+                <label class="col-sm-3 control-label">词典名称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="金额" value="${customerInvoiceRecord.money}" name="customerInvoiceRecordFormMap.money"
-                           id="money">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">投放平台</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="投放平台" value="${customerInvoiceRecord.platform}" name="customerInvoiceRecordFormMap.platform"
-                           id="platform">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">费用发生日期</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="费用发生日期" value="${customerInvoiceRecord.payTime}" name="customerInvoiceRecordFormMap.payTime"
-                           id="payTime">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">发票号</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="发票号" value="${customerInvoiceRecord.invoiceCode}" name="customerInvoiceRecordFormMap.invoiceCode"
-                           id="invoiceCode">
-                </div>
-            </div>
-            <div class="line line-dashed line-lg pull-in"></div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">开票日期</label>
-                <div class="col-sm-9">
-                    <input type="text" class="form-control checkacc"
-                           placeholder="开票日期" value="${customerInvoiceRecord.openTime}" name="customerInvoiceRecordFormMap.openTime"
-                           id="openTime">
+                           placeholder="词典名称" value="${dictionary.businessTypeName}" name="dictionaryFormMap.businessTypeName"
+                           id="businessTypeName">
                 </div>
             </div>
         </div>

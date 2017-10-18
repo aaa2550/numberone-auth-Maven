@@ -48,54 +48,54 @@
                     });
                 },
                 rules : {
-                    "providerInvoiceInfoFormMap.invoiceInfoId" : {
+                    "providerInvoiceRecordFormMap.invoiceInfoId" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.applyName" : {
+                    "providerInvoiceRecordFormMap.applyName" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.providerId" : {
+                    "providerInvoiceRecordFormMap.providerId" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.money" : {
+                    "providerInvoiceRecordFormMap.money" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.platform" : {
+                    "providerInvoiceRecordFormMap.platform" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.payTime" : {
+                    "providerInvoiceRecordFormMap.payTime" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.invoiceCode" : {
+                    "providerInvoiceRecordFormMap.invoiceCode" : {
                         required : true
                     },
-                    "providerInvoiceInfoFormMap.openTime" : {
+                    "providerInvoiceRecordFormMap.openTime" : {
                         required : true
                     }
                 },
                 messages : {
-                    "providerInvoiceInfoFormMap.invoiceInfoId" : {
+                    "providerInvoiceRecordFormMap.invoiceInfoId" : {
                         required : "发票信息表ID不能为空"
                     },
-                    "providerInvoiceInfoFormMap.applyName" : {
+                    "providerInvoiceRecordFormMap.applyName" : {
                         required : "申请人姓名不能为空"
                     },
-                    "providerInvoiceInfoFormMap.providerId" : {
+                    "providerInvoiceRecordFormMap.providerId" : {
                         required : "请选择被开票公司"
                     },
-                    "providerInvoiceInfoFormMap.money" : {
+                    "providerInvoiceRecordFormMap.money" : {
                         required : "金额不能为空"
                     },
-                    "providerInvoiceInfoFormMap.platform" : {
+                    "providerInvoiceRecordFormMap.platform" : {
                         required : "投放平台不能为空"
                     },
-                    "providerInvoiceInfoFormMap.payTime" : {
+                    "providerInvoiceRecordFormMap.payTime" : {
                         required : "费用发生日期不能为空"
                     },
-                    "providerInvoiceInfoFormMap.invoiceCode" : {
+                    "providerInvoiceRecordFormMap.invoiceCode" : {
                         required : "发票号不能为空"
                     },
-                    "providerInvoiceInfoFormMap.openTime" : {
+                    "providerInvoiceRecordFormMap.openTime" : {
                         required : "开票日期不能为空"
                     }
                 },
@@ -165,7 +165,7 @@
                 <label class="col-sm-3 control-label">发票信息</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="发票信息" value="${providerInvoiceInfo.invoiceInfoId}" name="providerInvoiceInfoFormMap.invoiceInfoId"
+                           placeholder="发票信息" value="${providerInvoiceRecord.invoiceInfoId}" name="providerInvoiceRecordFormMap.invoiceInfoId"
                            id="invoiceInfoId">
                 </div>
             </div>
@@ -174,7 +174,7 @@
                 <label class="col-sm-3 control-label">申请人</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="申请人" value="${providerInvoiceInfo.applyName}" name="providerInvoiceInfoFormMap.applyName"
+                           placeholder="申请人" value="${providerInvoiceRecord.applyName}" name="providerInvoiceRecordFormMap.applyName"
                            id="applyName">
                 </div>
             </div>
@@ -183,7 +183,7 @@
                 <label class="col-sm-3 control-label">开票公司</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="开票公司" value="${providerInvoiceInfo.providerId}" name="providerInvoiceInfoFormMap.providerId"
+                           placeholder="开票公司" value="${providerInvoiceRecord.providerId}" name="providerInvoiceRecordFormMap.providerId"
                            id="providerId">
                 </div>
             </div>
@@ -192,7 +192,7 @@
                 <label class="col-sm-3 control-label">金额</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="金额" value="${providerInvoiceInfo.money}" name="providerInvoiceInfoFormMap.money"
+                           placeholder="金额" value="${providerInvoiceRecord.money}" name="providerInvoiceRecordFormMap.money"
                            id="money">
                 </div>
             </div>
@@ -201,7 +201,7 @@
                 <label class="col-sm-3 control-label">投放平台</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="投放平台" value="${providerInvoiceInfo.platform}" name="providerInvoiceInfoFormMap.platform"
+                           placeholder="投放平台" value="${providerInvoiceRecord.platform}" name="providerInvoiceRecordFormMap.platform"
                            id="platform">
                 </div>
             </div>
@@ -210,7 +210,7 @@
                 <label class="col-sm-3 control-label">费用发生日期</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="费用发生日期" value="${providerInvoiceInfo.payTime}" name="providerInvoiceInfoFormMap.payTime"
+                           placeholder="费用发生日期" value="${providerInvoiceRecord.payTime}" name="providerInvoiceRecordFormMap.payTime"
                            id="payTime">
                 </div>
             </div>
@@ -219,7 +219,7 @@
                 <label class="col-sm-3 control-label">发票号</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="发票号" value="${providerInvoiceInfo.invoiceCode}" name="providerInvoiceInfoFormMap.invoiceCode"
+                           placeholder="发票号" value="${providerInvoiceRecord.invoiceCode}" name="providerInvoiceRecordFormMap.invoiceCode"
                            id="invoiceCode">
                 </div>
             </div>
@@ -228,7 +228,7 @@
                 <label class="col-sm-3 control-label">开票日期</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="开票日期" value="${providerInvoiceInfo.openTime}" name="providerInvoiceInfoFormMap.openTime"
+                           placeholder="开票日期" value="${providerInvoiceRecord.openTime}" name="providerInvoiceRecordFormMap.openTime"
                            id="openTime">
                 </div>
             </div>
