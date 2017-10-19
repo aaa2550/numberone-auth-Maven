@@ -4,7 +4,7 @@
 <html>
 <head>
     <%@include file="/common/common.jspf" %>
-    <%--<script type="text/javascript" src="${ctx}/js/${templateCode4}/${templateCode5}/add.js"></script>--%>
+    <%--<script type="text/javascript" src="${ctx}/js/@[templateCode4]/@[templateCode5]/add.js"></script>--%>
     <style type="text/css">
         #but button {
             margin-bottom: 5px;
@@ -48,10 +48,10 @@
                     });
                 },
                 rules : {
-                    ${templateCode1}
+                    @[templateCode1]
                 },
                 messages : {
-                    ${templateCode2}
+                    @[templateCode2]
                 },
                 errorPlacement : function(error, element) {// 自定义提示错误位置
                     $(".l_err").css('display', 'block');
@@ -70,7 +70,7 @@
                     h+="<option value='" + data.obj[i].businessTypeIndex + "'>"+ data.obj[i].businessTypeName + "</option>";
                 }
                 $("#businessType").html(h);
-                if ('${${templateCode5}}') {
+                if ('${@[templateCode5]}') {
                     init();
                 }
             } else {
@@ -102,20 +102,20 @@
             }
         }
         function init() {
-            $("#customerType").val("${${templateCode5}.customerType}");
-            $("#businessType").val("${${templateCode5}.businessType}");
+            $("#customerType").val("${@[templateCode5].customerType}");
+            $("#businessType").val("${@[templateCode5].businessType}");
         }
     </script>
 </head>
 <body>
 <div class="l_err" style="width: 100%; margin-top: 2px;"></div>
 <form id="form" name="form" class="form-horizontal" method="post"
-      action="${pageContext.request.contextPath}/${templateCode4}/${templateCode5}/editEntity.shtml">
+      action="${pageContext.request.contextPath}/@[templateCode4]/@[templateCode5]/editEntity.shtml">
     <input type="hidden" class="form-control checkacc"
-           value="${${templateCode5}.id}" name="${templateCode5}FormMap.id" id="id">
+           value="${@[templateCode5].id}" name="@[templateCode5]FormMap.id" id="id">
     <section class="panel panel-default">
         <div class="panel-body">
-            ${templateCode3}
+            @[templateCode3]
         </div>
         <footer class="panel-footer text-right bg-light lter">
             <button type="submit" class="btn btn-success btn-s-xs">提交</button>

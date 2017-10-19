@@ -56,36 +56,20 @@ public class Builder {
             StringBuilder templateCode3 = new StringBuilder();
             StringBuilder templateCode4 = new StringBuilder();
             for (Property property : singleTableInfo.getProperties()) {
-                templateCode1.append("{\n" +
-                        "                colkey : \""+property.getName()+"\",\n" +
-                        "                name : \""+property.getDescription()+"\"\n" +
-                        "            },");
-                templateCode2.append("\""+singleTableInfo.getHumpName()+"FormMap."+property.getName()+"\" : {\n" +
-                        "                        required : true\n" +
-                        "                    },\n");
-                templateCode3.append("\""+singleTableInfo.getHumpName()+"FormMap."+property.getName()+"\" : {\n" +
-                        "                        required : \""+property.getDescription()+"不能为空\"" +
-                        "                    },\n");
-                templateCode4.append("<div class=\"form-group\">\n" +
-                        "                <label class=\"col-sm-3 control-label\">"+property.getDescription()+"</label>\n" +
-                        "                <div class=\"col-sm-9\">\n" +
-                        "                    <input type=\"text\" class=\"form-control checkacc\"\n" +
-                        "                           placeholder=\""+property.getDescription()+"\" value=\"${"+singleTableInfo.getHumpName()+"."+property.getName()+"}\" name=\""+singleTableInfo.getHumpName()+"FormMap."+property.getName()+"\"\n" +
-                        "                           id=\""+property.getName()+"\">\n" +
-                        "                </div>\n" +
-                        "            </div>\n" +
-                        "            <div class=\"line line-dashed line-lg pull-in\"></div>\n");
-
+                templateCode1.append("{\n" + "                colkey : \"").append(property.getName()).append("\",\n").append("                name : \"").append(property.getDescription()).append("\"\n").append("            },");
+                templateCode2.append("\"").append(singleTableInfo.getHumpName()).append("FormMap.").append(property.getName()).append("\" : {\n").append("                        required : true\n").append("                    },\n");
+                templateCode3.append("\"").append(singleTableInfo.getHumpName()).append("FormMap.").append(property.getName()).append("\" : {\n").append("                        required : \"").append(property.getDescription()).append("不能为空\"").append("                    },\n");
+                templateCode4.append("<div class=\"form-group\">\n" + "                <label class=\"col-sm-3 control-label\">").append(property.getDescription()).append("</label>\n").append("                <div class=\"col-sm-9\">\n").append("                    <input type=\"text\" class=\"form-control checkacc\"\n").append("                           placeholder=\"").append(property.getDescription()).append("\" value=\"${").append(singleTableInfo.getHumpName()).append(".").append(property.getName()).append("}\" name=\"").append(singleTableInfo.getHumpName()).append("FormMap.").append(property.getName()).append("\"\n").append("                           id=\"").append(property.getName()).append("\">\n").append("                </div>\n").append("            </div>\n").append("            <div class=\"line line-dashed line-lg pull-in\"></div>\n");
             }
 
-            String listStr = listTemplateCode.replace("${templateCode1}", templateCode1.deleteCharAt(templateCode1.length() - 1));
-            listStr = listStr.replace("${templateCode2}", singleTableInfo.getStartName());
-            listStr = listStr.replace("${templateCode3}", singleTableInfo.getHumpName());
-            String editStr = editTemplateCode.replace("${templateCode1}", templateCode2.delete(templateCode2.length() - 3, templateCode2.length()));
-            editStr = editStr.replace("${templateCode2}", templateCode3.delete(templateCode3.length() - 3, templateCode3.length()));
-            editStr = editStr.replace("${templateCode3}", templateCode4.delete(templateCode4.length() - 2, templateCode4.length()));
-            editStr = editStr.replace("${templateCode4}", singleTableInfo.getStartName());
-            editStr = editStr.replace("${templateCode5}", singleTableInfo.getHumpName());
+            String listStr = listTemplateCode.replace("@[templateCode1]", templateCode1.deleteCharAt(templateCode1.length() - 1));
+            listStr = listStr.replace("@[templateCode2]", singleTableInfo.getStartName());
+            listStr = listStr.replace("@[templateCode3]", singleTableInfo.getHumpName());
+            String editStr = editTemplateCode.replace("@[templateCode1]", templateCode2.delete(templateCode2.length() - 3, templateCode2.length()));
+            editStr = editStr.replace("@[templateCode2]", templateCode3.delete(templateCode3.length() - 3, templateCode3.length()));
+            editStr = editStr.replace("@[templateCode3]", templateCode4.delete(templateCode4.length() - 2, templateCode4.length()));
+            editStr = editStr.replace("@[templateCode4]", singleTableInfo.getStartName());
+            editStr = editStr.replace("@[templateCode5]", singleTableInfo.getHumpName());
             String listFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.separator + "list.jsp";
             String editFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.separator + "edit.jsp";
             stringToFile(listFileName, listStr);
@@ -96,8 +80,8 @@ public class Builder {
     public void makeForm() {
         String templateCode = fileToString(FROM_TEMPLATE_NAME);
         for (SingleTableInfo singleTableInfo : singleTableInfos) {
-            String str = templateCode.replace("${templateCode1}", singleTableInfo.getTableName());
-            str = str.replace("${templateCode2}", singleTableInfo.bigHumpName());
+            String str = templateCode.replace("@[templateCode1]", singleTableInfo.getTableName());
+            str = str.replace("@[templateCode2]", singleTableInfo.bigHumpName());
             String fileName = TEMPLATE_FORM_DIR + singleTableInfo.bigHumpName() + "FormMap";
             stringToFile(fileName, str);
         }
@@ -106,9 +90,9 @@ public class Builder {
     public void makeAction() {
         String templateCode = fileToString(ACTION_TEMPLATE_NAME);
         for (SingleTableInfo singleTableInfo : singleTableInfos) {
-            String str = templateCode.replace("${templateCode1}", singleTableInfo.getHumpName());
-            str = str.replace("${templateCode2}", singleTableInfo.bigHumpName());
-            str = str.replace("${templateCode3}", singleTableInfo.getStartName());
+            String str = templateCode.replace("@[templateCode1]", singleTableInfo.getHumpName());
+            str = str.replace("@[templateCode2]", singleTableInfo.bigHumpName());
+            str = str.replace("@[templateCode3]", singleTableInfo.getStartName());
             String fileName = TEMPLATE_ACTION_DIR  + singleTableInfo.bigHumpName() + "Controller";
             stringToFile(fileName, str);
         }
