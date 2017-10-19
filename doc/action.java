@@ -149,7 +149,7 @@ public class @[templateCode2]Controller extends BaseController {
         try {
             String[] ids = getParaValues("ids");
             for (String id : ids) {
-                customerInfoMapper.deleteByAttribute("id", id, @[templateCode2]FormMap.class);
+                @[templateCode1]Mapper.deleteByAttribute("id", id, @[templateCode2]FormMap.class);
             };
             return CodeMsg.SUCCESS;
         } catch (Throwable e) {
@@ -162,7 +162,7 @@ public class @[templateCode2]Controller extends BaseController {
     @RequestMapping("findAll")
     public CodeMsg findAll() {
         try {
-            return success(customerInfoMapper.findByWhere(new @[templateCode2]FormMap()));
+            return success(@[templateCode1]Mapper.findByWhere(new @[templateCode2]FormMap()));
         } catch (Exception e) {
             logger.error("findAll error.", e);
             return error(e.getMessage());
@@ -180,8 +180,8 @@ public class @[templateCode2]Controller extends BaseController {
     @ResponseBody
     @RequestMapping("validate")
     public boolean validate() throws Exception {
-        @[templateCode2]FormMap customerInfoFormMap = getFormMap(@[templateCode2]FormMap.class);
-        return CollectionUtils.isEmpty(customerInfoMapper.findByNames(customerInfoFormMap));
+        @[templateCode2]FormMap @[templateCode1]FormMap = getFormMap(@[templateCode2]FormMap.class);
+        return CollectionUtils.isEmpty(@[templateCode1]Mapper.findByNames(@[templateCode1]FormMap));
     }
 
 }
