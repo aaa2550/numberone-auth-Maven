@@ -65,7 +65,7 @@ public class CustomerContractInfoController extends BaseController {
 			String pageSize,String column,String sort) throws Exception {
         CustomerContractInfoFormMap customerContractInfoFormMap = getFormMap(CustomerContractInfoFormMap.class);
         String order = "";
-        like("statisticsShortName", customerContractInfoFormMap);
+        like("nickName", customerContractInfoFormMap);
         if(Common.isNotEmpty(column)){
             order = " order by "+column+" "+sort;
         }else{

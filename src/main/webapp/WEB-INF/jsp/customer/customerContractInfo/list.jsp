@@ -25,7 +25,7 @@
                 name : "业务类型",
                 isSort:true,
             }, {
-                colkey : "statisticsShortName",
+                colkey : "nickName",
                 name : "统计简称"
             }, {
                 colkey : "ourCompanyName",
@@ -115,7 +115,7 @@
             <label class="control-label"> <span
                 class="h4 font-thin v-middle">统计简称:</span></label> <input
             class="input-medium ui-autocomplete-input" id="statisticsShortName"
-            name="customerContractInfoFormMap.statisticsShortName">
+            name="customerContractInfoFormMap.nickName">
         </div>
         <a href="javascript:void(0)" class="btn btn-default" id="search">查询</a>
     </form>

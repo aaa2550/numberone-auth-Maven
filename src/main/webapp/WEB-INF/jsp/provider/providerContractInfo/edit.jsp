@@ -59,7 +59,7 @@
                     "providerContractInfoFormMap.contractCode" : {
                         required : true,
                     },
-                    "providerContractInfoFormMap.statisticsShortName" : {
+                    "providerContractInfoFormMap.nickName" : {
                         required : true,
                     },
                     "providerContractInfoFormMap.ourCompanyName" : {
@@ -92,7 +92,7 @@
                     "providerContractInfoFormMap.contractCode" : {
                         required : "合同编号不能为空",
                     },
-                    "providerContractInfoFormMap.statisticsShortName" : {
+                    "providerContractInfoFormMap.nickName" : {
                         required : "统计简称不能为空",
                     },
                     "providerContractInfoFormMap.ourCompanyName" : {
@@ -188,8 +188,8 @@
                 <label class="col-sm-3 control-label">统计简称</label>
                 <div class="col-sm-9">
                     <input type="text" class="form-control checkacc"
-                           placeholder="统计简称" value="${providerContractInfo.statisticsShortName}" name="providerContractInfoFormMap.statisticsShortName"
-                           id="statisticsShortName">
+                           placeholder="统计简称" value="${providerContractInfo.nickName}" name="providerContractInfoFormMap.nickName"
+                           id="nickName">
                 </div>
             </div>
             <div class="line line-dashed line-lg pull-in"></div>
