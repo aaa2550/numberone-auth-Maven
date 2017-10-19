@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
@@ -14,10 +15,11 @@ import lombok.Data;
  */
 public class Builder {
 
-    public final static String TEMPLATE_DIR = "from.java" + File.pathSeparator;
-    public final static String TEMPLATE_FORM_DIR = TEMPLATE_DIR + "form" + File.pathSeparator;
-    public final static String TEMPLATE_ACTION_DIR = TEMPLATE_DIR + "action" + File.pathSeparator;
-    public final static String TEMPLATE_HTML_DIR = TEMPLATE_DIR + "html" + File.pathSeparator;
+    public final static String OUT_DIR = "C:\\Users\\sqyc\\Desktop\\test" + File.separator;
+    public final static String TEMPLATE_DIR = "C:\\Users\\sqyc\\Desktop\\办公\\open-source\\numberone-auth-Maven\\doc" + File.separator;
+    public final static String TEMPLATE_FORM_DIR = OUT_DIR + "form" + File.separator;
+    public final static String TEMPLATE_ACTION_DIR = OUT_DIR + "action" + File.separator;
+    public final static String TEMPLATE_HTML_DIR = OUT_DIR + "html" + File.separator;
     public final static String FROM_TEMPLATE_NAME = TEMPLATE_DIR + "from.java";
     public final static String LIST_HTML_TEMPLATE_NAME = TEMPLATE_DIR + "list.html";
     public final static String EDIT_HTML_TEMPLATE_NAME = TEMPLATE_DIR + "edit.html";
@@ -26,20 +28,17 @@ public class Builder {
     private String sqlContext;
     private List<String> tablesStr;
     private List<SingleTableInfo> singleTableInfos;
-    private String outHtmlDir;
-    private String outActionDir;
-    private String outFromDir;
 
-    public Builder(String outHtmlDir, String outActionDir, String outFromDir, String sqlPath) {
-        this.outHtmlDir = outHtmlDir;
-        this.outActionDir = outActionDir;
-        this.outFromDir = outFromDir;
+    public Builder(String sqlPath) {
         sqlContext = fileToString(sqlPath);
     }
 
-    public void build() {
+    public Builder build() {
         tablesStr = Arrays.asList(sqlContext.split("DROP"));
-        singleTableInfos = tablesStr.stream().map(this::buildSingleTableInfo).collect(Collectors.toList());
+        singleTableInfos = tablesStr.stream().map(this::buildSingleTableInfo)
+            .filter(Objects::nonNull)
+            .collect(Collectors.toList());
+        return this;
     }
 
     public void make() {
@@ -59,7 +58,7 @@ public class Builder {
             for (Property property : singleTableInfo.getProperties()) {
                 templateCode1.append("{\n" +
                         "                colkey : \""+property.getName()+"\",\n" +
-                        "                name : \""+property.getDescription()+"\",\n" +
+                        "                name : \""+property.getDescription()+"\"\n" +
                         "            },");
                 templateCode2.append("\""+singleTableInfo.getHumpName()+"FormMap."+property.getName()+"\" : {\n" +
                         "                        required : true\n" +
@@ -82,13 +81,13 @@ public class Builder {
             String listStr = listTemplateCode.replace("${templateCode1}", templateCode1.deleteCharAt(templateCode1.length() - 1));
             listStr = listStr.replace("${templateCode2}", singleTableInfo.getStartName());
             listStr = listStr.replace("${templateCode3}", singleTableInfo.getHumpName());
-            String editStr = editTemplateCode.replace("${templateCode1}", templateCode2.delete(templateCode1.length() - 3, templateCode2.length()));
-            editStr = editStr.replace("${templateCode2}", templateCode3.delete(templateCode1.length() - 3, templateCode3.length()));
-            editStr = editStr.replace("${templateCode3}", templateCode2.delete(templateCode1.length() - 2, templateCode2.length()));
+            String editStr = editTemplateCode.replace("${templateCode1}", templateCode2.delete(templateCode2.length() - 3, templateCode2.length()));
+            editStr = editStr.replace("${templateCode2}", templateCode3.delete(templateCode3.length() - 3, templateCode3.length()));
+            editStr = editStr.replace("${templateCode3}", templateCode4.delete(templateCode4.length() - 2, templateCode4.length()));
             editStr = editStr.replace("${templateCode4}", singleTableInfo.getStartName());
             editStr = editStr.replace("${templateCode5}", singleTableInfo.getHumpName());
-            String listFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.pathSeparator + "list.jsp";
-            String editFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.pathSeparator + "edit.jsp";
+            String listFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.separator + "list.jsp";
+            String editFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.separator + "edit.jsp";
             stringToFile(listFileName, listStr);
             stringToFile(editFileName, editStr);
         }
@@ -146,7 +145,7 @@ public class Builder {
             String lineStr;
             StringBuilder stringBuilder = new StringBuilder();
             while ((lineStr = bufferedReader.readLine()) != null) {
-                stringBuilder.append(lineStr);
+                stringBuilder.append(lineStr + "\n");
             }
             return stringBuilder.toString();
         } catch (Exception e) {
@@ -156,10 +155,13 @@ public class Builder {
     }
 
     public SingleTableInfo buildSingleTableInfo(String tableStr) {
-        String tableName = tableStr.substring(tableStr.indexOf("EXISTS `") + 8, tableStr.lastIndexOf("`"));
+        if (!tableStr.contains("EXISTS")) {
+            return null;
+        }
+        String tableName = tableStr.substring(tableStr.indexOf("EXISTS `") + 8, tableStr.indexOf("`", tableStr.indexOf("EXISTS `") + 9));
         List<Property> properties = new ArrayList<>();
         String humpName = humpName(tableName);
-        String startName = tableName.substring(0, tableName.indexOf("_"));
+        String startName = tableName.contains("_") ? tableName.substring(0, tableName.indexOf("_")) : tableName;
         String[] propertiesStr = tableStr.split("\n");
         for (int i = 0; i < propertiesStr.length; i++) {
             if (propertiesStr[i].trim().startsWith("`")) {
@@ -175,7 +177,7 @@ public class Builder {
         String newTableName = tableName;
         while (newTableName.contains("_")) {
             int index = newTableName.indexOf("_");
-            newTableName = newTableName.substring(0, index) + newTableName.substring(index + 1, index + 2).toUpperCase() + newTableName.substring(index + 1);
+            newTableName = newTableName.substring(0, index) + newTableName.substring(index + 1, index + 2).toUpperCase() + newTableName.substring(index + 2);
         }
         return newTableName;
     }
@@ -197,6 +199,12 @@ public class Builder {
     class Property {
         private String name;
         private String description;
+    }
+
+    public static void main(String[] args) {
+        new Builder("C:\\Users\\sqyc\\Desktop\\办公\\open-source\\numberone-auth-Maven\\doc\\db.sql")
+            .build()
+            .make();
     }
 
 }
