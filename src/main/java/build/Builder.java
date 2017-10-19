@@ -85,6 +85,8 @@ public class Builder {
             String editStr = editTemplateCode.replace("${templateCode1}", templateCode2.delete(templateCode1.length() - 3, templateCode2.length()));
             editStr = editStr.replace("${templateCode2}", templateCode3.delete(templateCode1.length() - 3, templateCode3.length()));
             editStr = editStr.replace("${templateCode3}", templateCode2.delete(templateCode1.length() - 2, templateCode2.length()));
+            editStr = editStr.replace("${templateCode4}", singleTableInfo.getStartName());
+            editStr = editStr.replace("${templateCode5}", singleTableInfo.getHumpName());
             String listFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.pathSeparator + "list.jsp";
             String editFileName = TEMPLATE_HTML_DIR + singleTableInfo.getHumpName() + File.pathSeparator + "edit.jsp";
             stringToFile(listFileName, listStr);

@@ -39,7 +39,7 @@ public class ${templateCode2}Controller extends BaseController {
     @Inject
 	private CityMapper cityMapper;
 
-	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/customer/${templateCode1}";
+	private static final String BUSINESS_PATH = Common.BACKGROUND_PATH + "/${templateCode3}/${templateCode1}";
 	
 	@RequestMapping("list")
 	public String listUI(Model model) throws Exception {
@@ -76,9 +76,9 @@ public class ${templateCode2}Controller extends BaseController {
     public String editUI(Model model) throws Exception {
         String id = getPara("id");
         if(Common.isNotEmpty(id)){
-            model.addAttribute("${templateCode1}", ${templateCode1}Mapper.findbyFrist("id", id, CustomerInfoFormMap.class));
+            model.addAttribute("${templateCode1}", ${templateCode1}Mapper.findbyFrist("id", id, ${templateCode2}FormMap.class));
         }
-        return Common.BACKGROUND_PATH + "/customer/${templateCode1}/edit";
+        return Common.BACKGROUND_PATH + "/${templateCode3}/${templateCode1}/edit";
     }
 
     @ResponseBody
